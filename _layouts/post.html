@@ -1,0 +1,25 @@
+---
+layout: default
+blog: true
+---
+
+<article id="article">
+  <header id="article_header">
+    <h1>{{ page.title }}</h1>
+  </header>
+	
+	<div class="post_title">
+		{{ page.intro }}
+	</div>
+	
+	<div id="date_header" class="date_header">
+	<p>
+		{{ page.date | date: "%b %Y" }}
+		{% if page.updated_at %} revised {{ page.updated_at }} {% endif %}
+		</p>
+	</div>
+	
+	<div id="article_content">
+		{{ content }}
+	</div>
+</article>

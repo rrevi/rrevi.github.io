@@ -1,0 +1,22 @@
+.content {
+	max-width: 640px;
+	margin-bottom: 20px;
+}
+.footer {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+.footer p {
+	margin: 10px;
+	font-size: smaller;
+	font-style: italic;
+}
+.post_title {
+	font-weight: bold;
+	font-style: italic;
+}
+.date_header {
+	color: gray;
+}

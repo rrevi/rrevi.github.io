@@ -6,15 +6,43 @@
 	
 	<title>{{ page.title }}</title>
 	
-	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="icon" type="image/png" href="/static/images/favicon.png" />
 	
-	<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.css" />
+	<link rel="stylesheet" href="/static/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="/static/jquery-mobile-flat-ui-theme/jquery.mobile.flatui.css" />
+	<link rel="stylesheet" href="/static/css/application.css">
+	
 	<script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 	<script src="http://code.jquery.com/mobile/1.3.0/jquery.mobile-1.3.0.min.js"></script>
 </head>
 <body>
-	<div data-role="content">
+	<div data-role="page">
+		<div data-role="header">
+			<div class="ui-grid-a">
+			    <div class="ui-block-a">
+					<a href="/"><img src="/static/images/me.png" alt="Rafael Revi" /></a>
+				</div>
+			    <div class="ui-block-b">
+					<a rel="external" class="btn btn-info" style="float: right" href="http://twitter.com/rafael_revi" data-role="button" data-inline="true">
+						<i class="icon-twitter icon-large"></i>
+					</a>
+					<a rel="external" class="btn btn-info" style="float: right" href="http://github.com/rrevi" data-role="button" data-inline="true">
+						<i class="icon-github icon-large"></i>
+					</a>
+					<a rel="external" class="btn btn-info" style="float: right" href="http://www.linkedin.com/pub/rafael-revi/33/63a/313" data-role="button" data-inline="true">
+						<i class="icon-linkedin icon-large"></i>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div data-role="content" class="content">
 		{{ content }}
+		</div>
+		<div data-role="footer" class="footer" style="">
+			<p>
+				Hand built and crafted
+			</p>
+		</div>
 	</div>
 </body>
 </html>
