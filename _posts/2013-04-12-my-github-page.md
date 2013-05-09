@@ -4,7 +4,7 @@ layout: post
 title: My Github Page
 intro: On creating my Github Page...
 categories: 
-- "2013"
+- '2013'
 ---
 
 I recently learned about [Github Pages][pages] and it couldn't come at a better time. As for sometime now, I've been looking for a way to share thoughts, code, and anything I deem worthy.  
