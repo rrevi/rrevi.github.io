@@ -4,7 +4,7 @@ layout: post
 title: My Github Page
 intro: On creating my Github Page...
 categories: 
-  - "2013"
+  - 2013
 
 ---
 
