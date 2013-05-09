@@ -1,12 +1,8 @@
----
-layout: default
-title: Rafael Revi
----
 <div style="width: 100%; height: 100%; text-align: center">
 	<div>
 		<ul data-role="listview" data-inset="true">
 			{% for post in site.posts %}
-			<li data-theme="c">
+			<li data-theme="c" data-autodividers="true">
 				<a href="{{ post.url }}" style="text-decoration: none;">
 					<h2>{{ post.title }}</h2>
 					<p>{{ post.intro }}</p>
