@@ -1,9 +1,9 @@
 ---
 published: false
 layout: default
-title: On having many forms
-intro: "A brief introduction to having many forms through teaching objects to quack, learning from parents, and learning from others"
+title: Forms
+intro: On having many forms
 
 ---
 
-## A New Post
+I recently re-learned a key topic in programming
