@@ -1,8 +1,8 @@
 ---
 published: true
 layout: post
-title: "One same message can be achived in many forms by teaching others a common behavior, by learning behavior from your ancestors, and by borrowing behavior through others."
 intro: On messages having many forms
+title: "One same message can be achived in many forms by teaching others a common behavior, by learning behavior from your ancestors, and by borrowing behavior through others."
 
 ---
 
