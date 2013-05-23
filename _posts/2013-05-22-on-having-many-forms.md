@@ -6,6 +6,6 @@ intro: On having many forms
 
 ---
 
-Many forms can be achieved by teaching others the same behaviors, learning behaviors from your ancestors, and borrowing behavior from others.
+One same message can be achived in many forms: by teaching others a common behavior, by learning behavior from your ancestors, and by borrowing behavior through others.
 
 In other words, those of computer science textbooks, examples of polymoprhism are: duck typing, inheritance and using modules (in the case of the Ruby language).
