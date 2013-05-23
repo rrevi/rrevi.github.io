@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: Message in many forms
+title: Messages in many forms
 intro: On how one message can be achieved through many forms
 
 ---
