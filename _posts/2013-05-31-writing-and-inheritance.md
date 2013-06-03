@@ -3,7 +3,6 @@ published: false
 layout: post
 title: Writing and Inheritance
 intro: On writing with humanity and inheritance
-
 ---
 
 "Any time you can tell a story in the form of a quest or a pilgrimage....readers bearing their own associations will do some of your work for you." - William Zinsser
