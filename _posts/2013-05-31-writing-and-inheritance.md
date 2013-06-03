@@ -1,12 +1,10 @@
 ---
-published: !<tag:yaml.org,2002:js/undefined> ""
+published: "false"
 layout: post
 title: Messages in many forms
 intro: On how one message can be achieved through many forms
 
 ---
-
-## A New Post
 
 "Any time you can tell a story in the form of a quest or a pilgrimage....readers bearing their own associations will do some of your work for you." - William Zinsser
 
