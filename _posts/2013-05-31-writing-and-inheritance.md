@@ -1,6 +1,8 @@
 ---
 published: !<tag:yaml.org,2002:js/undefined> ""
-layout: default
+layout: post
+title: Messages in many forms
+intro: On how one message can be achieved through many forms
 
 ---
 
