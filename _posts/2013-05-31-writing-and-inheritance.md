@@ -1,8 +1,8 @@
 ---
 published: "false"
 layout: post
-title: Messages in many forms
-intro: On how one message can be achieved through many forms
+title: Writing and Inheritance
+intro: On writing with humanity and inheritance
 
 ---
 
