@@ -1,5 +1,5 @@
 ---
-published: "false"
+published: false
 layout: post
 title: Writing and Inheritance
 intro: On writing with humanity and inheritance
