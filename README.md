@@ -4,9 +4,13 @@
 
 2013
 - January - Acme Packet, Inc. is acquired by Oracle, Inc.
+- March - Attended the Jquery Conference in Toronto, CA. Soon after, built a Jquery Mobile prototype of a product for the ISR teamt at Acme Packet. The prototype eventually become a supported product and component of the ISR platform.
+- October - Attended the Wicked Good Ruby Coference in Boston, MA. In addition to the conference, I attended and completed the Refactoring Rails Workshop by [@kytrinyx](https://twitter.com/kytrinyx) at the DockYard offices in Boston, MA.
 
 2012
 - May - I receive a Master of Science in Information Technology from [Bentley University](http://www.bentley.edu "Go Falcons!").
+- October - Attended the MongoDB Conference in Boston. Designed a prototype of a database for a pontential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
+- November - Received a Certificate of Completion for CS169.1x Software as a Service from BerkeleyX, EdX.
 
 2011
 - Newfound Communications, Inc is acquired by Acme Packet, Inc. and I stay on as Software Engineer with a focus on GUI development.
