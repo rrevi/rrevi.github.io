@@ -20,11 +20,11 @@
 - I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes a **full stack** design and implementation. Stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based GUI.
 - I start to performance test Newfound Communication's home grown products. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder product GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
 - This year I start collaborating with the Research and Development group engineers on Perfomance Testing every aspect of the IP Call Recorder: generating traffic with **SIPp**, monitoring and optimizing the impact of large volume of data of , etc.
-- I learn **Ruby** and **Ruby on Rails**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
+- I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
 2009
 - This year I start work on **Perfomance Testing**. I work on monitoring the impact of large volumes of data on the GUI we've developed for some of Newfound Communication's customers. 
-- This year I learn **Google's Web Toolkit (GWT)**. I contribute bug fixes, new features, and performance enhancements (mostly **SQL optimization**) to a GWT based GUI for one of Newfound Communication's biggest customer.
+- This year I learn **Google's Web Toolkit (GWT)**. I contribute bug fixes, new features, and performance enhancements (mostly **SQL optimization**) to a GWT based GUI for one of Newfound Communication's biggest customers.
 - Developed IVR applications with integration to the Newfound Communications IP Call Recorder, an enterprise grade **VoIP call recorder**.
 - I start to help provide **customer support**during the off hours for the hosted business of Newfound Communications, Inc.
 
