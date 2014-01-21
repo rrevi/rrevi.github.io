@@ -29,7 +29,7 @@
 - I start to help provide **customer support**during the off hours for the hosted business of Newfound Communications, Inc.
 
 2008
-- This year I also start using **Java** at a professional level. I develop **J2EE** applications to serve dynamic content for voice apps.
+- This year I start using **Java** at a professional level. I develop **J2EE** applications to serve dynamic content for voice apps. I use **Hibernate** and **Spring** on the backend to speed up development and focus on the business requirements.
 - This year I learn **VXML** and about **Interactive Voice Response (IVR)** voice application design. Designing IVR applications, through flow of dialog, teaches me the importance and value of **user experience**. I also integrate the voice apps to the two leading platforms for IVR: Nuance's Platform and Voxeo's Prophecy.
 - June - Accepted and started a full time employment as a **Software Engineer** at Newfound Communications, Inc. for the Professional Services group.
 - May - Received a Bachelor of Science Degree in Business Administration with a concentration in **Information Systems** and a Minor Degree in **Computer Science** from [Merrimack College](http://www.merrimack.edu "Go Warriors!"). In addition, I also received the following honors: Magna Cum Laude, Dean’s List, J. W. O’Brien Scholarship, Merrimack College Presidential Scholar.
