@@ -8,6 +8,7 @@
 - October - Attended the Wicked Good Ruby Coference in Boston, MA. In addition to the conference, I attended and completed the **Refactoring Rails Workshop** by [@kytrinyx](https://twitter.com/kytrinyx) at the DockYard offices in Boston, MA.
 
 2012
+- April - Recipient of an Acme Packet **Innovation Award** in recognition of an ISR GUI test tool using **JMeter**.
 - May - I receive a **Master of Science in Information Technology** from [Bentley University](http://www.bentley.edu "Go Falcons!").
 - October - Attended the **MongoDB** Conference in Boston. Designed a prototype of a database for a pontential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
 - November - Received a Certificate of Completion for CS169.1x **Software as a Service** from BerkeleyX, EdX.
