@@ -8,10 +8,12 @@
 - October - Attended the Wicked Good Ruby Coference in Boston, MA. In addition to the conference, I attended and completed the **Refactoring Rails Workshop** by [@kytrinyx](https://twitter.com/kytrinyx) at the DockYard offices in Boston, MA.
 
 2012
+- March - Integrated the ISR Dashboard to the BroadSoft's BroadWorks, **SOAP** based, Single Sign On API.
 - April - Recipient of an Acme Packet **Innovation Award** in recognition of an ISR GUI test tool using **JMeter**.
 - May - I receive a **Master of Science in Information Technology** from [Bentley University](http://www.bentley.edu "Go Falcons!").
 - October - Attended the **MongoDB** Conference in Boston. Designed a prototype of a database for a pontential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
 - November - Received a Certificate of Completion for CS169.1x **Software as a Service** from BerkeleyX, EdX.
+- Throughout this year, I enhanced the ISR Dashboard to support the relative new [SIPREC](http://datatracker.ietf.org/wg/siprec/charter/ "VOIP Recording") protocol for VoIP Recording. As part of this enhancement, we built an Advanced Searching feature for multi-relational metadata (read: **Adv. SQL queries**).
 
 2011
 - Newfound Communications, Inc is acquired by Acme Packet, Inc. for their IP Call Recorder product. The IP Call Recorded become the Net-Net Interactive Session Recorder (ISR). I stay on as Software Engineer with a focus on **GUI development** for ISR.
