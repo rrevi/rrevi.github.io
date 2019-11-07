@@ -11,9 +11,7 @@ With the help of [Simon Hørup Eskildsen][sirupsen_post] and [Max Lynch][max_lyn
 
 While I found Jekyll to be pretty awesomely simple. It's static nature drove me to jazz up my Page a bit...so I decided to use [JQuery Mobile][jquery_mobile] to make things seem a little more dynamic and leverage it's "mobile first, not mobile only" philosophy. I then found a beautiful [JQuery Mobile Theme][jquery_mobile_theme] based on [Flat UI][flat_ui]. As for icons, I am using [Font Awesome][font_awesome] as I find the JQuery icons gallery a bit lacking.
 
-Thank you for reading and I hope you've found something useful (if not maybe you will overtime as I share my experiences in software development).
-
-If you have any thoughts or question you want to share with me please drop me a tweet or send an email to rafael.revi@yahoo.com
+Thank you for reading and I hope you've found something useful (if not, maybe you will over time as I share my experiences in software development).
 
 Cheers
 
