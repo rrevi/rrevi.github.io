@@ -1,18 +1,62 @@
 Hi, I am Rafael Revi.
 
-Below is a brief chronology of events, experiences and profressional work I've completed.
+Below is a brief chronology of events, experiences and professional work I've completed.
+
+2019
+- Contributed to effort to move a on-premise software product to the **Cloud**
+- Researched and introduced my colleagues to containers, **Docker**, and to **Docker Swarm** vs **Kubernetes** (including a presentation put together by me)
+- Researched and introduced my colleagues to [Docker for Rails Developers](https://pragprog.com/book/ridocker/docker-for-rails-developers) (including live code demo by me)
+- Contributed to developing **CI/CD** pipelines in GitLab
+- Contributed to integrating to an **ELK** based logging service (this included me developing k8s configmaps and lots of kubectl)
+- Scrum Master
+
+2018
+- Developed a **HTML5** video file + audio file player using the Javascript Media APIs (this is a telecom thing, where sometimes you have VoIP networks where the two media are recorded separately)
+- Integrated the **net-ldap** gem into a Rails application
+- Removed deprecated code from a legacy Rails application
+- Converted a monolith Rails application to a API only application (in preparation for a new front-end framework)
+- Integrated the **Oracle JET** client-side framework into a Rails application
+- Mentored and lead junior Rails developers
+- Started using **Git** and **GitLab**
+- Scrum Master
+
+2017
+- Introduced  **Brakeman** security vulnerability testing, vulnerability tracking and vulnerability fixing to the software release cycle of a Rails application
+- Conducted **accessibility** testing, issue tracking and issue fixing in the software release cycle of a Rails application  
+- Implemented use of the http cookie domain attribute in a Rails application
+- Upgraded a Rails application to **Rails 5.1**
+- Implemented Localization and Internationalization on a Rails application (a.k.a. **i18n**)
+- Refactored a Rails application to use [AJAX the Rails way](https://guides.rubyonrails.org/v5.2/working_with_javascript_in_rails.html) Updates were on both front-end and server-end
+- Introduced **junior developers** to Ruby and to Rails
+
+2016
+- Upgraded a Rails application to **Rails 5.0**
+- Upgraded a Rails application to use the latest versions of JQuery
+- Updated **third-party software** (mostly gems) to their latest as part of the software release cycle
+- Contributed to the development of bash shell scripts which would backup application critical config and data to **improve upgrade process** for customers
+
+2015
+- Promoted to Senior Software Developer
+- Integrated audio media playback to ObserveIt screen capture images as part of a complete solution (for the contact center industry)
+- Updated a Rails app/product to use **HTTPS** by default
+- Developed Ruby based scripts that use the **openssl** gem to generate certificates,  encrypt plain text strings, and generate key-stores as part of my teams dev tooling kit
+
+2014
+- Lead effort to rebrand a UI to use Oracle branding assets
+- Developed Rails integration tests, using **Capybara** and the **Selenium Web Driver**, as part of **TDD** effort
+- Contributed to **bash shell scripts** used for generating software builds
 
 2013
-- January - Acme Packet, Inc. is acquired by Oracle, Inc.
-- March - Attended the JQuery Conference in Toronto, CA. Soon after, built a **JQuery Mobile** prototype of a product for the ISR teamt at Acme Packet. The prototype eventually becomes a supported product and component of the ISR platform.
-- October - Attended the Wicked Good Ruby Coference in Boston, MA. In addition to the conference, I attended and completed the **Refactoring Rails Workshop** by [@kytrinyx](https://twitter.com/kytrinyx) at the DockYard offices in Boston, MA.
+- Acme Packet, Inc. is acquired by Oracle, Inc.
+- Attended the JQuery Conference in Toronto, CA. Soon after, built a **JQuery Mobile** prototype of a product for the ISR team at Acme Packet. The prototype eventually becomes a supported product and component of the ISR platform.
+- Attended the Wicked Good Ruby Conference in Boston, MA. In addition to the conference, I attended and completed the **Refactoring Rails Workshop** by [@kytrinyx](https://twitter.com/kytrinyx) at the DockYard offices in Boston, MA.
 
 2012
-- March - Integrated the ISR Dashboard to the BroadSoft's BroadWorks, **SOAP** based, Single Sign On API.
-- April - Recipient of an Acme Packet **Innovation Award** in recognition of an ISR GUI test tool using **JMeter**.
-- May - I receive a **Master of Science in Information Technology** from [Bentley University](http://www.bentley.edu "Go Falcons!").
-- October - Attended the **MongoDB** Conference in Boston. Designed a prototype of a database for a pontential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
-- November - Received a Certificate of Completion for CS169.1x **Software as a Service** from BerkeleyX, EdX.
+- Integrated the ISR Dashboard to the BroadSoft's BroadWorks, **SOAP** based, Single Sign On API.
+- Recipient of an Acme Packet **Innovation Award** in recognition of an ISR GUI test tool using **JMeter**.
+- I receive a **Master of Science in Information Technology** from [Bentley University](http://www.bentley.edu "Go Falcons!").
+- Attended the **MongoDB** Conference in Boston. Designed a prototype of a database for a potential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
+- Received a Certificate of Completion for CS169.1x **Software as a Service** from BerkeleyX, EdX.
 - Throughout this year, I enhanced the ISR Dashboard to support the relative new [SIPREC](http://datatracker.ietf.org/wg/siprec/charter/ "VOIP Recording") protocol for VoIP Recording. As part of this enhancement, we built an Advanced Searching feature for multi-relational metadata (read: **Adv. SQL queries**).
 
 2011
@@ -22,7 +66,7 @@ Below is a brief chronology of events, experiences and profressional work I've c
 2010
 - I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes a **full stack** design and implementation. Stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based GUI.
 - I start to performance test Newfound Communication's home grown products. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder product GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
-- This year I start collaborating with the Research and Development group engineers on Perfomance Testing every aspect of the IP Call Recorder: generating traffic with **SIPp**, monitoring and optimizing the impact of large volume of data of , etc.
+- This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder: generating traffic with **SIPp**, monitoring and optimizing the impact of large volume of data of , etc.
 - I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
 2009
