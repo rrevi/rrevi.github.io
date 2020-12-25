@@ -65,18 +65,18 @@ Below is a brief chronology of events, experiences and professional work I've co
 
 2010
 - I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes a **full stack** design and implementation. Stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based GUI.
-- I start to performance test Newfound Communication's home grown products. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder product GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
-- This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder: generating traffic with **SIPp**, monitoring and optimizing the impact of large volume of data of , etc.
+- I start to performance test Newfound Communication's home grown products more extensively. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder product GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
+- This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder. I generating SIP traffic with **SIPp**, monitor and optimize the impact of large volume of data on the product, etc.
 - I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
 2009
 - This year I start work on **Perfomance Testing**. I work on monitoring the impact of large volumes of data on the GUI we've developed for some of Newfound Communication's customers.
 - This year I learn **Google's Web Toolkit (GWT)**. I contribute bug fixes, new features, and performance enhancements (mostly **SQL optimization**) to a GWT based GUI for one of Newfound Communication's biggest customers.
-- Developed IVR applications with integration to the Newfound Communications IP Call Recorder, an enterprise grade **VoIP call recorder**.
-- I start to help provide **customer support**during the off hours for the hosted business of Newfound Communications, Inc.
+- Developed IVR applications that integrate to the Newfound Communications IP Call Recorder, an enterprise grade **VoIP call recorder**.
+- I start to help provide **customer support** during the off hours for the hosted business of Newfound Communications, Inc.
 
 2008
 - This year I start using **Java** at a professional level. I develop **J2EE** applications to serve dynamic content for voice apps. I use **Hibernate** and **Spring** on the backend to speed up development and focus on the business requirements.
-- This year I learn **VXML** and about **Interactive Voice Response (IVR)** voice application design. Designing IVR applications, through flow of dialog, teaches me the importance and value of **user experience**. I also integrate the voice apps to the two leading platforms for IVR: Nuance's Platform and Voxeo's Prophecy.
+- This year I learn **VXML** and about **Interactive Voice Response (IVR)** application design. Designing IVR applications, through flow of dialog, teaches me the importance and value of **user experience**. I also integrate the voice apps to the two leading platforms for IVR: Nuance's Platform and Voxeo's Prophecy.
 - June - Accepted and started a full time employment as a **Software Engineer** at Newfound Communications, Inc. for the Professional Services group.
-- May - Received a Bachelor of Science Degree in Business Administration with a concentration in **Information Systems** and a Minor Degree in **Computer Science** from [Merrimack College](http://www.merrimack.edu "Go Warriors!"). In addition, I also received the following honors: Magna Cum Laude, Dean’s List, J. W. O’Brien Scholarship, Merrimack College Presidential Scholar.
+- May - Received a Bachelor of Science Degree in Business Administration with a concentration in **Information Systems** and a Minor Degree in **Computer Science** from [Merrimack College](http://www.merrimack.edu "Go Warriors!"). In addition, I also received the following honors: Magna Cum Laude, Dean’s List, J. W. O’Brien Scholarship, and Merrimack College Presidential Scholar.
