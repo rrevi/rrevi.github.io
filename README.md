@@ -57,15 +57,15 @@ Below is a brief chronology of events, experiences and professional work I've co
 - I receive a **Master of Science in Information Technology** from [Bentley University](http://www.bentley.edu "Go Falcons!").
 - Attended the **MongoDB** Conference in Boston. Designed a prototype of a database for a potential product for the ISR team at Acme Packet. Additionally, performed load tests on a 10M+ document MongoDB database.
 - Received a Certificate of Completion for CS169.1x **Software as a Service** from BerkeleyX, EdX.
-- Throughout this year, I enhanced the ISR Dashboard to support the relative new [SIPREC](http://datatracker.ietf.org/wg/siprec/charter/ "VOIP Recording") protocol for VoIP Recording. As part of this enhancement, we built an Advanced Searching feature for multi-relational metadata (read: **Adv. SQL queries**).
+- Throughout this year, I enhance the ISR Dashboard to support the relative new [SIPREC](http://datatracker.ietf.org/wg/siprec/charter/ "VOIP Recording") protocol for VoIP Recording. As part of this enhancement, we built an Advanced Searching feature for multi-relational metadata (read: **Adv. SQL queries**).
 
 2011
 - Newfound Communications, Inc is acquired by Acme Packet, Inc. for their IP Call Recorder product. The IP Call Recorded become the Net-Net Interactive Session Recorder (ISR). I stay on as Software Engineer with a focus on **GUI development** for ISR.
-- I maintain two different dashboards for the ISR. One is J2EE based and the other is  RoR based. I migrate them both from running on Windows to running on Linux. I become **solely responsible** for the phasing out the J2EE based dashboard and migration all features to the RoR based dashboard.
+- I maintain two different dashboards for the ISR. One is J2EE based and the other is Ruby on Rails based. I migrate them both from running on Windows to running on Linux. I become **solely responsible** for the phasing out the J2EE based dashboard and migration all features to the RoR based dashboard.
 
 2010
-- I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes a **full stack** design and implementation. Stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based GUI.
-- I start to performance test Newfound Communication's home grown products more extensively. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder product GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
+- I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes **full stack** design and implementation. The stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based J2EE GUI also running on Tomcat.
+- I start to performance test Newfound Communication's home grown products more extensively. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder's GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
 - This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder. I generating SIP traffic with **SIPp**, monitor and optimize the impact of large volume of data on the product, etc.
 - I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
