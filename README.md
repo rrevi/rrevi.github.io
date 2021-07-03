@@ -3,11 +3,15 @@ Hi, I am Rafael Revi.
 Below is a brief chronology of events, experiences and professional work I've completed.
 
 ### 2021
-- As one of the lead developers, contributed to the development of a new microservice based on the actor system framework Akka, along with a http server in front of the actor system app based on Akka HTTP (read: REST API), and with a persistence layer based on the Java Persistence API.
+- Promoted to **Principal Software Developer**.
+- As one of the lead developers, contributed to the development of a new microservice based on the [actor system](https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html) framework **Akka**.
+- Contributed to building a http server in front of a actor system based app using the **Akka HTTP** module (read: **REST API**).
+- Contributed to adding event persistence support using the **Akka Persistence** module to an actor system based app.
+- Contributed to adding a business domain object persistence layer to a actor system based app using the **Java Persistence API**.
 - Documented and performed many knowledge transfer sessions to on-board developers to a new microservice application based on the actor system framework Akka.
 
 #### 2020
-- Contributed to an effort to update a legacy java-based application to meet FEDRAMP compliance (read: performed security vulnerabilities scans and updated code with patches)
+- Contributed to an effort to update a legacy Java-based application to meet **FedRAMP** compliance (read: performed security vulnerabilities scans and updated code to remedy said vulnerabilities)
 
 ##### 2019
 - Contributed to effort to move a on-premise software product to the **Cloud**
@@ -43,7 +47,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 - Contributed to the development of bash shell scripts which would backup application critical config and data to **improve upgrade process** for customers
 
 ###### 2015
-- Promoted to Senior Software Developer
+- Promoted to **Senior Software Developer**
 - Integrated audio media playback to ObserveIt screen capture images as part of a complete solution (for the contact center industry)
 - Updated a Rails app/product to use **HTTPS** by default
 - Developed Ruby based scripts that use the **openssl** gem to generate certificates,  encrypt plain text strings, and generate key-stores as part of my teams dev tooling kit
