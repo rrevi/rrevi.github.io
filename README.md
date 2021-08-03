@@ -3,7 +3,7 @@ Hi, I am Rafael Revi.
 Below is a brief chronology of events, experiences and professional work I've completed.
 
 ### 2021
-- Promoted to **Principal Software Developer**.
+- Promoted to **Principal Applications Engineer**
 - As one of the lead developers, contributed to the development of a new microservice based on the [actor system](https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html) framework **Akka**.
 - Contributed to building a http server in front of a actor system based app using the **Akka HTTP** module (read: **REST API**).
 - Contributed to adding event persistence support using the **Akka Persistence** module to an actor system based app.
