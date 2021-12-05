@@ -1,3 +1,24 @@
 markdown: kramdown
 highlighter: rouge
 permalink: '/:title'
+google_analytics: UA-40719525-1
+
+title: Rants on Software Development
+author:
+  name: Rafael Revi
+  email: rafael.e.revi@gmail.com
+description: > # this means to ignore newlines until "show_excerpts:"
+  Personal website and rants about software development.
+show_excerpts: true # set to true to show excerpts on the homepage
+
+minima:
+  skin: solarized
+  social_links:
+    github: rrevi
+    linkedin: rafaelrevi
+
+theme: minima
+
+plugins:
+ - jekyll-feed
+ - jekyll-seo-tag
