@@ -19,10 +19,6 @@ minima:
 
 theme: minima
 
-readme_index:
-  enabled: true
-
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
- - jekyll-readme-index
