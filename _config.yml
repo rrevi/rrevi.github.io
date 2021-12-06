@@ -4,11 +4,8 @@ permalink: '/:title'
 google_analytics: UA-40719525-1
 
 title: Rants on Software Development
-author:
-  name: Rafael Revi
-  email: rafael.e.revi@gmail.com
 description: > # this means to ignore newlines until "show_excerpts:"
-  Personal website and rants about software development.
+  Personal website and rants about software development from Rafael Revi.
 show_excerpts: true # set to true to show excerpts on the homepage
 
 minima:
