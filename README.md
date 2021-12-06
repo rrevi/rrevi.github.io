@@ -77,7 +77,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 ###### 2010
 - I develop a dynamic IVR solution for the State of Utah's Poison Control Center. This includes **full stack** design and implementation. The stack consisted of a **MySQL** database, a J2EE based IVR application running on **Tomcat**, and a GWT based J2EE GUI also running on Tomcat.
 - I start to performance test Newfound Communication's home grown products more extensively. I use **JMeter** to automate performance testing and place heavy traffic on the IP Call Recorder's GUI. I also test the performance of the GUI against **large volumes of data (100M+ database records)**.
-- This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder. I generating SIP traffic with **SIPp**, monitor and optimize the impact of large volume of data on the product, etc.
+- This year I start collaborating with the Research and Development group engineers on Performance Testing every aspect of the IP Call Recorder. I generate SIP traffic with **SIPp**, monitor and optimize the impact of large volume of data on the product, etc.
 - I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
 ###### 2009
