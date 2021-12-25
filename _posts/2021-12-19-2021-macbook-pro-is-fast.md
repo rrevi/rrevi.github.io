@@ -7,7 +7,7 @@ intro: A major leap in performance for personal computers is upon us
 
 With the introduction of the [5th generation 2021 Apple MacBook Pro][0] laptops with their [M1 Pro and M1 Max][1] chipsets on October of this year, Apple leaped personal computing performance forward many times over. Don't believe me? I am about to show you.
 
-Here's is the hardware we are about to compare:
+Here is the hardware we are about to compare:
 
 Spec               | 13" MacBook Pro       | 14" MacBook Pro
 ------------------ | --------------------- | ---------------------
@@ -19,7 +19,7 @@ Storage (SSD)      | 512GB                 | 512GB
 Wi-Fi              | 802.11ac              | 802.11ax Wi-Fi 6
 
 
-As for what software I will be running to compare the performance of these two generations of MacBook Pros, it will be developer focused. Meaning, I will running a number of software development commands, to mimic activities a software developer would do, and show the difference in real time that it took to execute said commands. Here we go...
+As for what software I will be running to compare the performance of these two generations of MacBook Pros, it will be developer focused. Meaning, I will be running a number of software development commands, to mimic activities a software developer would do, and show the difference in real time that it took to execute said commands. Here we go...
 
 Command               | 13" MacBook Pro       | 14" MacBook Pro
 --------------------- | --------------------- | ---------------------
