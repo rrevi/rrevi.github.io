@@ -33,7 +33,7 @@ Benchmark.bm do |x|
   x.report('sequential'){ 3.times{ sleep 1 } }
 
   # asynchronous version
-  x.report('full asynchronous'){
+  x.report('asynchronous'){
     Async do 
       3.times.map do
         Async do
