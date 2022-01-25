@@ -3,6 +3,15 @@ highlighter: rouge
 permalink: '/:title'
 google_analytics: UA-40719525-1
 
+kramdown:
+  syntax_highlighter_opts:
+    css_class: 'highlight'
+    span:
+      line_numbers: false
+    block:
+      line_numbers: true
+      start_line: 1
+
 title: Rants on Software Development
 description: > # this means to ignore newlines until "show_excerpts:"
   Personal website and rants about software development from Rafael Revi.
