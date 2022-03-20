@@ -4,6 +4,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 
 ### 2021
 - Promoted to **Principal Applications Engineer**
+- Lead a development effort, using Oracle [JET](https://www.oracle.com/webfolder/technetwork/jet/index.html), to create a [Custom Web Component](https://docs.oracle.com/en/middleware/developer-tools/jet/12/reference-api/CompositeOverview.html) as a way to modularize, package, and distribute common UI code to be used across multiple product lines.
 - As one of the lead developers, contributed to the development of a new microservice based on the [actor system](https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html) framework **Akka**.
 - Contributed to building a http server in front of a actor system based app using the **Akka HTTP** module (read: **REST API**).
 - Contributed to adding event persistence support using the **Akka Persistence** module to an actor system based app.
