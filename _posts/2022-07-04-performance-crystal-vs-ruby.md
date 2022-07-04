@@ -5,6 +5,22 @@ title: 'Performance: Crystal vs Ruby'
 intro: In this post, let's compare the run performance of a bubble sort script with Crystal and Ruby
 ---
 
+**update on 07/04/2022:** added crystal and ruby version terminal outputs below
+```
+$ crystal --version
+Crystal 1.4.1 (2022-04-22)
+
+LLVM: 13.0.1
+Default target: aarch64-apple-darwin21.5.0
+$
+```
+
+```
+$ ruby --version
+ruby 3.1.2p20 (2022-04-12 revision 4491bb740a) [arm64-darwin21]
+$
+```
+
 ### Refresher about Crystal and Ruby
 
 In my previous [post][1], I introduced the Crystal programming language, and additionally compared it some to it's major influence, the Ruby programming languange.
