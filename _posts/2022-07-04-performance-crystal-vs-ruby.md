@@ -2,7 +2,7 @@
 published: true
 layout: post
 title: 'Performance: Crystal vs Ruby'
-intro: In this post, let's compare the run performance of different scripts with Crystal and Ruby
+intro: In this post, let's compare the run performance of a bubble sort script with Crystal and Ruby
 ---
 
 ### Refresher about Crystal and Ruby
