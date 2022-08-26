@@ -25,6 +25,8 @@ minima:
 
 remote_theme: jekyll/minima
 
+paginate: 4
+
 plugins:
  - jekyll-feed
  - jekyll-seo-tag
