@@ -2,10 +2,10 @@
 published: true
 layout: post
 title: 'Advanced: Crystal vs Ruby'
-intro: In this post, let's compare the advanced featyres of both Crystal and Ruby
+intro: In this post, let's compare the advanced features of both Crystal and Ruby
 ---
 
-### Metaprogramming via Macros
+### Metaprogramming
 
 ### Concurrency
 
