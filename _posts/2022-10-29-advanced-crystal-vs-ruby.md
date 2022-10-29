@@ -59,7 +59,7 @@ dog.yield_with_self { name }
 A few differences with Crystal:
 - Unlike in Ruby, where you can alter an object's data structure at runtime, say by adding a new method, as a result of Crystal being a compile language, as opposed to an interpreted language like Ruby is, you cannot alter an objec'ts data structure at runtime
 - Use the `Macro` data structure to create AST nodes to produce code at compile time
-- Then, in order to use said produced code, while keeping the scope in mind, call on the produced code, like in line 20 where we call the `define_method` method to create a new method at the class level (as opposed to at the object level)
+- Then, in order to use said produced code, while keeping the scope in mind, call on the produced code, like in line 19 where we call the `define_method` method to create a new method at the class level (as opposed to at the object level)
 - To use any method created at runtime, we need to tell the object to search for those methods within the context of itself, like we do in line 23 by using the `yield_with_self` method
 - Last, notice in all of this that basic metaprogramming is not as easy or intuative as that in Ruby
 
