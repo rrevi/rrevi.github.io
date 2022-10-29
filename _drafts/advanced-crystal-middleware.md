@@ -1,8 +1,8 @@
 ---
 published: true
 layout: post
-title: 'Advanced: Crystal Web apps middleware'
-intro: In this post, let's compare how to develop middleware for some of Crystal's Web app frameworks
+title: 'Advanced: Crystal Web Apps Middleware'
+intro: Let's compare how to develop middleware for some of Crystal's Web app frameworks
 ---
 
 ### Athena
