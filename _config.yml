@@ -14,8 +14,8 @@ kramdown:
 
 title: Rants on Software Development
 description: > # this means to ignore newlines until "show_excerpts:"
-  Personal website and rants about software development from Rafael Revi.
-show_excerpts: false # set to true to show excerpts on the homepage
+  Personal website and rants on software development from Rafael Revi.
+show_excerpts: false # set to true to show post excerpts on the homepage
 
 minima:
   skin: solarized
