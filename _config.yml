@@ -16,6 +16,7 @@ title: Rants on Software Development
 description: > # this means to ignore newlines until "show_excerpts:"
   Personal website and rants on software development from Rafael Revi.
 show_excerpts: false # set to true to show post excerpts on the homepage
+show_intro: false # set to true to show post intro on the homepage
 
 minima:
   skin: solarized
