@@ -22,6 +22,7 @@ minima:
   social_links:
     - { platform: github,  user_url: "https://github.com/rrevi" }
     - { platform: linkedin,  user_url: "https://linkedin.com/in/rafaelrevi" }
+  date_format: "%Y-%m-%d" # http://shopify.github.io/liquid/filters/date/
 
 remote_theme: jekyll/minima
 
