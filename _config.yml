@@ -14,18 +14,18 @@ kramdown:
 
 title: Rants on Software Development
 description: > # this means to ignore newlines until "show_excerpts:"
-  Personal website and rants about software development from Rafael Revi.
-show_excerpts: false # set to true to show excerpts on the homepage
+  Personal website and rants on software development from Rafael Revi.
+show_excerpts: false # set to true to show post excerpts on the homepage
+show_intro: false # set to true to show post intro on the homepage
 
 minima:
   skin: solarized
   social_links:
-    github: rrevi
-    linkedin: rafaelrevi
+    - { platform: github,  user_url: "https://github.com/rrevi" }
+    - { platform: linkedin,  user_url: "https://linkedin.com/in/rafaelrevi" }
+  date_format: "%Y-%m-%d" # http://shopify.github.io/liquid/filters/date/
 
 remote_theme: jekyll/minima
-
-paginate: 4
 
 plugins:
  - jekyll-feed
