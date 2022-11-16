@@ -20,8 +20,8 @@ show_excerpts: false # set to true to show excerpts on the homepage
 minima:
   skin: solarized
   social_links:
-    github: rrevi
-    linkedin: rafaelrevi
+    - { platform: github,  user_url: "https://github.com/rrevi" }
+    - { platform: linkedin,  user_url: "https://linkedin.com/in/rafaelrevi" }
 
 remote_theme: jekyll/minima
 
