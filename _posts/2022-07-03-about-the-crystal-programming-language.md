@@ -1,11 +1,11 @@
 ---
 published: true
 layout: post
-title: 'About the Crytal programming language'
+title: 'About the Crystal programming language'
 intro: 'The Crystal programming language borrows inspiration from the best: Ruby, Go, Rust, Swift, and many more!'
 ---
 
-### How I found out about Crytal
+### How I found out about Crystal
 [This][1] Hacker News post introduced me to [this][2] article, that article instroduced me to [this][3] other article, and in that fashion I got introduced to the [Crystal programming language][4].
 
 ### About Crystal
@@ -193,7 +193,7 @@ And takeaways from the output...
 - Line 6 prints out **0**; why? well, from the list of possibilites, the environment key of `FOO` is not set and it returns the equivalent of false so the first conditional fails and we move to the next conditional statement, the next option `false` also fails the conditional statement and move on to the next one, next we have `0` which isn't a false value and the conditional stament passes and this we have the value of `0` assigned to the variable `foo`
 - Line 7 also prints out **0** to the console; why? well this line is the equivalent of line 6, expect here we have explicitly told Crystal to print out the String value of whatever the `foo` variable is (this is exactly like what the `classInstanceVariable.toString()` is in Java)
 
-One more thing about Crytal's type system versus Ruby's lack of, while it is evident that having a type system helps catch potential problems that would occur at run time, it can be argued, in favor of a dynamic type system like that in Ruby, that with enough TDD (a.k.a. testing) coverage to catch potential problems at runtime even out the playing field. And of course, this is not to say that with having a type system check you shouldn't test your code, you really should anyway as a way to building even more robust software ([read][13] about Crystal's own testing library)
+One more thing about Crystal's type system versus Ruby's lack of, while it is evident that having a type system helps catch potential problems that would occur at run time, it can be argued, in favor of a dynamic type system like that in Ruby, that with enough TDD (a.k.a. testing) coverage to catch potential problems at runtime even out the playing field. And of course, this is not to say that with having a type system check you shouldn't test your code, you really should anyway as a way to building even more robust software ([read][13] about Crystal's own testing library)
 
 Like any type system, there is a lot more to Crystal's type system than this very basic example is showing, so go read more about it [here][12].
 
