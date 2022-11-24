@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: 'Perfomance: Intel 8th vs 12th generation'
+title: 'Performance: Intel 8th vs 12th generation'
 intro: Let's compare the performance between a Intel 8th gen PC and a 12th gen PC
 ---
 
