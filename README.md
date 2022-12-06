@@ -4,8 +4,8 @@ Below is a brief chronology of events, experiences and professional work I've co
 
 ### 2022
 - I start using [Helidon](https://helidon.io/) to develop back-end services. (If you care about performance, like I do, go read about [Helidon Nima](https://medium.com/helidon/please-welcome-helidon-n%C3%ADma-9a882c5b6f1e))
-- I start using a [Preact](https://preactjs.com/) based front-end framework to develop Web-based GUI services.
-- One of the lead developers of a **Oracle JET** based GUI service for other Oracle products to consume in their own Web-based GUIs.
+- I start using a [Preact](https://preactjs.com/) based front-end framework to develop front-end services.
+- One of the lead developers of a **Oracle JET** based GUI (front-end) service for other Oracle products to consume in their own Web-based GUIs.
 - As one of the lead developers of a **microservices platform team**, I supported other developers to deliver services for both front-end users and to other Oracle product teams.
 
 #### 2021
