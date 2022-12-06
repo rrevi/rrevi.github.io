@@ -2,7 +2,13 @@ Hi, I am Rafael Revi.
 
 Below is a brief chronology of events, experiences and professional work I've completed.
 
-### 2021
+### 2022
+- I start using [Helidon](https://helidon.io/) to develop back-end services. (If you care about performance, like I do, go read about [Helidon Nima](https://medium.com/helidon/please-welcome-helidon-n%C3%ADma-9a882c5b6f1e))
+- I start using a [Preact](https://preactjs.com/) based front-end framework to develop Web-based GUI services.
+- One of the lead developers of a **Oracle JET** based GUI service for other Oracle products to consume in their own Web-based GUIs.
+- As one of the lead developers of a **microservices platform team**, I supported other developers to deliver services for both front-end users and to other Oracle product teams.
+
+#### 2021
 - Promoted to **Principal Applications Engineer**
 - Lead a development effort, using Oracle [JET](https://www.oracle.com/webfolder/technetwork/jet/index.html), to create a [Custom Web Component](https://docs.oracle.com/en/middleware/developer-tools/jet/12/reference-api/CompositeOverview.html) as a way to modularize, package, and distribute common UI code to be used across multiple product lines.
 - As one of the lead developers, contributed to the development of a new microservice based on the [actor system](https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html) framework **Akka**.
@@ -11,7 +17,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 - Contributed to adding a business domain object persistence layer to a actor system based app using the **Java Persistence API**.
 - Documented and performed many knowledge transfer sessions to on-board developers to a new microservice application based on the actor system framework Akka.
 
-#### 2020
+##### 2020
 - Contributed to an effort to update a legacy Java-based application to meet **FedRAMP** compliance (read: performed security vulnerabilities scans and updated code to remedy said vulnerabilities)
 
 ##### 2019
