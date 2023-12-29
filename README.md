@@ -2,13 +2,38 @@ Hi, I am Rafael Revi.
 
 Below is a brief chronology of events, experiences and professional work I've completed.
 
-### 2022
+### 2023
+As a lead developer of a Web services platform team...
+- Lead development of a **Helidon** based back-end service (to replace a Akka based service)
+  - **MicroProfile**
+  - **Oracle Database** integration
+  - **Consul** integration
+  - **JWT** for service-to-service authentication 
+  - **Maven** as the build automation tool
+- Lead development of a **Preact** based front-end 
+- Lead development of a **Docker Compose** based repository for local deployment of microservices for development and QA activities
+- Lead development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**
+  - Contributed to **Jenkins** files
+  - Contributed to **Bash** files (to run kubectl commands, generate K8s config files, sed, curl, etc.)
+  - Contributed to **Kubernetes** config files 
+  - Contributed to **Nginx** config files (for service routing, a.k.a. reverse proxying)
+  - Contributed to documentation to hand over to a **CloudOps** team (for initial deployment, update of microservices, etc.)
+- Worked with software architects to implement new services based on their designs
+- Helped scope and plan future software development efforts
+- Helped onboard colleagues to new software development plans 
+- On a number of occasions lead cross functional development 
+- Performed code reviews
+- Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
+- Conducted interviews for open positions
+- Supported legacy software
+
+#### 2022
 - I start using [Helidon](https://helidon.io/) to develop back-end services. (If you care about performance, like I do, go read about [Helidon Nima](https://medium.com/helidon/please-welcome-helidon-n%C3%ADma-9a882c5b6f1e))
 - I start using a [Preact](https://preactjs.com/) based front-end framework to develop front-end services.
 - One of the lead developers of a **Oracle JET** based GUI (front-end) service for other Oracle products to consume in their own Web-based GUIs.
 - As one of the lead developers of a **microservices platform team**, I supported other developers to deliver services for both front-end users and to other Oracle product teams.
 
-#### 2021
+##### 2021
 - Promoted to **Principal Applications Engineer**
 - Lead a development effort, using Oracle [JET](https://www.oracle.com/webfolder/technetwork/jet/index.html), to create a [Custom Web Component](https://docs.oracle.com/en/middleware/developer-tools/jet/12/reference-api/CompositeOverview.html) as a way to modularize, package, and distribute common UI code to be used across multiple product lines.
 - As one of the lead developers, contributed to the development of a new microservice based on the [actor system](https://doc.akka.io/docs/akka/current/typed/guide/actors-intro.html) framework **Akka**.
