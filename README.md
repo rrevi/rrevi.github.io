@@ -4,15 +4,15 @@ Below is a brief chronology of events, experiences and professional work I've co
 
 ### 2023
 As a lead developer of a Web services platform team...
-- Lead development of a **Helidon** based back-end service (to replace a Akka based service)
+- Led development of a **Helidon** based back-end service (to replace a Akka based service)
   - **MicroProfile**
   - **Oracle Database** integration
   - **Consul** integration
   - **JWT** for service-to-service authentication 
   - **Maven** as the build automation tool
-- Lead development of a **Preact** based front-end 
-- Lead development of a **Docker Compose** based repository for local deployment of microservices for development and QA activities
-- Lead development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**
+- Led development of a **Preact** based front-end 
+- Led development of a **Docker Compose** based repository for local deployment of microservices for development and QA activities
+- Led development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**
   - Contributed to **Jenkins** files
   - Contributed to **Bash** files (to run kubectl commands, generate K8s config files, sed, curl, etc.)
   - Contributed to **Kubernetes** config files 
