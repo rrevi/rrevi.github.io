@@ -21,7 +21,7 @@ As a lead developer of a Web services platform team...
 - Worked with software architects to implement new services based on their designs
 - Helped scope and plan future software development efforts
 - Helped onboard colleagues to new software development plans 
-- On a number of occasions lead cross functional development 
+- On a number of occasions led cross functional development 
 - Performed code reviews
 - Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
 - Conducted interviews for open positions
