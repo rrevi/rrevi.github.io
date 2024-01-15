@@ -3,13 +3,8 @@ Hi, I am Rafael Revi.
 Below is a brief chronology of events, experiences and professional work I've completed.
 
 ### 2023
-As a lead developer of a Web services platform team...
-- Led development of a **Helidon** based back-end service (to replace a Akka based service)
-  - **MicroProfile**
-  - **Oracle Database** integration
-  - **Consul** integration
-  - **JWT** for service-to-service authentication 
-  - **Maven** as the build automation tool
+- A lead developer in a Web services platform team
+- Led development of a **Helidon** based back-end service
 - Led development of a **Preact** based front-end 
 - Led development of a **Docker Compose** based repository for local deployment of microservices for development and QA activities
 - Led development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**
@@ -20,8 +15,7 @@ As a lead developer of a Web services platform team...
   - Contributed to documentation to hand over to a **CloudOps** team (for initial deployment, update of microservices, etc.)
 - Worked with software architects to implement new services based on their designs
 - Helped scope and plan future software development efforts
-- Helped onboard colleagues to new software development plans 
-- On a number of occasions led cross functional development 
+- Helped onboard colleagues to new software development plans
 - Performed code reviews
 - Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
 - Conducted interviews for open positions
