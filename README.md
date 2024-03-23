@@ -7,18 +7,10 @@ Below is a brief chronology of events, experiences and professional work I've co
 - Led development of a **Helidon** based back-end service
 - Led development of a **Preact** based front-end 
 - Led development of a **Docker Compose** based repository for local deployment of microservices for development and QA activities
-- Led development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**
-  - Contributed to **Jenkins** files
-  - Contributed to **Bash** files (to run kubectl commands, generate K8s config files, sed, curl, etc.)
-  - Contributed to **Kubernetes** config files 
-  - Contributed to **Nginx** config files (for service routing, a.k.a. reverse proxying)
-  - Contributed to documentation to hand over to a **CloudOps** team (for initial deployment, update of microservices, etc.)
+- Led development of a **DevOps** effort for deployment of microservices in **Oracle Cloud Infrastructure**. Contributed to **Jenkins** files, **Bash** files (to run kubectl commands, generate K8s config files, sed, curl, etc.), **Kubernetes** config files, **Nginx** config files (for service routing, a.k.a. reverse proxying), **envoy** config files, and contributed to documentation to hand over to a **CloudOps** team (for initial deployment, update of microservices, etc.)
 - Worked with software architects to implement new services based on their designs
-- Helped scope and plan future software development efforts
-- Helped onboard colleagues to new software development plans
-- Performed code reviews
+- Helped scope and plan future software development efforts, onboard colleagues to new software development plans, performed code reviews and conducted interviews for open positions
 - Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
-- Conducted interviews for open positions
 - Supported legacy software
 
 #### 2022
