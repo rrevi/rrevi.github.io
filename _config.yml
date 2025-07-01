@@ -21,8 +21,8 @@ show_intro: false # set to true to show post intro on the homepage
 minima:
   skin: solarized
   social_links:
-    - { platform: github,  user_url: "https://github.com/rrevi" }
-    - { platform: linkedin,  user_url: "https://linkedin.com/in/rafaelrevi" }
+    github: rrevi
+    linkedin: rafaelrevi
   date_format: "%Y-%m-%d" # http://shopify.github.io/liquid/filters/date/
 
 remote_theme: jekyll/minima
