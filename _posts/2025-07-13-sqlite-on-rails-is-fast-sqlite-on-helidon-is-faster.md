@@ -17,31 +17,31 @@ But before we continue, here are specs of the computer system we are running on:
 
 ...with that out of the way...
 
-### SQLite on Ruby on Rails
+### SQLite on Rails
 
 Here are the requests/second benchmark resutls of the Ruby on Rails app (having gone through steps 1 through 3 of the [workshop][5]):
 
-![ruby_on_rails_benchmark_screenshot](/assets/images/ruby-on-rails-http-benchmark-performance.png "Ruby on Rails Benchmark Performance")
+![ruby_on_rails_benchmark_screenshot](/assets/images/ruby-on-rails-http-benchmark-performance.png "SQLite on Rails Benchmark Performance")
 
 ### SQLite on Helidon
 
-and here are the requests/second bechmark results of the about equivalent Java on Helidon (SE edition) app:
+and here are the requests/second bechmark results of the about equivalent [SQLite on Helidon (SE edition) app][6]:
 
-![java_on_helidon_benchmark_screenshot](/assets/images/java-on-helidon-http-benchmark-performance.png "Java on Helidon Benchmark Performance")
+![java_on_helidon_benchmark_screenshot](/assets/images/java-on-helidon-http-benchmark-performance.png "SQLite on Helidon Benchmark Performance")
 
 ...here is a table format of the results:
 
-|                 | Requests per Second |
-| --------------- | ------------------- |
-| Ruby on Rails   | 366                 |
-| Java on Helidon | 19,628              |
+|                   | Requests per Second |
+| ----------------- | ------------------- |
+| SQLite on Rails   | 366                 |
+| SQLite on Helidon | 19,628              |
 
 ...WOW is Java + Helidon fast!
 
 Some notes:
 
 - If you look at the `oha` tool command difference between the two screenshots above, you will see that on the Ruby on Rails command I am using HTTP method `POST`, where as on the Java + Helidon app I am using the HTTP `GET` method. Anyone wise enough might wonder well on the Ruby on Rails app you are `writing` to the DB whereas on the Java + Helidon app you are `reading`. I assure you, this is not the case. The reason for the difference in HTTP method use is just an implementation detail of the Ruby on Rails app. There is no SQL writting in neither command. Just a simple read from the DB.
-- If you read the bullet just above, you might also wonder, did the Java on Helidon app even have data in the sqlite database, I assure this was the case, since I executed the following `oha` command first to populate it:
+- If you read the bullet just above, you might also wonder, did the SQLite on Helidon app even have data in the sqlite database, I assure this was the case, since I executed the following `oha` command first to populate it:
 
   ```
   $ oha -c 10 -z 10s -m PUT http://localhost:8080/library/benchmark/book
@@ -84,3 +84,4 @@ That's all! Thanks for reading.
 [3]: https://github.com/fractaledmind/railsconf-2024
 [4]: https://medium.com/helidon/helidon-n%C3%ADma-helidon-on-virtual-threads-130bb2ea2088
 [5]: github.com/fractaledmind/railsconf-2024/tree/workshop/workshop
+[6]: https://github.com/rrevi/sqlite-on-helidon-quickstart-se
