@@ -6,19 +6,20 @@ intro: With this major release of Ruby, comes a long awaited feature -> concurre
 ---
 
 With the 3.0 major release of the Ruby programming language in December of 2020, see the official release news [here][1], come three major features:
-- Major increase in performance 
+
+- Major increase in performance
 - Concurrency
 - Typing (static analysis)
 
-[Multiple][2] [people][3] have already done a great job at coverring this major release of Ruby. Of these major new features, of most interested to me is concurrency.
+[Multiple][2] [people][3] have already done a great job at covering this major release of Ruby. Of these major new features, of most interested to me is concurrency.
 
->It’s multi-core age today. Concurrency is very important. With Ractor, along with Async Fiber, Ruby will be a real concurrent language. — Matz
+> It’s multi-core age today. Concurrency is very important. With Ractor, along with Async Fiber, Ruby will be a real concurrent language. —Matz
 
 The impact of this new concurrency support has also been well covered, in example [here][4].
 
-Instead of going over what is already covered news, I want to show my own take with code examples to get the point accross of how impactful programming with concurrency is when compared to the old sequential style of programming.
+Instead of going over what is already covered news, I want to show my own take with code examples to get the point across of how impactful programming with concurrency is when compared to the old sequential style of programming.
 
-For those who don't know, before the days of mutiple cores in a CPU, before the days of multiple threads, and before the days of programming language support for concurrency (and there are lots of styles and different flavors of this), all program logic were performed/executed in sequence (a.k.a sequentially). Meaning, if your program had three instructions, and each intruction takes 1 second to be executed, it will take a total of 3 seconds for this program to run. However, with use of concurrency, each of these three instructions will run in parallel, and running the program will only take about 1 second (or the lenght of time of the instruction that takes the longest to run).
+For those who don't know, before the days of multiple cores in a CPU, before the days of multiple threads, and before the days of programming language support for concurrency (and there are lots of styles and different flavors of this), all program logic were performed/executed in sequence (a.k.a sequentially). Meaning, if your program had three instructions, and each instruction takes 1 second to be executed, it will take a total of 3 seconds for this program to run. However, with use of concurrency, each of these three instructions will run in parallel, and running the program will only take about 1 second (or the length of time of the instruction that takes the longest to run).
 
 Running the following Ruby code...
 
@@ -34,7 +35,7 @@ Benchmark.bm do |x|
 
   # asynchronous version
   x.report('asynchronous'){
-    Async do 
+    Async do
       3.times.map do
         Async do
           sleep 1
@@ -53,6 +54,7 @@ end
 ```
 
 ...yields the following results...
+
 ```shell
                 user       system     total    real
 sequential      0.000166   0.000127   0.000293 (3.003358)
@@ -62,7 +64,8 @@ parallel        0.012533   0.000715   0.013248 (1.020977)
 
 In these results, the **real** column represents the code run time value in seconds (that the user experienced).
 
-Oh and the performance gain by running your program code cocurrently scales in magnetude. Don't believe me? let's double the number of intructions to be run in the code above (to 6 instructions, as opposed to 3):
+Oh and the performance gain by running your program code concurrently scales in magnitude. Don't believe me? let's double the number of instructions to be run in the code above (to 6 instructions, as opposed to 3):
+
 ```shell
                 user       system     total    real
 sequential      0.000322   0.000326   0.000648 (6.006453)
@@ -72,13 +75,14 @@ parallel        0.007229   0.000730   0.007959 (1.012728)
 
 See? Told you.
 
-In a future post, I will take you on a brief deep dive of the *Async* framework, which is a light-weight concurrency framework for intercepting blocking operations.
+In a future post, I will take you on a brief deep dive of the _Async_ framework, which is a light-weight concurrency framework for intercepting blocking operations.
 
-In another post, I will also take you on a brief deep dive of the *Ractor* framework, which is a heavy-weight concurrency framework for use in any of your code.
+In another post, I will also take you on a brief deep dive of the _Ractor_ framework, which is a heavy-weight concurrency framework for use in any of your code.
 
 But before you go, let's have a little more fun...
 
 Let's now double the number of instructions again (to 12 instructions to be run):
+
 ```shell
                 user       system     total    real
 sequential      0.000737   0.000736   0.001473 (12.013701)
@@ -87,6 +91,7 @@ parallel        0.013558   0.001214   0.014772 (1.020158)
 ```
 
 24x:
+
 ```shell
                 user       system     total     real
 sequential      0.001079   0.001098   0.002177 (24.024478)
@@ -95,6 +100,7 @@ parallel        0.008827   0.001543   0.010370 (1.014844)
 ```
 
 48x:
+
 ```shell
                 user       system     total    real
 sequential      0.001933   0.001856   0.003789 (48.048899)
