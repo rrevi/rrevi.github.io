@@ -2,30 +2,29 @@
 published: true
 layout: post
 title: The 2021 Apple MacBook Pro are fast 🏎💨
-intro: A major leap in performance for personal computers is upon us 
+intro: A major leap in performance for personal computers is upon us
 ---
 
-With the introduction of the [5th generation 2021 Apple MacBook Pro][0] laptops with their [M1 Pro and M1 Max][1] chipsets on October of this year, Apple leaped personal computing performance forward many times over. Don't believe me? I am about to show you.
+With the introduction of the [5th generation 2021 Apple MacBook Pro][0] laptops with their [M1 Pro and M1 Max][1] chipset on October of this year, Apple leaped personal computing performance forward many times over. Don't believe me? I am about to show you.
 
 Here is the hardware we are about to compare:
 
-Spec               | 13" MacBook Pro       | 14" MacBook Pro
------------------- | --------------------- | ---------------------
-Model Year         | 2018                  | 2021
-CPU                | Intel Core i5 4-core  | M1 Pro 8-core
-Graphics           | Intel Iris Plus 655   | M1 Pro 14-core
-RAM                | 8GB                   | 16GB
-Storage (SSD)      | 512GB                 | 512GB
-Wi-Fi              | 802.11ac              | 802.11ax Wi-Fi 6
-
+| Spec          | 13" MacBook Pro      | 14" MacBook Pro  |
+| ------------- | -------------------- | ---------------- |
+| Model Year    | 2018                 | 2021             |
+| CPU           | Intel Core i5 4-core | M1 Pro 8-core    |
+| Graphics      | Intel Iris Plus 655  | M1 Pro 14-core   |
+| RAM           | 8GB                  | 16GB             |
+| Storage (SSD) | 512GB                | 512GB            |
+| Wi-Fi         | 802.11ac             | 802.11ax Wi-Fi 6 |
 
 As for what software I will be running to compare the performance of these two generations of MacBook Pros, it will be developer focused. Meaning, I will be running a number of software development commands, to mimic activities a software developer would do, and show the difference in real time that it took to execute said commands. Here we go...
 
-Command               | 13" MacBook Pro       | 14" MacBook Pro
---------------------- | --------------------- | ---------------------
-Install Ruby 3.0.2    | 346s                  | 144s
-Install Python 3.9.9  | 127s                  | 54s
-Build a Docker project| 28s                   | 12s
+| Command                | 13" MacBook Pro | 14" MacBook Pro |
+| ---------------------- | --------------- | --------------- |
+| Install Ruby 3.0.2     | 346s            | 144s            |
+| Install Python 3.9.9   | 127s            | 54s             |
+| Build a Docker project | 28s             | 12s             |
 
 On average, the 2021 14" MacBook Pro was **2.3x** faster! If that doesn't catch your attention, or get you excited, not sure what will.
 
