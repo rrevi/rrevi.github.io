@@ -21,5 +21,10 @@ Gemfile.lock
 ehthumbs.db
 Thumbs.db
 
+# Vale
+_vale_styles/alex
+_vale_styles/Google
+_vale_styles/Readability
+
 # Visual Studio Code
 .vscode
