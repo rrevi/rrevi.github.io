@@ -4,3 +4,4 @@ Rubyist
 [Mm]etaprogramming
 Feedly
 dRuby
+chipset
