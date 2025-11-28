@@ -5,3 +5,5 @@ Rubyist
 Feedly
 dRuby
 chipset
+Ractor
+Async
