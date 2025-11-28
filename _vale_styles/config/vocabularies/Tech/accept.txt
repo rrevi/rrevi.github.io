@@ -1,4 +1,6 @@
 JQuery
 GitHub
 Rubyist
-Metaprogramming
+[Mm]etaprogramming
+Feedly
+dRuby
