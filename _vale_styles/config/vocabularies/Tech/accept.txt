@@ -11,3 +11,6 @@ Akka
 CRuby
 CPUs?
 [Pp]threads?
+Nushell
+[Zz]sh
+iTerm

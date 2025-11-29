@@ -6,24 +6,28 @@ intro: Let's talk about command-line interpreters, why you need to modernize you
 ---
 
 #### TL;DR
+
 As a software developer, you need to understand that while you may have the need to develop your software in the context of a POSIX standards compliant shell (bash, csh, tcsh, etc.), to make sure that it works in production on POSIX compliant systems, that doesn't mean that your development environment (read workstation) needs to be limited to those old shells. You should modernize your development environment to use newer shells, such as Fish or Nushell, to go along with that new workstation hardware that you continually upgrade (or do you still use 1970s/1980s hardware to go along with those old shells? Yeah, I didn't think so.), and reap other development productivity benefits!
 
 #### Brief History of command-line interfaces
+
 The history of command-line interface programs, shells, is a very long history. Instead of attempting to re-write it here, I am going to direct you to go read [this][1].
 
 My history with shell programs started off with the [Bash shell][2], binary file being `bash` or `sh`, when first learning Linux early in my life, and through most of my career (still going today).
 
-Up until 2019, my experience with shell programs at a personal workstation level were always using Bash, when then the Catalina (10.15) version of macOS adopted the [Zsh shell][3] as the default login shell, and I also adoped it as my personal shell of choice.
+Up until 2019, my experience with shell programs at a personal workstation level were always using Bash, when then the Catalina (10.15) version of macOS adopted the [Zsh shell][3] as the default login shell, and I also adopted it as my personal shell of choice.
 
 Below are my terminal and shell setups overtime...
 
 #### -2019
+
 - Terminal (default terminal app in macOS)
 - Bash shell
 
 This is as a basic as you can get, as a result, no screenshot to share.
 
 #### 2019-2020
+
 - Terminal
 - [Zsh shell][4]
 - [Oh-my-zsh][5]
@@ -31,21 +35,24 @@ This is as a basic as you can get, as a result, no screenshot to share.
 ![terminal_zsh_omz](/assets/images/terminal-zsh-omz.png "Default Terminal app + Zsh shell + Oh-My-Zsh")
 
 #### 2020-2022
-- [Iterm terminal][6]
+
+- [iTerm terminal][6]
 - Zsh shell
 - Oh-my-zsh
 
 ![iterm_zsh_omz](/assets/images/iterm-zsh-omz.png "iTerm terminal app + Zsh shell + Oh-My-Zsh")
 
 #### Current
-- Iterm terminal
+
+- iTerm terminal
 - [Fish shell][7]
 - [Tide][8]
 
 ![iterm_fish_tide](/assets/images/iterm-fish-tide.png "iTerm terminal app + Fish shell + Tide")
 
 #### Future
-- Iterm terminal
+
+- iTerm terminal
 - [Nushell shell][9]
 
 No screenshot here to show (yet).
