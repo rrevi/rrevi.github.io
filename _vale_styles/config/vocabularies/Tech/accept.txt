@@ -4,7 +4,7 @@ Rubyist
 [Mm]etaprogramming
 Feedly
 dRuby
-chipset
+[Cc]hipset
 Ractors?
 Async
 Akka
