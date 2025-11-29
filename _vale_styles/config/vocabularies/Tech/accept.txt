@@ -9,3 +9,4 @@ Ractors?
 Async
 Akka
 CRuby
+CPUs?
