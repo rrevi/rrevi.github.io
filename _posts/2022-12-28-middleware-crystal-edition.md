@@ -1,7 +1,7 @@
 ---
 published: true
 layout: post
-title: 'Middleware: Crystal Edition'
+title: "Middleware: Crystal Edition"
 intro: Let's compare how to develop middleware for some of Crystal's Web app frameworks
 ---
 
@@ -13,8 +13,10 @@ On a response, you might add HTTP headers to help the client process it or optim
 
 This is all to say, that as a Web software developer, you will find yourself writing middleware for your Web app regularly. With that in mind, let's very briefly explore the different ways middleware is written in some of the most popular Web frameworks in the Crystal programming language ecosystem.
 
-### HTTP via Standard Libray API
+### HTTP via Standard Library API
+
 At the most basic level, to build a HTTP server in Crystal, you can use the language's standard library API via the [HTTP module][0]:
+
 ```ruby
 require "http/server"
 
@@ -29,6 +31,7 @@ server.listen
 ```
 
 With a HTTP server, to build any middleware, you will have to add a custom [Handler][1]:
+
 ```ruby
 # http_custom_handler.cr
 
@@ -40,7 +43,7 @@ class CustomHandler
   def call(context)
     # log to stdout
     puts "Doing some stuff"
-    
+
     # call the next handler
     call_next(context)
   end
@@ -48,6 +51,7 @@ end
 ```
 
 Together, it looks like so:
+
 ```ruby
 require "http/server"
 require "http/server/handler"
@@ -58,7 +62,7 @@ class CustomHandler
   def call(context)
     # log to stdout
     puts "Doing some stuff"
-    
+
     # call the next handler
     call_next(context)
   end
@@ -79,6 +83,7 @@ server.listen
 and when you run this server code, it yields the following outputs of the client <-> server interactions:
 
 Server output:
+
 ```
 $ crystal run http_custom_handler.cr                                                                               ✔   4s
 Listening on http://127.0.0.1:8080
@@ -86,13 +91,16 @@ Doing some stuff
 ```
 
 Client output:
+
 ```
 $ curl http://localhost:8080/
-Hello world!% 
+Hello world!%
 ```
 
 ### Athena
+
 A popular Web framework in the Crystal ecosystem is [Athena][2]. In Athena, to create [middleware][3], you will want to use the [Event Dispatcher][4] by listening for HTTP events (requests, responses, etc.) like so:
+
 ```ruby
 require "athena"
 
@@ -127,9 +135,11 @@ ATH.run
 When comparing the use of Athena to build middleware to that of using the standard library's HTTP module, notice the use of Crystal [annotations][5] in Athena (to register event listeners) as opposed to not so in the standard library HTTP module.
 
 ### Kemal
+
 What [Sinatra][6] is to Ruby, [Kemal][7] is to Crystal.
 
 In Kemal, to build [middleware][8], you (also) use Handlers:
+
 ```ruby
 class CustomHandler < Kemal::Handler
   def call(context)
@@ -144,9 +154,11 @@ add_handler CustomHandler.new
 Notice how much this is like when using the Crystal standard library's HTTP module.
 
 ### Amber
+
 What [Ruby on Rails][9] is to Ruby, [Amber][10] is to Crystal.
 
 In Amber, to build middleware, you use [Pipelines][11]:
+
 ```ruby
 # amber_app_root/config/routes.cr
 
@@ -189,10 +201,11 @@ Amber::Server.configure do |app|
 end
 ```
 
-In Amber, just like in Kemal, you need to use the Handler class from the HTTP module to create your custom middleware (alternaltively, you can use the [base class][12] from the Amber pipe module, like the [PoweredByAmber][13] pipe does).
+In Amber, just like in Kemal, you need to use the Handler class from the HTTP module to create your custom middleware (alternatively, you can use the [base class][12] from the Amber pipe module, like the [PoweredByAmber][13] pipe does).
 
 ### In Conclusion
-With the exception of Athena (where you need to use Crystal annotations to listen for events), the most popular Web frameworks in the Crystal language ecosystem use the very straight forward Handler class from the HTTP module to intercept HTTP requests and responses. Simple enough for me (to build middleware with). 
+
+With the exception of Athena (where you need to use Crystal annotations to listen for events), the most popular Web frameworks in the Crystal language ecosystem use the very straight forward Handler class from the HTTP module to intercept HTTP requests and responses. Simple enough for me (to build middleware with).
 
 Thanks for reading.
 

@@ -14,3 +14,5 @@ CPUs?
 Nushell
 [Zz]sh
 iTerm
+[Mm]iddleware
+Kemal
