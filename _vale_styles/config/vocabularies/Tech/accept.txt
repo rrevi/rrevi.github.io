@@ -10,6 +10,7 @@ Async
 Akka
 CRuby
 CPUs?
+GPUs?
 [Pp]threads?
 Nushell
 [Zz]sh
