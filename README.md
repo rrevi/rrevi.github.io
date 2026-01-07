@@ -99,7 +99,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 - I learn **Ruby**, **Ruby on Rails** and **JQuery**! I start contributing fixes and new features to the IP Call Recorder's User Dashboard.
 
 ###### 2009
-- This year I start work on **Perfomance Testing**. I work on monitoring the impact of large volumes of data on the GUI we've developed for some of Newfound Communication's customers.
+- This year I start work on **Performance Testing**. I work on monitoring the impact of large volumes of data on the GUI we've developed for some of Newfound Communication's customers.
 - This year I learn **Google's Web Toolkit (GWT)**. I contribute bug fixes, new features, and performance enhancements (mostly **SQL optimization**) to a GWT based GUI for one of Newfound Communication's biggest customers.
 - Developed IVR applications that integrate to the Newfound Communications IP Call Recorder, an enterprise grade **VoIP call recorder**.
 - I start to help provide **customer support** during the off hours for the hosted business of Newfound Communications, Inc.
