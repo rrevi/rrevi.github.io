@@ -2,7 +2,18 @@ Hi, I am Rafael Revi.
 
 Below is a brief chronology of events, experiences and professional work I've completed.
 
-### 2023
+### 2024
+- A lead full-stack software developer in a Web services platform team
+- Led development of porting a **Akka** based back-end microservice to **Helidon**
+- Led new feature development of a **Preact** based front-end
+- Led development of a **DevOps** effort for deployment of microservices, across geographical regions (for data sovereignty), in **Oracle Cloud Infrastructure**.
+- Worked with software architects to implement new services based on their designs
+- Helped scope and plan future software development efforts, onboard colleagues to new software development plans, performed code reviews and conducted interviews for open positions
+- Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
+- Supported legacy software
+- Earned the Oracle Cloud Insfrastructure Foundations Associate Certification
+
+#### 2023
 - A lead developer in a Web services platform team
 - Led development of a **Helidon** based back-end service
 - Led development of a **Preact** based front-end 
@@ -13,7 +24,7 @@ Below is a brief chronology of events, experiences and professional work I've co
 - Developed new services using **Agile methodology** - using Atlassian tools (Jira, Confluence, etc.)
 - Supported legacy software
 
-#### 2022
+##### 2022
 - I start using [Helidon](https://helidon.io/) to develop back-end services. (If you care about performance, like I do, go read about [Helidon Nima](https://medium.com/helidon/please-welcome-helidon-n%C3%ADma-9a882c5b6f1e))
 - I start using a [Preact](https://preactjs.com/) based front-end framework to develop front-end services.
 - One of the lead developers of a **Oracle JET** based GUI (front-end) service for other Oracle products to consume in their own Web-based GUIs.
