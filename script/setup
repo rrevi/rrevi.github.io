@@ -2,7 +2,6 @@
 
 set -e
 
-echo "==> Setting up Ruby dependencies..."
-bundle install
+script/bootstrap
 
 echo "==> Setup complete! Run 'script/server' to start the local Jekyll server."

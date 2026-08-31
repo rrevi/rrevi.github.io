@@ -1,1 +1,6 @@
-setup
+#!/bin/sh
+
+set -e
+
+echo "==> Installing Ruby dependencies..."
+bundle install
