@@ -1,0 +1,8 @@
+#!/bin/sh
+
+set -e
+
+echo "==> Setting up Ruby dependencies..."
+bundle install
+
+echo "==> Setup complete! Run 'script/server' to start the local Jekyll server."
