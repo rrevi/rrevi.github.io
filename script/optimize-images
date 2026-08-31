@@ -1,0 +1,52 @@
+#!/bin/sh
+
+set -e
+
+DIR="$(cd "$(dirname "$0")/.." && pwd)"
+IMG_DIR="$DIR/assets/images"
+
+if [ ! -d "$IMG_DIR" ]; then
+  echo "Error: Directory $IMG_DIR does not exist."
+  exit 1
+fi
+
+if ! command -v pngquant >/dev/null 2>&1 && ! command -v optipng >/dev/null 2>&1; then
+  echo "Warning: pngquant or optipng not found. Install via 'brew install pngquant optipng' or 'apt-get install -y pngquant optipng'."
+  exit 0
+fi
+
+echo "==> Optimizing PNG images in assets/images/..."
+
+total_before=0
+total_after=0
+
+for img in "$IMG_DIR"/*.png; do
+  [ -f "$img" ] || continue
+
+  size_before=$(wc -c < "$img" | tr -d ' ')
+  total_before=$((total_before + size_before))
+
+  if command -v pngquant >/dev/null 2>&1; then
+    pngquant --strip --ext .png --force --quality 80-95 --skip-if-larger "$img" 2>/dev/null || true
+  fi
+
+  if command -v optipng >/dev/null 2>&1; then
+    optipng -o2 -strip all -quiet "$img" 2>/dev/null || true
+  fi
+
+  size_after=$(wc -c < "$img" | tr -d ' ')
+  total_after=$((total_after + size_after))
+
+  kb_before=$((size_before / 1024))
+  kb_after=$((size_after / 1024))
+  diff_pct=$(( (size_before - size_after) * 100 / (size_before > 0 ? size_before : 1) ))
+
+  printf "  Optimized %-45s: %4d KB -> %4d KB (-%d%%)\n" "$(basename "$img")" "$kb_before" "$kb_after" "$diff_pct"
+done
+
+total_kb_before=$((total_before / 1024))
+total_kb_after=$((total_after / 1024))
+total_saved_kb=$((total_kb_before - total_kb_after))
+total_saved_pct=$(( (total_before - total_after) * 100 / (total_before > 0 ? total_before : 1) ))
+
+echo "==> Optimization complete: saved ${total_saved_kb} KB (${total_saved_pct}% reduction in assets/images/)."

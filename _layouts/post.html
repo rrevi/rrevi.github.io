@@ -24,12 +24,33 @@ layout: default
 			{%- if forloop.last == false %}, {% endif -%}
 			{% endfor %}
 			{%- endif -%}
+			{%- assign words = content | number_of_words -%}
+			{%- if words > 0 -%}
+			• <span class="reading-time">{{ words | divided_by: 180 | plus: 1 }} min read</span>
+			{%- endif -%}
 		</p>
 	</header>
 
 	<div class="post-content e-content" itemprop="articleBody">
 		{{ content }}
 	</div>
+
+	{%- if page.previous.url or page.next.url -%}
+	<nav class="post-navigation">
+		{%- if page.previous.url -%}
+		<a class="prev-post" href="{{ page.previous.url | relative_url }}">
+			<span class="nav-label">&larr; Older</span>
+			<span class="nav-title">{{ page.previous.title | escape }}</span>
+		</a>
+		{%- endif -%}
+		{%- if page.next.url -%}
+		<a class="next-post" href="{{ page.next.url | relative_url }}">
+			<span class="nav-label">Newer &rarr;</span>
+			<span class="nav-title">{{ page.next.title | escape }}</span>
+		</a>
+		{%- endif -%}
+	</nav>
+	{%- endif -%}
 
 	{%- if site.disqus.shortname -%}
 	{%- include disqus_comments.html -%}
