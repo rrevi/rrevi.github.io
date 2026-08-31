@@ -17,12 +17,52 @@ table.post-list tr td:first-child {
 }
 
 .post-year-heading {
-  margin-top: 2rem;
-  margin-bottom: 0.5rem;
-  padding-bottom: 0.3rem;
-  font-size: 1.35rem;
-  font-weight: bold;
+  margin-top: 1.6rem;
+  margin-bottom: 0.4rem;
+  padding-bottom: 0.25rem;
+  font-size: 1.2rem;
+  font-weight: 600;
   border-bottom: 1px solid #e8e8e8;
+}
+
+// Compact and balanced headings in post / page content
+.post-content {
+  h1 {
+    font-size: 1.75rem;
+    margin-top: 1.8rem;
+    margin-bottom: 0.8rem;
+  }
+
+  h2 {
+    font-size: 1.35rem;
+    font-weight: 600;
+    margin-top: 2rem;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid #eee;
+
+    @media screen and (min-width: 800px) {
+      font-size: 1.45rem;
+    }
+  }
+
+  h3 {
+    font-size: 1.15rem;
+    font-weight: 600;
+    margin-top: 1.25rem;
+    margin-bottom: 0.4rem;
+
+    @media screen and (min-width: 800px) {
+      font-size: 1.2rem;
+    }
+  }
+
+  h4 {
+    font-size: 1.05rem;
+    font-weight: 600;
+    margin-top: 1rem;
+    margin-bottom: 0.3rem;
+  }
 }
 
 .post-intro {

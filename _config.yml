@@ -20,6 +20,8 @@ description: > # this means to ignore newlines until "show_excerpts:"
 author:
   name: Rafael Revi
   email: primers.flowing-0q@icloud.com
+header_pages:
+  - about.md
 show_excerpts: false # set to true to show post excerpts on the homepage
 show_intro: false # set to true to show post intro on the homepage
 

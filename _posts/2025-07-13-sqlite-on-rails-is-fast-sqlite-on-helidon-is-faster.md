@@ -9,7 +9,7 @@ intro: Let's compare requests per second performance of a modern Ruby on Rails a
 
 At some point at the end of 2024, I ran into [SQLite on Rails][0] by [@fractaledmind][1]. Considering my fondness of Ruby and of Ruby on Rails, I was very excited by this article (and the rest of the Ruby on Rails community's continued effort to simplify both the dev experience and the prod experience). Along with this article, I then walked through the exercises in the [wrocloverb-2024][2] repo. Some time later, I then also walked through workshop exercises in the [railsconf-2024][3] repo.
 
-Out of the excitement for the performance improvements of Ruby on Rails + SQLite, I then remebered having read [Helidon Níma — Helidon on Virtual Threads][4] by the Helidon team even earlier sometime in 2023. This is what I call Java on Helidon. Which got me thinking, what would the benchmark performance of Helidon on Virtual Threads + SQLite be like? (call it SQLite on Helidon)
+Out of the excitement for the performance improvements of Ruby on Rails + SQLite, I then remembered having read [Helidon Níma — Helidon on Virtual Threads][4] by the Helidon team even earlier sometime in 2023. This is what I call Java on Helidon. Which got me thinking, what would the benchmark performance of Helidon on Virtual Threads + SQLite be like? (call it SQLite on Helidon)
 
 But before we continue, here are specs of the computer system we are running on:
 
@@ -40,7 +40,7 @@ and here are the requests/second benchmark results of the about equivalent [SQLi
 
 Some notes:
 
-- If you look at the `oha` tool command difference between the two screenshots above, you will see that on the Ruby on Rails command I am using HTTP method `POST`, where as on the Java + Helidon app I am using the HTTP `GET` method. Anyone wise enough might wonder well on the Ruby on Rails app you are `writing` to the DB whereas on the Java + Helidon app you are `reading`. I assure you, this is not the case. The reason for the difference in HTTP method use is just an implementation detail of the Ruby on Rails app. There is no SQL writing in neither command. Just a simple read from the DB.
+- If you look at the `oha` tool command difference between the two screenshots above, you will see that on the Ruby on Rails command I am using HTTP method `POST`, where as on the Java + Helidon app I am using the HTTP `GET` method. Anyone wise enough might wonder well on the Ruby on Rails app you are `writing` to the DB whereas on the Java + Helidon app you are `reading`. I assure you, this is not the case. The reason for the difference in HTTP method use is just an implementation detail of the Ruby on Rails app. There is no SQL writing in either command. Just a simple read from the DB.
 - If you read the bullet just above, you might also wonder, did the SQLite on Helidon app even have data in the SQLite database, I assure this was the case, since I executed the following `oha` command first to populate it:
 
   ```
