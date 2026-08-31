@@ -28,7 +28,7 @@ show_excerpts: false # set to true to show post excerpts on the homepage
 show_intro: false # set to true to show post intro on the homepage
 
 minima:
-  skin: solarized
+  skin: classic
   social_links:
     github: rrevi
     linkedin: rafaelrevi
