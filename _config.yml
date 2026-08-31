@@ -2,6 +2,8 @@ markdown: kramdown
 highlighter: rouge
 permalink: '/:title'
 url: "https://rrevi.github.io"
+baseurl: ""
+repository: "rrevi/rrevi.github.io"
 lang: en
 cloudflare_analytics: "1cfcb60a95bc4b198a888e65e7a36ba5"
 

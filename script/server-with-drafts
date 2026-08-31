@@ -1,3 +1,4 @@
 #!/bin/sh
 
+export JEKYLL_ENV=development
 bundle exec jekyll serve --drafts --livereload
