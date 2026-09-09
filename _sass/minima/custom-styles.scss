@@ -157,6 +157,10 @@ body {
   font-weight: bold;
 }
 
+.post-title {
+  font-size: 2rem;
+}
+
 .site-nav {
   background-color: var(--header-bg);
   border-color: var(--border-color);
@@ -509,5 +513,30 @@ td code {
   .next-post {
     margin-left: auto;
     text-align: right;
+  }
+}
+
+// Mobile typography overrides (keep last so they win the cascade)
+@media screen and (max-width: 600px) {
+  .site-title {
+    font-size: 1.05rem;
+    white-space: nowrap;
+  }
+
+  .post-title {
+    font-size: 1.4rem;
+    letter-spacing: -0.5px;
+  }
+
+  .post-content h1 {
+    font-size: 1.35rem;
+  }
+
+  .post-content h2 {
+    font-size: 1.15rem;
+  }
+
+  .post-content h3 {
+    font-size: 1.05rem;
   }
 }
