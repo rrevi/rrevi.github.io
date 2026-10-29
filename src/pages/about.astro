@@ -1,0 +1,13 @@
+---
+// src/pages/about.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { Content as AboutContent } from '../../README.md';
+---
+
+<BaseLayout title="About">
+  <article class="post">
+    <div class="post-content">
+      <AboutContent />
+    </div>
+  </article>
+</BaseLayout>

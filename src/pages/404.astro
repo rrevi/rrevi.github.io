@@ -1,0 +1,19 @@
+---
+// src/pages/404.astro
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="404: Page Not Found">
+  <div class="page-not-found" style="text-align: center; padding: 3rem 1rem;">
+    <h1 style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--link-color);">404</h1>
+    <h2 style="margin-top: 0; margin-bottom: 1rem;">Page Not Found</h2>
+    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem auto;">
+      The page you are looking for might have been moved, renamed, or no longer exists.
+    </p>
+    <p>
+      <a href="/" style="display: inline-block; padding: 0.6rem 1.4rem; background-color: var(--link-color); color: var(--bg-color); text-decoration: none; border-radius: 6px; font-weight: 500;">
+        &larr; Back to Homepage
+      </a>
+    </p>
+  </div>
+</BaseLayout>

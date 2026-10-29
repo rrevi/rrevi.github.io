@@ -27,3 +27,8 @@ _vale_styles/Readability
 
 # Visual Studio Code
 .vscode
+
+# Astro
+node_modules/
+dist/
+.astro/

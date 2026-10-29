@@ -1,0 +1,52 @@
+---
+// src/components/Footer.astro
+const authorName = "Rafael Revi";
+const authorEmail = "primers.flowing-0q@icloud.com";
+const description = "Personal website and rants on software development.";
+---
+
+<footer class="site-footer">
+  <div class="wrapper">
+    <div class="footer-content">
+      <div class="footer-col">
+        <p class="feed-subscribe">
+          <a href="/rss.xml">
+            <svg class="svg-icon">
+              <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
+            </svg>
+            <span>Subscribe</span>
+          </a>
+        </p>
+        <ul class="contact-list">
+          <li class="p-name">{authorName}</li>
+          <li><a class="u-email" href={`mailto:${authorEmail}`}>{authorEmail}</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <p>{description}</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+  .footer-col {
+    flex: 1 1 250px;
+  }
+  .feed-subscribe a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+  }
+  .contact-list {
+    list-style: none;
+    padding: 0;
+    margin: 0.5rem 0 0 0;
+  }
+</style>

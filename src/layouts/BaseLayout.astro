@@ -1,0 +1,93 @@
+---
+// src/layouts/BaseLayout.astro
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const {
+  title = "Rants on Software Development",
+  description = "Personal website and rants on software development."
+} = Astro.props;
+
+const siteTitle = "Rants on Software Development";
+const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
+const isProd = import.meta.env.PROD;
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{pageTitle}</title>
+  <meta name="description" content={description} />
+  <link rel="canonical" href={Astro.url.href} />
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="manifest" href="/site.webmanifest" />
+
+  <!-- Pre-render theme check to prevent FOUC -->
+  <script is:inline>
+    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme) {
+      document.documentElement.setAttribute('data-theme', savedTheme);
+    }
+  </script>
+
+  <!-- Cloudflare Web Analytics (Production only) -->
+  {isProd && (
+    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1cfcb60a95bc4b198a888e65e7a36ba5"}'></script>
+  )}
+</head>
+<body>
+  <Header siteTitle={siteTitle} />
+  <main class="page-content" aria-label="Content">
+    <div class="wrapper">
+      <slot />
+    </div>
+  </main>
+  <Footer />
+
+  <!-- Code copy button script -->
+  <script>
+    function setupCopyButtons() {
+      const codeBlocks = document.querySelectorAll('pre.astro-code');
+      codeBlocks.forEach((block) => {
+        if (block.querySelector('.copy-code-button')) return;
+        const button = document.createElement('button');
+        button.className = 'copy-code-button';
+        button.type = 'button';
+        button.innerText = 'Copy';
+        button.setAttribute('aria-label', 'Copy code to clipboard');
+
+        button.addEventListener('click', async () => {
+          const code = block.querySelector('code')?.innerText || block.innerText;
+          try {
+            await navigator.clipboard.writeText(code);
+            button.innerText = 'Copied!';
+            button.classList.add('copied');
+            setTimeout(() => {
+              button.innerText = 'Copy';
+              button.classList.remove('copied');
+            }, 2000);
+          } catch (err) {
+            console.error('Failed to copy code: ', err);
+          }
+        });
+
+        block.appendChild(button);
+      });
+    }
+
+    setupCopyButtons();
+    document.addEventListener('astro:after-swap', setupCopyButtons);
+  </script>
+</body>
+</html>

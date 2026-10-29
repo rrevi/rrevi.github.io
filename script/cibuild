@@ -4,9 +4,9 @@ set -e
 
 script/build
 
-if test -e "./_site/index.html"; then
+if test -e "./dist/index.html"; then
   echo "Site built successfully!"
 else
-  echo "Error: _site/index.html was not found."
+  echo "Error: dist/index.html was not found."
   exit 1
 fi

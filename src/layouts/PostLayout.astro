@@ -1,0 +1,50 @@
+---
+// src/layouts/PostLayout.astro
+import BaseLayout from './BaseLayout.astro';
+import { formatDate } from '../utils/posts';
+import type { FormattedPost } from '../utils/posts';
+
+interface Props {
+  post: FormattedPost;
+  prevPost?: FormattedPost;
+  nextPost?: FormattedPost;
+}
+
+const { post, prevPost, nextPost } = Astro.props;
+---
+
+<BaseLayout title={post.title} description={post.intro || post.title}>
+  <article class="post">
+    <header class="post-header">
+      <h1 class="post-title">{post.title}</h1>
+      <p class="post-meta">
+        <time datetime={post.date.toISOString()}>
+          {formatDate(post.date)}
+        </time>
+        {" • "}
+        <span class="reading-time">{post.readingTime}</span>
+      </p>
+    </header>
+
+    <div class="post-content">
+      <slot />
+    </div>
+
+    {(prevPost || nextPost) && (
+      <nav class="post-navigation">
+        {prevPost && (
+          <a class="prev-post" href={`/${prevPost.slug}`}>
+            <span class="nav-label">&larr; Older</span>
+            <span class="nav-title">{prevPost.title}</span>
+          </a>
+        )}
+        {nextPost && (
+          <a class="next-post" href={`/${nextPost.slug}`}>
+            <span class="nav-label">Newer &rarr;</span>
+            <span class="nav-title">{nextPost.title}</span>
+          </a>
+        )}
+      </nav>
+    )}
+  </article>
+</BaseLayout>

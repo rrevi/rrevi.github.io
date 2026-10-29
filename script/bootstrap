@@ -2,5 +2,5 @@
 
 set -e
 
-echo "==> Installing Ruby dependencies..."
-bundle install
+echo "==> Installing Node dependencies..."
+npm install
