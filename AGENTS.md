@@ -1,19 +1,44 @@
 # Repository Guidelines & Invariants
 
-## 1. Script Lifecycle Conventions
+## 1. Script Lifecycle & Runtime Conventions
 The scripts in `script/` follow GitHub's *Scripts to Rule Them All* pattern:
-- `script/bootstrap`: Focuses purely on resolving/installing dependencies (`bundle install`).
+- `script/bootstrap`: Resolves dependencies via `npm install` (Node/npm managed via mise).
 - `script/setup`: Initial machine/environment setup. Always invokes `script/bootstrap` first.
-- `script/build` / `script/cibuild`: Builds the Jekyll site and verifies `_site/index.html` presence.
+- `script/server`: Starts the Astro local dev server (`npm run dev`) at `http://localhost:4321`.
+- `script/build` / `script/cibuild`: Builds the Astro static site into `dist/` and verifies `dist/index.html` presence.
 - Always check if script files are symlinks or hardlinks before modifying them in-place.
+- Tool runtimes (`mise`, `git`) require local user config access outside sandbox boundaries; run builds and VCS commits unsandboxed when prompted.
 
-## 2. Theme System & Color Palette
-The site uses the **Rosé Pine** design system with dynamic light/dark toggling:
-- **Day (Light)**: Rosé Pine Dawn (`--rp-base: #faf4ed`, `--rp-surface: #fffaf3`, `--rp-text: #575279`, `--rp-pine: #286983`).
-- **Night (Dark)**: Rosé Pine Moon (soft/lighter dark tone: `--rp-base: #2a273f`, `--rp-surface: #332f4c`, `--rp-text: #eceaf8`, `--rp-foam: #9ccfd8`).
-- Maintain WCAG AA compliance (contrast ratio ≥ 4.5:1 for normal text) for all UI text, headings, and code elements.
+## 2. Rivian OS Design Language System (Gen 2 / R2 Platform)
+The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
+- **Night (Dark)**: Expedition Slate (`--bg-color: #121519`, `--surface: #191d22`, `--compass-accent: #f5b335`).
+- **Day (Light)**: Glacier Sand (`--bg-color: #f5f2eb`, `--surface: #ffffff`, `--compass-accent: #c9770e`).
+- **Geometry**: Stadium pill geometry (`border-radius: 9999px`) for metadata markers, navigation controls, and waypoints.
+- **Outlines**: Cel-shaded 1.5px outlines (`var(--border-color)`) across cards, headers, tables, and code blocks.
+- **Contrast**: Maintain strict WCAG AA compliance (contrast ratio ≥ 4.5:1 for normal text) in both Day and Night themes.
 
-## 3. Code Block Legibility & Syntax Highlighting Invariants
-- Code containers (`div.highlighter-rouge`, `figure.highlight`, `.highlight`, `pre.highlight`, `table.rouge-table td pre`) must explicitly declare `color: var(--text-color) !important` to ensure unstyled/plain text, shell outputs, and operators remain visible in dark mode.
-- Syntax comments (`.c`, `.c1`, etc.) and gutter line numbers must use high-contrast muted tokens (`var(--rp-muted)`) with sufficient opacity (≥ 0.85).
-- Always include explicit token styles for identifiers (`.n`), punctuation (`.p`), and types (`.kt`, `.nc`).
+## 3. Editorial & Navigation Invariants
+- **No Tag Clouds or Category Pills**: Never add tag or category filter pills to the blog feed.
+- **No Bloated Hero Banners**: Keep personal writing and chronological entries front and center.
+- **No Page Footer**: The site has no footer; all essential navigation (About, Email, GitHub, LinkedIn, RSS, Theme Toggle) lives in the sticky header nav cluster.
+- **Header Icon Navigation**: Every nav pod is an accessible icon button with explicit tooltips (`title`) and `aria-label` attributes. Email links to `mailto:primers.flowing-0q@icloud.com`.
+- **Permalink Parity**: Maintain 1:1 post permalink parity (`/:slug`) with historical Jekyll URLs.
+
+## 4. Content Architecture & About Page
+- **Blog Posts**: Markdown files stored in `src/content/blog/` following `YYYY-MM-DD-title.md`.
+- **Career Experience**: Stored in `src/content/experience/{YYYY}.md` with frontmatter (`year`, `role`, `period`).
+- **Repository README**: Root `README.md` is strictly a developer guide for repo structure, tech stack, and script lifecycle.
+- **Recency Bias**: The About page prioritizes modern work (2015–Present) expanded with waypoint pills, while older foundational work (2008–2014) is archived in an expandable `<details class="archive-drawer">`.
+
+## 5. Mobile-First & Touch-Native Ergonomics
+- **Touch Targets**: Minimum 38–40px touch areas for all interactive links and buttons.
+- **Tactile Feedback**: Active press animations (`:active { transform: scale(0.985); }`) on post cards, navigation items, and stadium pills.
+- **Safe Areas**: Use `viewport-fit=cover` and `env(safe-area-inset-*)` padding for edge-to-edge mobile screens.
+- **Reading Comfort**: Constrain article prose container to max `680px` (optimal 65–75 character measure).
+- **Mobile Floating Thumb Pill**: Post pages feature a bottom-anchored thumb-zone pill showing live reading percentage and one-tap return to top.
+- **Code & Table Swipe Affordance**: Long code blocks and benchmark tables scroll horizontally without breaking mobile page margins, accompanied by swipe cues on narrow viewports.
+
+## 6. Code Block Legibility & Syntax Invariants
+- **Shiki Dual Themes**: Uses `kanagawa-wave` (dark) and `kanagawa-lotus` (light) with `wrap: false` for natural horizontal code alignment.
+- **Cockpit Header**: Every code block is wrapped in `.code-block-wrapper` with a language badge and an SVG copy button that transitions to a green checkmark on copy.
+- **Unstyled Token Fallback**: Plain text spans, shell prompts, and operators must explicitly declare `color: var(--shiki-dark, var(--text-color)) !important` to ensure legibility in dark mode.
