@@ -12,7 +12,7 @@ export default defineConfig({
         light: 'kanagawa-lotus',
         dark: 'kanagawa-wave',
       },
-      wrap: true,
+      wrap: false,
     },
   },
 });

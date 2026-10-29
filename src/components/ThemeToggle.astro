@@ -2,7 +2,7 @@
 // src/components/ThemeToggle.astro
 ---
 
-<button id="theme-toggle" class="nav-item theme-toggle-btn" type="button" aria-label="Toggle dark/light theme" title="Toggle theme">
+<button id="theme-toggle" class="nav-item theme-toggle-btn" type="button" aria-label="Toggle light or dark theme" title="Toggle light or dark theme">
   <svg class="svg-icon sun-icon" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
     <circle cx="12" cy="12" r="5"></circle>
     <line x1="12" y1="1" x2="12" y2="3"></line>
@@ -24,18 +24,29 @@
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
 
+    function getEffectiveTheme(): string {
+      const explicit = document.documentElement.getAttribute('data-theme');
+      if (explicit) return explicit;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function updateTooltip(theme: string) {
+      if (!toggle) return;
+      const nextTheme = theme === 'dark' ? 'light' : 'dark';
+      const label = `Switch to ${nextTheme} theme`;
+      toggle.setAttribute('title', label);
+      toggle.setAttribute('aria-label', label);
+    }
+
+    updateTooltip(getEffectiveTheme());
+
     toggle.addEventListener('click', () => {
-      const current = document.documentElement.getAttribute('data-theme');
-      let nextTheme = 'light';
-      if (!current) {
-        const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        nextTheme = prefersDark ? 'light' : 'dark';
-      } else {
-        nextTheme = current === 'dark' ? 'light' : 'dark';
-      }
+      const current = getEffectiveTheme();
+      const nextTheme = current === 'dark' ? 'light' : 'dark';
 
       document.documentElement.setAttribute('data-theme', nextTheme);
       localStorage.setItem('theme', nextTheme);
+      updateTooltip(nextTheme);
     });
   }
 

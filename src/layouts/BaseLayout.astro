@@ -60,39 +60,132 @@ const isProd = import.meta.env.PROD;
     </div>
   </main>
 
-  <!-- Code copy button script -->
+  <!-- Code block enhancement & responsive table script -->
   <script>
-    function setupCopyButtons() {
+    function formatLanguageName(lang: string): string {
+      const lower = lang.toLowerCase().trim();
+      const map: Record<string, string> = {
+        ruby: 'Ruby',
+        crystal: 'Crystal',
+        sh: 'Terminal',
+        bash: 'Bash',
+        zsh: 'Zsh',
+        shell: 'Shell',
+        shellscript: 'Shell',
+        plaintext: 'Output',
+        text: 'Plaintext',
+        txt: 'Plaintext',
+        json: 'JSON',
+        yaml: 'YAML',
+        yml: 'YAML',
+        html: 'HTML',
+        xml: 'XML',
+        css: 'CSS',
+        javascript: 'JavaScript',
+        js: 'JavaScript',
+        typescript: 'TypeScript',
+        ts: 'TypeScript',
+        sql: 'SQL',
+        sqlite: 'SQLite',
+        java: 'Java',
+        python: 'Python',
+        py: 'Python',
+        c: 'C',
+        cpp: 'C++',
+        rust: 'Rust',
+        go: 'Go',
+        dockerfile: 'Dockerfile',
+        markdown: 'Markdown',
+        md: 'Markdown',
+      };
+      return map[lower] || (lower ? lower.toUpperCase() : 'CODE');
+    }
+
+    function setupEnhancedCodeBlocks() {
       const codeBlocks = document.querySelectorAll('pre.astro-code');
       codeBlocks.forEach((block) => {
-        if (block.querySelector('.copy-code-button')) return;
-        const button = document.createElement('button');
-        button.className = 'copy-code-button';
-        button.type = 'button';
-        button.innerText = 'Copy';
-        button.setAttribute('aria-label', 'Copy code to clipboard');
+        if (block.parentElement?.classList.contains('code-block-wrapper')) return;
 
-        button.addEventListener('click', async () => {
-          const code = block.querySelector('code')?.innerText || block.innerText;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'code-block-wrapper';
+
+        const rawLang = block.getAttribute('data-language') || '';
+        const displayLang = formatLanguageName(rawLang);
+
+        const header = document.createElement('div');
+        header.className = 'code-block-header';
+
+        const langBadge = document.createElement('div');
+        langBadge.className = 'code-lang-pill';
+        langBadge.innerHTML = `<span class="code-lang-dot"></span><span class="code-lang-name">${displayLang}</span>`;
+
+        const copyBtn = document.createElement('button');
+        copyBtn.className = 'copy-code-button';
+        copyBtn.type = 'button';
+        copyBtn.setAttribute('aria-label', `Copy ${displayLang} code to clipboard`);
+        copyBtn.setAttribute('title', 'Copy code to clipboard');
+        copyBtn.innerHTML = `
+          <svg class="copy-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect>
+            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path>
+          </svg>
+          <svg class="check-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span class="copy-text">Copy</span>
+        `;
+
+        copyBtn.addEventListener('click', async () => {
+          const codeEl = block.querySelector('code');
+          const code = codeEl ? codeEl.innerText : block.innerText;
           try {
             await navigator.clipboard.writeText(code);
-            button.innerText = 'Copied!';
-            button.classList.add('copied');
+            copyBtn.classList.add('copied');
+            const copyIcon = copyBtn.querySelector('.copy-icon') as HTMLElement | null;
+            const checkIcon = copyBtn.querySelector('.check-icon') as HTMLElement | null;
+            const copyText = copyBtn.querySelector('.copy-text') as HTMLElement | null;
+            if (copyIcon) copyIcon.style.display = 'none';
+            if (checkIcon) checkIcon.style.display = 'inline-block';
+            if (copyText) copyText.innerText = 'Copied!';
+
             setTimeout(() => {
-              button.innerText = 'Copy';
-              button.classList.remove('copied');
+              copyBtn.classList.remove('copied');
+              if (copyIcon) copyIcon.style.display = 'inline-block';
+              if (checkIcon) checkIcon.style.display = 'none';
+              if (copyText) copyText.innerText = 'Copy';
             }, 2000);
           } catch (err) {
             console.error('Failed to copy code: ', err);
           }
         });
 
-        block.appendChild(button);
+        header.appendChild(langBadge);
+        header.appendChild(copyBtn);
+
+        block.parentNode?.insertBefore(wrapper, block);
+        wrapper.appendChild(header);
+        wrapper.appendChild(block);
       });
     }
 
-    setupCopyButtons();
-    document.addEventListener('astro:after-swap', setupCopyButtons);
+    function setupResponsiveTables() {
+      const tables = document.querySelectorAll('.post-content table');
+      tables.forEach((table) => {
+        if (table.parentElement?.classList.contains('table-wrapper')) return;
+        const wrapper = document.createElement('div');
+        wrapper.className = 'table-wrapper';
+        table.parentNode?.insertBefore(wrapper, table);
+        wrapper.appendChild(table);
+      });
+    }
+
+    function initContentEnhancements() {
+      setupEnhancedCodeBlocks();
+      setupResponsiveTables();
+    }
+
+    initContentEnhancements();
+    document.addEventListener('astro:after-swap', initContentEnhancements);
   </script>
 </body>
 </html>

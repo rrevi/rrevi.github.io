@@ -18,30 +18,73 @@ const { post, prevPost, nextPost } = Astro.props;
   <div id="scroll-progress" class="scroll-progress-bar"></div>
 
   <article class="post">
+    <!-- Waypoint Back Bar -->
+    <div class="post-back-bar">
+      <a class="back-link" href="/" title="Back to All Articles" aria-label="Back to All Articles">
+        <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>All Entries</span>
+      </a>
+    </div>
+
     <header class="article-header">
-      <div class="stadium-pill">
-        <span>{formatDate(post.date, 'full')}</span>
-        <span class="pill-dot"></span>
-        <span>{post.readingTime}</span>
+      <div class="article-meta-row">
+        <div class="stadium-pill">
+          <span>{formatDate(post.date, 'full')}</span>
+          <span class="pill-dot"></span>
+          <span>{post.readingTime}</span>
+        </div>
       </div>
       <h1 class="article-title">{post.title}</h1>
+      {post.intro && <p class="article-lead">{post.intro}</p>}
     </header>
 
     <div class="post-content">
       <slot />
     </div>
 
+    <!-- Article Dossier Signoff -->
+    <footer class="article-footer">
+      <div class="article-author-card">
+        <div class="author-avatar">
+          <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+        </div>
+        <div class="author-details">
+          <span class="author-name">Rafael Revi</span>
+          <span class="author-subtext">Principal Applications Engineer &amp; Platform Lead &bull; <a href="/about" class="author-link">View dossier &rarr;</a></span>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Bottom Chronology Post Navigation -->
     {(prevPost || nextPost) && (
-      <nav class="post-navigation">
+      <nav class="post-navigation" aria-label="Post Navigation">
         {prevPost && (
-          <a class="prev-post" href={`/${prevPost.slug}`}>
-            <span class="nav-label">&larr; Older Entry</span>
+          <a class="prev-post" href={`/${prevPost.slug}`} title={prevPost.title}>
+            <span class="nav-label">
+              <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="19" y1="12" x2="5" y2="12"></line>
+                <polyline points="12 19 5 12 12 5"></polyline>
+              </svg>
+              <span>PREVIOUS ENTRY</span>
+            </span>
             <span class="nav-title">{prevPost.title}</span>
           </a>
         )}
         {nextPost && (
-          <a class="next-post" href={`/${nextPost.slug}`}>
-            <span class="nav-label">Newer Entry &rarr;</span>
+          <a class="next-post" href={`/${nextPost.slug}`} title={nextPost.title}>
+            <span class="nav-label">
+              <span>NEXT ENTRY</span>
+              <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </span>
             <span class="nav-title">{nextPost.title}</span>
           </a>
         )}
