@@ -180,6 +180,12 @@ main.page-content {
   }
 }
 
+@media (min-width: 768px) {
+  .wrapper:has(.about-grid) {
+    max-width: 980px;
+  }
+}
+
 /* Typography */
 h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
@@ -788,33 +794,218 @@ button.theme-toggle-btn .moon-icon {
   flex-direction: column;
 }
 
-.about-content > p:first-of-type {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--heading-color);
-  margin-bottom: 0.35rem;
-}
-
-@media (min-width: 640px) {
-  .about-content > p:first-of-type {
-    font-size: 1.25rem;
-  }
-}
-
-.about-content > p:nth-of-type(2) {
-  font-size: 1rem;
+.about-lead {
+  font-size: 1.0625rem;
+  line-height: 1.6;
   color: var(--text-muted);
+  margin-top: 0.65rem;
   margin-bottom: 2rem;
 }
 
+@media (min-width: 640px) {
+  .about-lead {
+    font-size: 1.15rem;
+  }
+}
+
+.about-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+}
+
+@media (min-width: 768px) {
+  .about-grid {
+    display: grid;
+    grid-template-columns: 290px 1fr;
+    gap: 2.5rem;
+    align-items: flex-start;
+  }
+
+  .about-sidebar {
+    position: sticky;
+    top: calc(76px + env(safe-area-inset-top));
+  }
+}
+
+@media (min-width: 1024px) {
+  .about-grid {
+    grid-template-columns: 310px 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Executive Telemetry Card */
+.executive-card {
+  background-color: var(--surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+  padding: 1.25rem 1.35rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 640px) {
+  .executive-card {
+    padding: 1.35rem 1.45rem;
+  }
+}
+
+[data-theme="dark"] .executive-card {
+  box-shadow: 0 4px 22px rgba(0, 0, 0, 0.35);
+}
+
+.executive-card-header {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin-bottom: 0.85rem;
+}
+
+.card-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--compass-accent);
+  box-shadow: 0 0 8px var(--compass-accent);
+  display: inline-block;
+}
+
+.card-status-text {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--compass-accent);
+}
+
+.executive-name {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--heading-color);
+  margin: 0 0 0.25rem 0;
+}
+
+.executive-role {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-color);
+  line-height: 1.4;
+}
+
+.executive-tenure {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 0.25rem;
+  margin-bottom: 1.25rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.telemetry-spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.95rem;
+  margin-bottom: 1.35rem;
+}
+
+.telemetry-spec {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+.spec-label {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.spec-value {
+  font-size: 0.8125rem;
+  color: var(--text-color);
+  line-height: 1.45;
+}
+
+/* Era Scrubber (Quick Jump Rail) */
+.era-scrubber {
+  padding-top: 1.15rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.scrubber-label {
+  display: block;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 0.65rem;
+}
+
+.scrubber-pills {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+@media (max-width: 767px) {
+  .scrubber-pills {
+    flex-direction: row;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 4px;
+  }
+}
+
+.scrubber-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-color);
+  background-color: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  text-decoration: none !important;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.scrubber-pill:hover,
+.scrubber-pill:active {
+  border-color: var(--compass-accent);
+  color: var(--compass-accent);
+  background-color: var(--surface);
+}
+
+.scrubber-dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background-color: var(--compass-accent);
+  display: inline-block;
+}
+
 /* Era Chapter Milestone Headers */
-.about-content h2 {
+.career-era-section {
+  margin-bottom: 3.5rem;
+}
+
+.about-main-feed h2 {
   font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: -0.015em;
   color: var(--heading-color);
-  margin-top: 3rem;
-  margin-bottom: 1.25rem;
+  margin-top: 0;
+  margin-bottom: 1.35rem;
   padding-bottom: 0.65rem;
   border-bottom: 2px solid var(--border-color);
   display: flex;
@@ -823,14 +1014,12 @@ button.theme-toggle-btn .moon-icon {
 }
 
 @media (min-width: 640px) {
-  .about-content h2 {
+  .about-main-feed h2 {
     font-size: 1.35rem;
-    margin-top: 3.5rem;
-    margin-bottom: 1.5rem;
   }
 }
 
-.about-content h2::before {
+.about-main-feed h2::before {
   content: "";
   width: 8px;
   height: 8px;
@@ -839,30 +1028,29 @@ button.theme-toggle-btn .moon-icon {
   flex-shrink: 0;
 }
 
-/* Year Waypoint Pills */
-.about-content h3 {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--compass-accent);
-  background-color: var(--pill-bg);
-  border: 1.5px solid var(--pill-border);
-  padding: 3px 12px;
-  border-radius: 9999px;
-  display: inline-block;
-  margin-top: 1.75rem;
-  margin-bottom: 0.85rem;
+.era-period {
+  font-size: 0.85em;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+/* Year Waypoint Spacing */
+.experience-year-block {
+  margin-bottom: 2rem;
+}
+
+.experience-year-block .year-marker {
+  margin-bottom: 1rem;
 }
 
 /* Tactile Experience List */
-.about-content ul {
+.about-main-feed ul {
   list-style: none;
   padding-left: 0;
   margin-bottom: 1.85rem;
 }
 
-.about-content ul li {
+.about-main-feed ul li {
   position: relative;
   padding-left: 1.35rem;
   margin-bottom: 0.75rem;
@@ -870,7 +1058,7 @@ button.theme-toggle-btn .moon-icon {
   color: var(--text-color);
 }
 
-.about-content ul li::before {
+.about-main-feed ul li::before {
   content: "";
   position: absolute;
   left: 0.15rem;
@@ -883,23 +1071,132 @@ button.theme-toggle-btn .moon-icon {
   transition: background-color 0.15s ease, transform 0.15s ease;
 }
 
-.about-content ul li:hover::before,
-.about-content ul li:active::before {
+.about-main-feed ul li:hover::before,
+.about-main-feed ul li:active::before {
   background-color: var(--compass-accent);
   opacity: 1;
   transform: scale(1.3);
 }
 
-.about-content ul ul {
+.about-main-feed ul ul {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   padding-left: 0.25rem;
 }
 
-.about-content ul ul li::before {
+.about-main-feed ul ul li::before {
   width: 3.5px;
   height: 3.5px;
   border-radius: 1px;
+}
+
+/* Collapsible Archive Drawer */
+.archive-section {
+  margin-top: 2.75rem;
+  margin-bottom: 2rem;
+}
+
+details.archive-drawer {
+  background-color: var(--surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 14px;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+details.archive-drawer:hover {
+  border-color: var(--pill-border);
+}
+
+summary.archive-summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.15rem 1.35rem;
+  cursor: pointer;
+  list-style: none;
+  user-select: none;
+  transition: background-color 0.15s ease;
+}
+
+summary.archive-summary::-webkit-details-marker {
+  display: none;
+}
+
+summary.archive-summary:hover,
+summary.archive-summary:active {
+  background-color: var(--surface-hover);
+}
+
+.archive-summary-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.archive-badge {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.65625rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--compass-accent);
+}
+
+.archive-title {
+  font-size: 1.05rem !important;
+  font-weight: 600 !important;
+  color: var(--heading-color) !important;
+  margin: 0 !important;
+  border-bottom: none !important;
+  padding-bottom: 0 !important;
+}
+
+.archive-title::before {
+  display: none !important;
+}
+
+.archive-count {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+.archive-toggle-indicator {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--compass-accent);
+}
+
+.archive-chevron {
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+details.archive-drawer[open] summary.archive-summary {
+  border-bottom: 1.5px solid var(--border-color);
+}
+
+details.archive-drawer[open] .archive-chevron {
+  transform: rotate(180deg);
+}
+
+.archive-content {
+  padding: 1.25rem 1.35rem;
+  background-color: var(--bg-color);
+}
+
+@media (min-width: 640px) {
+  .archive-content {
+    padding: 1.5rem 1.75rem;
+  }
+}
+
+.archive-content .experience-year-block:last-child ul {
+  margin-bottom: 0.5rem;
 }
 
 /* ==========================================================================
@@ -944,6 +1241,24 @@ button.theme-toggle-btn .moon-icon {
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
+}
+
+.code-swipe-hint {
+  display: none;
+}
+
+@media (max-width: 640px) {
+  .code-swipe-hint {
+    display: inline-block;
+    font-family: "Geist Mono", monospace;
+    font-size: 0.625rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--compass-accent);
+    opacity: 0.85;
+    margin-right: auto;
+    margin-left: 0.5rem;
+  }
 }
 
 .code-lang-dot {
@@ -1216,4 +1531,93 @@ table:not(.table-wrapper table) tr {
 
 table:not(.table-wrapper table) tr:nth-child(even) {
   background-color: var(--bg-color);
+}
+
+/* ==========================================================================
+   Article Ergonomic Reading Measure & Layout
+   ========================================================================== */
+.post .article-header,
+.post .post-content,
+.post .article-footer,
+.post .post-navigation,
+.post .post-back-bar {
+  max-width: 680px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* ==========================================================================
+   Mobile Floating Thumb-Zone Action Pill
+   ========================================================================== */
+.mobile-thumb-pill {
+  position: fixed;
+  bottom: calc(18px + env(safe-area-inset-bottom));
+  left: 50%;
+  transform: translateX(-50%) translateY(28px);
+  opacity: 0;
+  pointer-events: none;
+  z-index: 95;
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 7px 16px;
+  background-color: var(--header-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1.5px solid var(--border-color);
+  border-radius: 9999px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.mobile-thumb-pill.visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+@media (min-width: 768px) {
+  .mobile-thumb-pill {
+    display: none !important;
+  }
+}
+
+.thumb-pill-btn {
+  background: transparent;
+  border: none;
+  padding: 0;
+  color: var(--heading-color);
+  font-family: "Geist Mono", monospace;
+  font-size: 0.71875rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  transition: color 0.15s ease, transform 0.15s ease;
+}
+
+.thumb-pill-btn:active {
+  transform: scale(0.92);
+  color: var(--compass-accent);
+}
+
+.thumb-arrow-icon {
+  stroke: var(--compass-accent);
+}
+
+.thumb-pill-divider {
+  width: 1px;
+  height: 12px;
+  background-color: var(--border-color);
+}
+
+.thumb-pill-pct {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.71875rem;
+  font-weight: 600;
+  color: var(--compass-accent);
+  min-width: 28px;
+  text-align: right;
 }

@@ -119,6 +119,10 @@ const isProd = import.meta.env.PROD;
         langBadge.className = 'code-lang-pill';
         langBadge.innerHTML = `<span class="code-lang-dot"></span><span class="code-lang-name">${displayLang}</span>`;
 
+        const swipeHint = document.createElement('span');
+        swipeHint.className = 'code-swipe-hint';
+        swipeHint.innerText = 'SWIPE →';
+
         const copyBtn = document.createElement('button');
         copyBtn.className = 'copy-code-button';
         copyBtn.type = 'button';
@@ -160,6 +164,7 @@ const isProd = import.meta.env.PROD;
         });
 
         header.appendChild(langBadge);
+        header.appendChild(swipeHint);
         header.appendChild(copyBtn);
 
         block.parentNode?.insertBefore(wrapper, block);
