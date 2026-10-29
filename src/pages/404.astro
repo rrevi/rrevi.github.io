@@ -3,16 +3,22 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="404: Page Not Found">
-  <div class="page-not-found" style="text-align: center; padding: 3rem 1rem;">
-    <h1 style="font-size: 4.5rem; margin-bottom: 0.5rem; color: var(--link-color);">404</h1>
-    <h2 style="margin-top: 0; margin-bottom: 1rem;">Page Not Found</h2>
-    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 2rem auto;">
-      The page you are looking for might have been moved, renamed, or no longer exists.
+<BaseLayout title="404: Route Not Found">
+  <div class="page-not-found" style="text-align: center; padding: 4.5rem 1rem 3rem 1rem;">
+    <div class="stadium-pill" style="margin-bottom: 1.25rem;">
+      <span>TELEMETRY ALERT</span>
+      <span class="pill-dot"></span>
+      <span>404</span>
+    </div>
+    <h1 style="font-size: 3.5rem; font-weight: 700; margin: 0 0 0.5rem 0; color: var(--compass-accent); letter-spacing: -0.03em;">
+      Route Not Found
+    </h1>
+    <p style="color: var(--text-muted); max-width: 480px; margin: 0 auto 2.25rem auto; font-size: 1.05rem; line-height: 1.6;">
+      The requested coordinates might have been moved, renamed, or charted on an alternate trail.
     </p>
     <p>
-      <a href="/" style="display: inline-block; padding: 0.6rem 1.4rem; background-color: var(--link-color); color: var(--bg-color); text-decoration: none; border-radius: 6px; font-weight: 500;">
-        &larr; Back to Homepage
+      <a href="/" class="nav-item" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 10px 22px; background-color: var(--pill-bg); border: 1.5px solid var(--compass-accent); color: var(--compass-accent); text-decoration: none; border-radius: 9999px; font-weight: 600; font-size: 0.9375rem; transition: all 0.15s ease;">
+        &larr; Return to Route Base
       </a>
     </p>
   </div>

@@ -11,7 +11,10 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
 
 <header class="site-header">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="/">{siteTitle}</a>
+    <a class="site-title" rel="author" href="/">
+      <span class="site-title-dot" aria-hidden="true"></span>
+      {siteTitle}
+    </a>
     <nav class="site-nav" aria-label="Main Navigation">
       <a class="nav-item" href="/about">About</a>
       <a class="nav-item" rel="me" href="https://github.com/rrevi" title="rrevi" aria-label="GitHub profile">

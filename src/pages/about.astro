@@ -4,13 +4,19 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import { Content as AboutContent } from '../../README.md';
 ---
 
-<BaseLayout title="About">
-  <article class="post">
+<BaseLayout title="About" description="Rafael Revi - Career progression, technical milestones, and experience chronology.">
+  <div class="about-container">
     <header class="article-header">
+      <div class="stadium-pill">
+        <span>EXPERIENCE LOG</span>
+        <span class="pill-dot"></span>
+        <span>CHRONOLOGY</span>
+      </div>
       <h1 class="article-title">About</h1>
     </header>
-    <div class="post-content">
+
+    <div class="about-content post-content">
       <AboutContent />
     </div>
-  </article>
+  </div>
 </BaseLayout>
