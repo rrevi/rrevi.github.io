@@ -6,90 +6,131 @@
 @import "@fontsource/geist-mono/400.css";
 @import "@fontsource/geist-mono/500.css";
 
-/* Zinc & Obsidian Design System (Minimalist / Vercel style) */
+/* ==========================================================================
+   Rivian OS Design Language System (Gen 2 / R2 Platform Inspiration)
+   - "Digital Adventure Gear": Tactile, purposeful, and durable
+   - Stadium-Oval (Pill) geometry derived from Rivian's iconic headlights
+   - Cel-shaded graphic clarity with crisp 1.5px outlines
+   - Compass Yellow accents on Expedition Slate (Dark) & Glacier Sand (Light)
+   ========================================================================== */
+
 :root {
-  /* Day Mode (Clean Zinc) */
-  --bg-color: #fafafa;
-  --header-bg: rgba(250, 250, 250, 0.8);
+  /* Day Mode ("Glacier Sand" - Warm Outdoor Expedition) */
+  --bg-color: #f5f2eb;
+  --header-bg: rgba(245, 242, 235, 0.88);
   --surface: #ffffff;
-  --surface-hover: #f4f4f5;
-  --footer-bg: #f4f4f5;
-  --text-color: #18181b;       /* zinc-900 */
-  --text-muted: #71717a;       /* zinc-500 */
-  --heading-color: #09090b;    /* zinc-950 */
-  --link-color: #18181b;
-  --link-hover: #2563eb;       /* electric cobalt */
-  --accent: #2563eb;
-  --border-color: #e4e4e7;     /* zinc-200 */
-  --border-subtle: #f4f4f5;
-  --code-bg: #f4f4f5;          /* zinc-100 */
-  --code-inline-bg: #f4f4f5;
-  --code-inline-color: #09090b;
+  --surface-hover: #faf8f5;
+  --footer-bg: #ede8dc;
+  
+  --text-color: #191d21;        /* Deep expedition charcoal ink */
+  --text-muted: #5e6873;        /* Subdued slate stone */
+  --heading-color: #0d1013;     /* Deep graphite */
+  
+  --compass-accent: #c9770e;    /* Rivian Compass Amber (WCAG AA Compliant for light) */
+  --link-color: #191d21;
+  --link-hover: #c9770e;
+  
+  --border-color: #ded8cb;      /* Cel-shaded crisp stone outline */
+  --border-subtle: #eae5d8;
+  
+  --pill-bg: #eae5d8;           /* Stadium pill container background */
+  --pill-text: #454f59;
+  --pill-border: #ded8cb;
+  
+  --code-bg: #ece7db;           /* Tactile hardware readout display */
+  --code-inline-bg: #eae5d8;
+  --code-inline-color: #191d21;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    /* Night Mode (Deep Obsidian) */
-    --bg-color: #09090b;       /* zinc-950 */
-    --header-bg: rgba(9, 9, 11, 0.8);
-    --surface: #18181b;        /* zinc-900 */
-    --surface-hover: #27272a;  /* zinc-800 */
-    --footer-bg: #09090b;
-    --text-color: #e4e4e7;     /* zinc-200 */
-    --text-muted: #a1a1aa;     /* zinc-400 */
-    --heading-color: #fafafa;  /* zinc-50 */
-    --link-color: #fafafa;
-    --link-hover: #38bdf8;     /* sky cyan */
-    --accent: #38bdf8;
-    --border-color: #27272a;   /* zinc-800 */
-    --border-subtle: #18181b;
-    --code-bg: #000000;        /* pitch black code surface */
-    --code-inline-bg: #18181b;
-    --code-inline-color: #f4f4f5;
+    /* Night Mode ("Expedition Slate & Camp Drive") */
+    --bg-color: #121519;        /* Warm expedition graphite/slate */
+    --header-bg: rgba(18, 21, 25, 0.88);
+    --surface: #191d22;         /* Tactile dark instrument panel */
+    --surface-hover: #21262d;   /* Hover plate illumination */
+    --footer-bg: #0d0f12;
+    
+    --text-color: #edf1f5;      /* Crisp clear mountain white */
+    --text-muted: #94a1ad;      /* Subdued telemetry slate */
+    --heading-color: #ffffff;
+    
+    --compass-accent: #f5b335;  /* Signature Rivian Compass Yellow */
+    --link-color: #edf1f5;
+    --link-hover: #f5b335;
+    
+    --border-color: #272f38;    /* Cel-shaded tactile panel border */
+    --border-subtle: #1e242b;
+    
+    --pill-bg: #21262d;         /* Dark stadium pill container */
+    --pill-text: #a8b5c2;
+    --pill-border: #2e3742;
+    
+    --code-bg: #0a0c0e;         /* High-contrast telemetry display */
+    --code-inline-bg: #21262d;
+    --code-inline-color: #f5b335;
   }
 }
 
 [data-theme="dark"] {
-  /* Night Mode (Deep Obsidian) */
-  --bg-color: #09090b;
-  --header-bg: rgba(9, 9, 11, 0.8);
-  --surface: #18181b;
-  --surface-hover: #27272a;
-  --footer-bg: #09090b;
-  --text-color: #e4e4e7;
-  --text-muted: #a1a1aa;
-  --heading-color: #fafafa;
-  --link-color: #fafafa;
-  --link-hover: #38bdf8;
-  --accent: #38bdf8;
-  --border-color: #27272a;
-  --border-subtle: #18181b;
-  --code-bg: #000000;
-  --code-inline-bg: #18181b;
-  --code-inline-color: #f4f4f5;
+  /* Night Mode ("Expedition Slate & Camp Drive") */
+  --bg-color: #121519;
+  --header-bg: rgba(18, 21, 25, 0.88);
+  --surface: #191d22;
+  --surface-hover: #21262d;
+  --footer-bg: #0d0f12;
+  
+  --text-color: #edf1f5;
+  --text-muted: #94a1ad;
+  --heading-color: #ffffff;
+  
+  --compass-accent: #f5b335;  /* Signature Rivian Compass Yellow */
+  --link-color: #edf1f5;
+  --link-hover: #f5b335;
+  
+  --border-color: #272f38;
+  --border-subtle: #1e242b;
+  
+  --pill-bg: #21262d;
+  --pill-text: #a8b5c2;
+  --pill-border: #2e3742;
+  
+  --code-bg: #0a0c0e;
+  --code-inline-bg: #21262d;
+  --code-inline-color: #f5b335;
 }
 
 [data-theme="light"] {
-  /* Day Mode (Clean Zinc) */
-  --bg-color: #fafafa;
-  --header-bg: rgba(250, 250, 250, 0.8);
+  /* Day Mode ("Glacier Sand" - Warm Outdoor Expedition) */
+  --bg-color: #f5f2eb;
+  --header-bg: rgba(245, 242, 235, 0.88);
   --surface: #ffffff;
-  --surface-hover: #f4f4f5;
-  --footer-bg: #f4f4f5;
-  --text-color: #18181b;
-  --text-muted: #71717a;
-  --heading-color: #09090b;
-  --link-color: #18181b;
-  --link-hover: #2563eb;
-  --accent: #2563eb;
-  --border-color: #e4e4e7;
-  --border-subtle: #f4f4f5;
-  --code-bg: #f4f4f5;
-  --code-inline-bg: #f4f4f5;
-  --code-inline-color: #09090b;
+  --surface-hover: #faf8f5;
+  --footer-bg: #ede8dc;
+  
+  --text-color: #191d21;
+  --text-muted: #5e6873;
+  --heading-color: #0d1013;
+  
+  --compass-accent: #c9770e;
+  --link-color: #191d21;
+  --link-hover: #c9770e;
+  
+  --border-color: #ded8cb;
+  --border-subtle: #eae5d8;
+  
+  --pill-bg: #eae5d8;
+  --pill-text: #454f59;
+  --pill-border: #ded8cb;
+  
+  --code-bg: #ece7db;
+  --code-inline-bg: #eae5d8;
+  --code-inline-color: #191d21;
 }
 
-/* Base Reset & Typography */
+/* ==========================================================================
+   Base Reset & Typographic Hierarchy
+   ========================================================================== */
 * {
   box-sizing: border-box;
 }
@@ -107,7 +148,7 @@ body {
   padding: 0;
   background-color: var(--bg-color);
   color: var(--text-color);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -115,7 +156,7 @@ body {
 
 main.page-content {
   flex: 1 0 auto;
-  padding: 3rem 0 4.5rem 0;
+  padding: 2.75rem 0 4.5rem 0;
 }
 
 .wrapper {
@@ -138,18 +179,17 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-weight: 600;
   line-height: 1.3;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.018em;
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
-  transition: color 0.15s ease;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
 
 a:hover {
   color: var(--link-hover);
-  text-decoration: underline;
 }
 
 p, ul, ol, dl, blockquote {
@@ -158,95 +198,109 @@ p, ul, ol, dl, blockquote {
 }
 
 blockquote {
-  border-left: 2px solid var(--accent);
+  border-left: 3px solid var(--compass-accent);
   margin-left: 0;
   margin-right: 0;
-  padding: 0.5rem 0 0.5rem 1.25rem;
+  padding: 0.6rem 0 0.6rem 1.35rem;
   color: var(--text-muted);
+  background-color: var(--surface);
+  border-radius: 0 8px 8px 0;
 }
 
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 6px;
+  border-radius: 10px;
+  border: 1.5px solid var(--border-color);
   display: block;
-  margin: 1.75rem auto;
+  margin: 2rem auto;
 }
 
-/* Frosted Glass Sticky Header */
+/* ==========================================================================
+   Header: Rivian Floating Instrument Pod
+   ========================================================================== */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--header-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid var(--border-color);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1.5px solid var(--border-color);
 }
 
 .site-header .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 60px;
+  min-height: 64px;
 }
 
 .site-title {
   color: var(--heading-color) !important;
-  font-size: 1.15rem;
+  font-size: 1.125rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
+  gap: 0.5rem;
 }
 
+/* Stadium Navigation Cluster */
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.35rem;
+  gap: 0.75rem;
 }
 
 .site-nav .nav-item {
-  color: var(--text-muted);
-  font-size: 0.9375rem;
+  color: var(--text-color);
+  font-size: 0.875rem;
   font-weight: 500;
+  padding: 6px 14px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   text-decoration: none !important;
-  transition: color 0.15s ease;
+  transition: all 0.15s ease;
 }
 
 .site-nav .nav-item:hover {
-  color: var(--heading-color);
+  background-color: var(--surface);
+  border-color: var(--border-color);
+  color: var(--link-hover);
 }
 
 .svg-icon {
-  width: 17px;
-  height: 17px;
+  width: 16px;
+  height: 16px;
   display: inline-block;
   fill: currentColor;
   transition: fill 0.15s ease;
 }
 
-/* Theme Toggle Button */
+/* Tactile Stadium Theme Switcher */
 button.theme-toggle-btn {
-  background: transparent;
-  border: none;
+  background: var(--pill-bg);
+  border: 1.5px solid var(--pill-border);
+  border-radius: 9999px;
   cursor: pointer;
-  padding: 0;
-  margin: 0;
-  color: var(--text-muted);
+  padding: 7px 12px;
+  margin-left: 0.25rem;
+  color: var(--text-color);
   font: inherit;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  transition: color 0.15s ease;
+  transition: all 0.2s ease;
 }
 
 button.theme-toggle-btn:hover {
-  color: var(--heading-color);
+  border-color: var(--compass-accent);
+  color: var(--compass-accent);
 }
 
 button.theme-toggle-btn .sun-icon {
@@ -259,6 +313,8 @@ button.theme-toggle-btn .moon-icon {
 
 [data-theme="dark"] button.theme-toggle-btn .sun-icon {
   display: inline-block;
+  color: var(--compass-accent);
+  stroke: var(--compass-accent);
 }
 
 [data-theme="dark"] button.theme-toggle-btn .moon-icon {
@@ -268,24 +324,28 @@ button.theme-toggle-btn .moon-icon {
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) button.theme-toggle-btn .sun-icon {
     display: inline-block;
+    color: var(--compass-accent);
+    stroke: var(--compass-accent);
   }
   :root:not([data-theme="light"]) button.theme-toggle-btn .moon-icon {
     display: none;
   }
 }
 
-/* Homepage Editorial Post Feed (Table-Free) */
+/* ==========================================================================
+   Homepage: Cel-Shaded Gear Cards & Telemetry Waypoints
+   ========================================================================== */
 .post-feed {
   display: flex;
   flex-direction: column;
 }
 
+/* Telemetry Waypoint Divider */
 .year-marker {
-  font-size: 0.8125rem;
-  font-weight: 600;
-  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--text-muted);
   margin-top: 3.5rem;
   margin-bottom: 1.25rem;
   display: flex;
@@ -294,40 +354,57 @@ button.theme-toggle-btn .moon-icon {
 }
 
 .year-marker:first-of-type {
-  margin-top: 0.5rem;
+  margin-top: 0.25rem;
 }
 
 .year-marker::after {
   content: "";
   flex: 1;
-  height: 1px;
+  height: 1.5px;
   background-color: var(--border-color);
+}
+
+.year-pill {
+  background-color: var(--pill-bg);
+  color: var(--compass-accent);
+  border: 1.5px solid var(--pill-border);
+  padding: 3px 12px;
+  border-radius: 9999px;
+  display: inline-block;
 }
 
 .post-item-group {
   display: flex;
   flex-direction: column;
-  gap: 0.35rem;
+  gap: 0.85rem;
 }
 
+/* Tactile Gear Plate Card */
 .post-item {
   display: block;
   text-decoration: none !important;
-  padding: 1.1rem 1.25rem;
-  margin: 0 -1.25rem;
-  border-radius: 8px;
-  transition: background-color 0.15s ease;
+  background-color: var(--surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1.25rem 1.45rem;
+  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .post-item:hover {
-  background-color: var(--surface-hover);
+  border-color: var(--compass-accent);
+  transform: translateY(-1.5px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+}
+
+[data-theme="dark"] .post-item:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
 }
 
 .post-item-title {
   font-size: 1.15rem;
   font-weight: 600;
   color: var(--heading-color);
-  margin: 0 0 0.35rem 0;
+  margin: 0 0 0.5rem 0;
   line-height: 1.35;
   transition: color 0.15s ease;
 }
@@ -336,17 +413,27 @@ button.theme-toggle-btn .moon-icon {
   color: var(--link-hover);
 }
 
-.post-item-meta {
-  font-size: 0.8125rem;
-  color: var(--text-muted);
-  display: flex;
+/* Stadium Metadata Pill */
+.stadium-pill {
+  display: inline-flex;
   align-items: center;
   gap: 0.5rem;
-  margin-bottom: 0.45rem;
+  background-color: var(--pill-bg);
+  border: 1px solid var(--pill-border);
+  color: var(--pill-text);
+  font-size: 0.75rem;
+  font-weight: 500;
+  padding: 3px 11px;
+  border-radius: 9999px;
+  margin-bottom: 0.65rem;
 }
 
-.post-item-meta .bullet {
-  opacity: 0.5;
+.stadium-pill .pill-dot {
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: var(--compass-accent);
+  display: inline-block;
 }
 
 .post-item-intro {
@@ -354,14 +441,16 @@ button.theme-toggle-btn .moon-icon {
   line-height: 1.55;
   color: var(--text-color);
   margin: 0;
-  opacity: 0.85;
+  opacity: 0.88;
 }
 
-/* Article Page Layout */
+/* ==========================================================================
+   Article Pages
+   ========================================================================== */
 .article-header {
-  margin-bottom: 2.5rem;
-  padding-bottom: 1.5rem;
-  border-bottom: 1px solid var(--border-color);
+  margin-bottom: 2.75rem;
+  padding-bottom: 1.75rem;
+  border-bottom: 1.5px solid var(--border-color);
 }
 
 .article-title {
@@ -371,14 +460,6 @@ button.theme-toggle-btn .moon-icon {
   line-height: 1.2;
   margin: 0 0 0.85rem 0;
   color: var(--heading-color);
-}
-
-.article-meta {
-  font-size: 0.875rem;
-  color: var(--text-muted);
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
 }
 
 .post-content {
@@ -391,8 +472,8 @@ button.theme-toggle-btn .moon-icon {
   font-weight: 600;
   margin-top: 2.5rem;
   margin-bottom: 0.85rem;
-  padding-bottom: 0.3rem;
-  border-bottom: 1px solid var(--border-color);
+  padding-bottom: 0.35rem;
+  border-bottom: 1.5px solid var(--border-color);
 }
 
 .post-content h3 {
@@ -409,15 +490,17 @@ button.theme-toggle-btn .moon-icon {
   margin-bottom: 0.4rem;
 }
 
-/* Code Blocks & Inline Code */
+/* ==========================================================================
+   Rugged Telemetry Code Blocks
+   ========================================================================== */
 pre.astro-code {
   position: relative;
   background-color: var(--code-bg) !important;
   color: var(--text-color) !important;
-  border: 1px solid var(--border-color) !important;
-  border-radius: 8px !important;
-  margin: 1.75rem 0;
-  padding: 1.1rem 1.25rem;
+  border: 1.5px solid var(--border-color) !important;
+  border-radius: 12px !important;
+  margin: 1.85rem 0;
+  padding: 1.15rem 1.35rem;
   overflow-x: auto;
   font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   font-size: 0.875rem;
@@ -444,27 +527,29 @@ td code {
   background-color: var(--code-inline-bg) !important;
   color: var(--code-inline-color) !important;
   border: 1px solid var(--border-color) !important;
-  border-radius: 4px;
-  padding: 2px 6px;
+  border-radius: 6px;
+  padding: 2px 7px;
   font-size: 0.875em;
   font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   word-break: break-word;
 }
 
+/* Stadium Copy Button */
 .copy-code-button {
   position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 3px 8px;
+  top: 9px;
+  right: 9px;
+  padding: 4px 10px;
   font-size: 11px;
-  font-family: "Geist Sans", -apple-system, BlinkMacSystemFont, sans-serif;
-  color: var(--text-muted);
+  font-weight: 500;
+  font-family: "Geist Sans", sans-serif;
+  color: var(--pill-text);
   background-color: var(--surface);
-  border: 1px solid var(--border-color);
-  border-radius: 4px;
+  border: 1.5px solid var(--border-color);
+  border-radius: 9999px;
   cursor: pointer;
   opacity: 0;
-  transition: opacity 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+  transition: opacity 0.15s ease, border-color 0.15s ease, color 0.15s ease;
   z-index: 5;
 }
 
@@ -473,8 +558,8 @@ pre.astro-code:hover .copy-code-button {
 }
 
 .copy-code-button:hover {
-  background-color: var(--border-color);
-  color: var(--heading-color);
+  border-color: var(--compass-accent);
+  color: var(--compass-accent);
 }
 
 .copy-code-button.copied {
@@ -483,14 +568,16 @@ pre.astro-code:hover .copy-code-button {
   border-color: #10b981;
 }
 
-/* Post Navigation (Older / Newer) */
+/* ==========================================================================
+   Navigation & Footer
+   ========================================================================== */
 .post-navigation {
   display: flex;
   justify-content: space-between;
-  gap: 1.5rem;
+  gap: 1.25rem;
   margin-top: 3.5rem;
-  padding-top: 1.75rem;
-  border-top: 1px solid var(--border-color);
+  padding-top: 2rem;
+  border-top: 1.5px solid var(--border-color);
 }
 
 .post-navigation .prev-post,
@@ -498,28 +585,34 @@ pre.astro-code:hover .copy-code-button {
   display: flex;
   flex-direction: column;
   text-decoration: none !important;
+  background-color: var(--surface);
+  border: 1.5px solid var(--border-color);
+  border-radius: 12px;
+  padding: 1rem 1.25rem;
   max-width: 48%;
+  transition: border-color 0.15s ease, transform 0.15s ease;
+}
+
+.post-navigation .prev-post:hover,
+.post-navigation .next-post:hover {
+  border-color: var(--compass-accent);
+  transform: translateY(-1px);
 }
 
 .post-navigation .nav-label {
-  font-size: 0.75rem;
+  font-size: 0.725rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  font-weight: 600;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--compass-accent);
   margin-bottom: 0.25rem;
 }
 
 .post-navigation .nav-title {
   font-size: 0.95rem;
-  font-weight: 500;
+  font-weight: 600;
   line-height: 1.35;
-  color: var(--link-color);
-  transition: color 0.15s ease;
-}
-
-.post-navigation a:hover .nav-title {
-  color: var(--link-hover);
+  color: var(--heading-color);
 }
 
 .post-navigation .next-post {
@@ -530,55 +623,57 @@ pre.astro-code:hover .copy-code-button {
 /* Content Tables */
 table {
   width: 100%;
-  margin: 1.75rem 0;
+  margin: 1.85rem 0;
   border-collapse: collapse;
-  border-color: var(--border-color);
+  border: 1.5px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
   font-size: 0.9375rem;
 }
 
 table th {
-  background-color: var(--surface);
+  background-color: var(--pill-bg);
   border: 1px solid var(--border-color);
   color: var(--heading-color);
-  padding: 8px 14px;
+  padding: 9px 14px;
   text-align: left;
   font-weight: 600;
 }
 
 table td {
   border: 1px solid var(--border-color);
-  padding: 8px 14px;
+  padding: 9px 14px;
 }
 
 table tr {
-  background-color: transparent;
+  background-color: var(--surface);
 }
 
 table tr:nth-child(even) {
-  background-color: var(--code-bg);
+  background-color: var(--bg-color);
 }
 
-/* Footer */
+/* Site Footer */
 .site-footer {
   background-color: var(--footer-bg);
-  border-top: 1px solid var(--border-color);
+  border-top: 1.5px solid var(--border-color);
   color: var(--text-muted);
-  padding: 2.5rem 0;
+  padding: 2.75rem 0;
   font-size: 0.875rem;
 }
 
 .site-footer a {
-  color: var(--text-muted);
+  color: var(--text-color);
 }
 
 .site-footer a:hover {
-  color: var(--heading-color);
+  color: var(--compass-accent);
 }
 
-/* Mobile typography overrides */
+/* Mobile Overrides */
 @media screen and (max-width: 600px) {
   .site-title {
-    font-size: 1.05rem;
+    font-size: 1rem;
   }
 
   .article-title {
@@ -586,8 +681,7 @@ table tr:nth-child(even) {
   }
 
   .post-item {
-    margin: 0 -0.75rem;
-    padding: 0.85rem 0.75rem;
+    padding: 1.1rem;
   }
 
   .post-item-title {
