@@ -1,22 +1,84 @@
 ---
 // src/pages/about.astro
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { Content as AboutContent } from '../../README.md';
+
+const allEntries = await getCollection('experience');
+// Sort by year descending (newest first)
+const sortedEntries = allEntries.sort((a, b) => b.data.year - a.data.year);
+
+// Render markdown content for each year
+const renderedEntries = await Promise.all(
+  sortedEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+    };
+  })
+);
+
+// Group by role and period (career era)
+interface EraGroup {
+  role: string;
+  period: string;
+  entries: typeof renderedEntries;
+}
+
+const eraGroups: EraGroup[] = [];
+for (const item of renderedEntries) {
+  const { role, period } = item.entry.data;
+  let group = eraGroups.find((g) => g.role === role && g.period === period);
+  if (!group) {
+    group = { role, period, entries: [] };
+    eraGroups.push(group);
+  }
+  group.entries.push(item);
+}
 ---
 
 <BaseLayout title="About" description="Rafael Revi - Career progression, technical milestones, and experience chronology.">
   <div class="about-container">
+    <!-- Waypoint Back Bar -->
+    <div class="post-back-bar">
+      <a class="back-link" href="/" title="Back to All Articles" aria-label="Back to All Articles">
+        <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>All Entries</span>
+      </a>
+    </div>
+
     <header class="article-header">
-      <div class="stadium-pill">
-        <span>EXPERIENCE LOG</span>
-        <span class="pill-dot"></span>
-        <span>CHRONOLOGY</span>
+      <div class="article-meta-row">
+        <div class="stadium-pill">
+          <span>EXPERIENCE DOSSIER</span>
+          <span class="pill-dot"></span>
+          <span>CHRONOLOGY</span>
+        </div>
       </div>
       <h1 class="article-title">About</h1>
     </header>
 
     <div class="about-content post-content">
-      <AboutContent />
+      <p>Hi, I am Rafael Revi.</p>
+      <p>Below is a chronology of events, experiences, and professional work I've completed.</p>
+
+      {eraGroups.map((group) => (
+        <section class="career-era-section">
+          <h2>{group.role} ({group.period})</h2>
+
+          <div class="era-years">
+            {group.entries.map(({ entry, Content }) => (
+              <div class="experience-year-block">
+                <h3>{entry.data.year}</h3>
+                <Content />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   </div>
 </BaseLayout>

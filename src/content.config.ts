@@ -12,4 +12,13 @@ const blog = defineCollection({
   }),
 });
 
-export const collections = { blog };
+const experience = defineCollection({
+  loader: glob({ pattern: '**/*.md', base: './src/content/experience' }),
+  schema: z.object({
+    year: z.number(),
+    role: z.string(),
+    period: z.string(),
+  }),
+});
+
+export const collections = { blog, experience };
