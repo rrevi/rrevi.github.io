@@ -1,5 +1,12 @@
-/* Rosé Pine Design System (Day: Dawn / Night: Moon) */
+/* Import Geist Typeface (Self-hosted via @fontsource) */
+@import "@fontsource/geist-sans/400.css";
+@import "@fontsource/geist-sans/500.css";
+@import "@fontsource/geist-sans/600.css";
+@import "@fontsource/geist-sans/700.css";
+@import "@fontsource/geist-mono/400.css";
+@import "@fontsource/geist-mono/500.css";
 
+/* Rosé Pine Design System (Day: Dawn / Night: Moon) */
 :root {
   /* Rosé Pine Dawn (Light) */
   --rp-base: #faf4ed;
@@ -20,7 +27,7 @@
 
   /* Semantic UI Tokens */
   --bg-color: var(--rp-base);
-  --header-bg: var(--rp-base);
+  --header-bg: rgba(250, 244, 237, 0.85);
   --footer-bg: var(--rp-overlay);
   --text-color: var(--rp-text);
   --text-muted: var(--rp-subtle);
@@ -54,7 +61,7 @@
     --rp-highlight-high: #5a5482;
 
     --bg-color: var(--rp-base);
-    --header-bg: var(--rp-base);
+    --header-bg: rgba(42, 39, 63, 0.85);
     --footer-bg: var(--rp-surface);
     --text-color: var(--rp-text);
     --text-muted: var(--rp-subtle);
@@ -88,7 +95,7 @@
   --rp-highlight-high: #5a5482;
 
   --bg-color: var(--rp-base);
-  --header-bg: var(--rp-base);
+  --header-bg: rgba(42, 39, 63, 0.85);
   --footer-bg: var(--rp-surface);
   --text-color: var(--rp-text);
   --text-muted: var(--rp-subtle);
@@ -121,7 +128,7 @@
   --rp-highlight-high: #cecacd;
 
   --bg-color: var(--rp-base);
-  --header-bg: var(--rp-base);
+  --header-bg: rgba(250, 244, 237, 0.85);
   --footer-bg: var(--rp-overlay);
   --text-color: var(--rp-text);
   --text-muted: var(--rp-subtle);
@@ -135,15 +142,17 @@
   --code-inline-color: var(--rp-love);
 }
 
-/* Base Styles */
+/* Base Reset & Typography */
 * {
   box-sizing: border-box;
 }
 
 html {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Geist Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 16px;
-  line-height: 1.5;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body {
@@ -159,21 +168,21 @@ body {
 
 main.page-content {
   flex: 1 0 auto;
-  padding: 30px 0;
+  padding: 3rem 0 4.5rem 0;
 }
 
 .wrapper {
-  max-width: 800px;
+  max-width: 820px;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 30px;
-  padding-left: 30px;
+  padding-right: 24px;
+  padding-left: 24px;
 }
 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 640px) {
   .wrapper {
-    padding-right: 15px;
-    padding-left: 15px;
+    padding-right: 18px;
+    padding-left: 18px;
   }
 }
 
@@ -182,16 +191,13 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--heading-color);
   font-weight: 600;
   line-height: 1.3;
+  letter-spacing: -0.015em;
 }
 
 a {
   color: var(--link-color);
   text-decoration: none;
   transition: color 0.15s ease;
-}
-
-a:visited {
-  color: var(--link-color);
 }
 
 a:hover {
@@ -204,50 +210,66 @@ p, ul, ol, dl, blockquote {
   margin-bottom: 1.5rem;
 }
 
+blockquote {
+  border-left: 3px solid var(--rp-pine);
+  margin-left: 0;
+  margin-right: 0;
+  padding: 0.5rem 0 0.5rem 1.25rem;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
 img {
   max-width: 100%;
   height: auto;
-  border-radius: 4px;
+  border-radius: 6px;
+  display: block;
+  margin: 1.75rem auto;
 }
 
-/* Header */
+/* Frosted Glass Sticky Header */
 .site-header {
   position: sticky;
   top: 0;
   z-index: 100;
   background-color: var(--header-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border-color);
-  border-top: none !important;
 }
 
 .site-header .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 56px;
+  min-height: 60px;
 }
 
-.site-title,
-.site-title:visited {
+.site-title {
   color: var(--heading-color) !important;
-  font-size: 1.625rem;
-  font-weight: bold;
-  letter-spacing: -1px;
-  text-decoration: none;
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  text-decoration: none !important;
+  display: inline-flex;
+  align-items: center;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 1.25rem;
+  gap: 1.35rem;
 }
 
 .site-nav .nav-item {
   color: var(--text-color);
+  font-size: 0.9375rem;
+  font-weight: 500;
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  text-decoration: none;
+  text-decoration: none !important;
+  transition: color 0.15s ease;
 }
 
 .site-nav .nav-item:hover {
@@ -255,8 +277,8 @@ img {
 }
 
 .svg-icon {
-  width: 16px;
-  height: 16px;
+  width: 17px;
+  height: 17px;
   display: inline-block;
   fill: var(--text-muted);
   transition: fill 0.15s ease;
@@ -309,212 +331,156 @@ button.theme-toggle-btn .moon-icon {
   }
 }
 
-/* Footer */
-.site-footer {
-  background-color: var(--footer-bg);
-  border-top: 1px solid var(--border-color);
-  color: var(--text-muted);
-  padding: 30px 0;
-  font-size: 0.875rem;
+/* Homepage Editorial Post Feed (Table-Free) */
+.post-feed {
+  display: flex;
+  flex-direction: column;
 }
 
-.site-footer a {
-  color: var(--link-color);
+.year-marker {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--rp-pine);
+  margin-top: 3.5rem;
+  margin-bottom: 1.25rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
 }
 
-.site-footer a:hover {
+.year-marker:first-of-type {
+  margin-top: 0.5rem;
+}
+
+.year-marker::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background-color: var(--border-color);
+}
+
+.post-item-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.post-item {
+  display: block;
+  text-decoration: none !important;
+  padding: 1.1rem 1.25rem;
+  margin: 0 -1.25rem;
+  border-radius: 8px;
+  transition: background-color 0.15s ease;
+}
+
+.post-item:hover {
+  background-color: var(--rp-surface);
+}
+
+.post-item-title {
+  font-size: 1.15rem;
+  font-weight: 600;
+  color: var(--heading-color);
+  margin: 0 0 0.35rem 0;
+  line-height: 1.35;
+  transition: color 0.15s ease;
+}
+
+.post-item:hover .post-item-title {
   color: var(--link-hover);
 }
 
-/* Tables */
-table {
-  width: 100%;
-  margin-bottom: 1.5rem;
-  border-collapse: collapse;
-  border-color: var(--border-color);
-  color: var(--text-color);
-}
-
-table th {
-  background-color: var(--rp-overlay);
-  border: 1px solid var(--border-color);
-  color: var(--heading-color);
-  padding: 8px 12px;
-  text-align: left;
-}
-
-table td {
-  border: 1px solid var(--border-color);
-  padding: 8px 12px;
-}
-
-table tr {
-  background-color: transparent;
-}
-
-table tr:nth-child(even) {
-  background-color: var(--code-bg);
-}
-
-/* Homepage Post List */
-table.post-list {
-  border: none !important;
-  background: transparent !important;
-  margin-bottom: 1.5rem;
-}
-
-table.post-list tr,
-table.post-list tr:nth-child(even) {
-  background-color: transparent !important;
-  background: transparent !important;
-}
-
-table.post-list td {
-  border: none !important;
-  padding: 6px 12px 6px 0;
-  background: transparent !important;
-}
-
-table.post-list tr td:first-child {
-  width: 95px;
-  white-space: nowrap;
+.post-item-meta {
+  font-size: 0.8125rem;
   color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.45rem;
 }
 
-.post-year-heading {
-  margin-top: 1.6rem;
-  margin-bottom: 0.4rem;
-  padding-bottom: 0.25rem;
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: var(--link-color);
+.post-item-meta .bullet {
+  opacity: 0.6;
+}
+
+.post-item-intro {
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-color);
+  margin: 0;
+  opacity: 0.88;
+}
+
+/* Article Page Layout */
+.article-header {
+  margin-bottom: 2.5rem;
+  padding-bottom: 1.5rem;
   border-bottom: 1px solid var(--border-color);
 }
 
-/* Post Details */
-.post-header {
-  margin-bottom: 2rem;
+.article-title {
+  font-size: 2.25rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.2;
+  margin: 0 0 0.85rem 0;
+  color: var(--heading-color);
 }
 
-.post-title {
-  font-size: 2rem;
-  margin-bottom: 0.5rem;
-}
-
-.post-meta,
-.reading-time {
-  color: var(--text-muted) !important;
+.article-meta {
   font-size: 0.875rem;
-}
-
-.post-intro {
   color: var(--text-muted);
-  font-size: 0.95rem;
-  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
 }
 
-.post-content h1 {
-  font-size: 1.75rem;
-  margin-top: 1.8rem;
-  margin-bottom: 0.8rem;
+.post-content {
+  font-size: 1.0625rem;
+  line-height: 1.72;
 }
 
 .post-content h2 {
-  font-size: 1.35rem;
+  font-size: 1.45rem;
   font-weight: 600;
-  margin-top: 2rem;
-  margin-bottom: 0.75rem;
-  padding-bottom: 0.25rem;
+  margin-top: 2.5rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.3rem;
   border-bottom: 1px solid var(--border-color);
 }
 
-@media screen and (min-width: 800px) {
-  .post-content h2 {
-    font-size: 1.45rem;
-  }
-}
-
 .post-content h3 {
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-top: 1.25rem;
-  margin-bottom: 0.4rem;
-}
-
-@media screen and (min-width: 800px) {
-  .post-content h3 {
-    font-size: 1.2rem;
-  }
+  margin-top: 1.85rem;
+  margin-bottom: 0.5rem;
 }
 
 .post-content h4 {
   font-size: 1.05rem;
   font-weight: 600;
-  margin-top: 1rem;
-  margin-bottom: 0.3rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.4rem;
 }
 
-/* Post Navigation (Older / Newer) */
-.post-navigation {
-  display: flex;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-top: 3rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--border-color);
-}
-
-.post-navigation .prev-post,
-.post-navigation .next-post {
-  display: flex;
-  flex-direction: column;
-  text-decoration: none;
-  max-width: 48%;
-}
-
-.post-navigation .prev-post .nav-label,
-.post-navigation .next-post .nav-label {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: var(--text-muted);
-  margin-bottom: 0.25rem;
-}
-
-.post-navigation .prev-post .nav-title,
-.post-navigation .next-post .nav-title {
-  font-weight: 500;
-  line-height: 1.3;
-  color: var(--link-color);
-}
-
-.post-navigation .prev-post:hover .nav-title,
-.post-navigation .next-post:hover .nav-title {
-  color: var(--link-hover);
-  text-decoration: underline;
-}
-
-.post-navigation .next-post {
-  margin-left: auto;
-  text-align: right;
-}
-
-/* Shiki & Code Formatting */
+/* Code Blocks & Inline Code */
 pre.astro-code {
   position: relative;
   background-color: var(--code-bg) !important;
   color: var(--text-color) !important;
   border: 1px solid var(--border-color) !important;
   border-radius: 8px !important;
-  margin: 1.5rem 0;
-  padding: 1rem 1.25rem;
+  margin: 1.75rem 0;
+  padding: 1.1rem 1.25rem;
   overflow-x: auto;
-  font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", monospace;
+  font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   font-size: 0.875rem;
-  line-height: 1.5;
+  line-height: 1.6;
 }
 
-/* Support Shiki dual theme */
 html[data-theme="dark"] .astro-code,
 html[data-theme="dark"] .astro-code span {
   color: var(--shiki-dark) !important;
@@ -538,18 +504,17 @@ td code {
   border-radius: 4px;
   padding: 2px 6px;
   font-size: 0.875em;
-  font-family: "Menlo", "Inconsolata", "Consolas", "Roboto Mono", monospace;
+  font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   word-break: break-word;
 }
 
-/* Copy code button */
 .copy-code-button {
   position: absolute;
   top: 8px;
   right: 8px;
   padding: 3px 8px;
   font-size: 11px;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family: "Geist Sans", -apple-system, BlinkMacSystemFont, sans-serif;
   color: var(--text-color);
   background-color: var(--rp-overlay);
   border: 1px solid var(--border-color);
@@ -577,27 +542,114 @@ pre.astro-code:hover .copy-code-button {
   background-color: var(--rp-surface);
 }
 
-/* Mobile typography */
+/* Post Navigation (Older / Newer) */
+.post-navigation {
+  display: flex;
+  justify-content: space-between;
+  gap: 1.5rem;
+  margin-top: 3.5rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.post-navigation .prev-post,
+.post-navigation .next-post {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none !important;
+  max-width: 48%;
+}
+
+.post-navigation .nav-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-weight: 600;
+  color: var(--text-muted);
+  margin-bottom: 0.25rem;
+}
+
+.post-navigation .nav-title {
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.35;
+  color: var(--link-color);
+  transition: color 0.15s ease;
+}
+
+.post-navigation a:hover .nav-title {
+  color: var(--link-hover);
+}
+
+.post-navigation .next-post {
+  margin-left: auto;
+  text-align: right;
+}
+
+/* Content Tables */
+table {
+  width: 100%;
+  margin: 1.75rem 0;
+  border-collapse: collapse;
+  border-color: var(--border-color);
+  font-size: 0.9375rem;
+}
+
+table th {
+  background-color: var(--rp-overlay);
+  border: 1px solid var(--border-color);
+  color: var(--heading-color);
+  padding: 8px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+
+table td {
+  border: 1px solid var(--border-color);
+  padding: 8px 14px;
+}
+
+table tr {
+  background-color: transparent;
+}
+
+table tr:nth-child(even) {
+  background-color: var(--code-bg);
+}
+
+/* Footer */
+.site-footer {
+  background-color: var(--footer-bg);
+  border-top: 1px solid var(--border-color);
+  color: var(--text-muted);
+  padding: 2.5rem 0;
+  font-size: 0.875rem;
+}
+
+.site-footer a {
+  color: var(--link-color);
+}
+
+.site-footer a:hover {
+  color: var(--link-hover);
+}
+
+/* Mobile typography overrides */
 @media screen and (max-width: 600px) {
   .site-title {
     font-size: 1.05rem;
-    white-space: nowrap;
   }
 
-  .post-title {
-    font-size: 1.4rem;
-    letter-spacing: -0.5px;
+  .article-title {
+    font-size: 1.65rem;
   }
 
-  .post-content h1 {
-    font-size: 1.35rem;
+  .post-item {
+    margin: 0 -0.75rem;
+    padding: 0.85rem 0.75rem;
   }
 
-  .post-content h2 {
-    font-size: 1.15rem;
-  }
-
-  .post-content h3 {
+  .post-item-title {
     font-size: 1.05rem;
   }
 }

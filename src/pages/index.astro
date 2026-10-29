@@ -27,30 +27,23 @@ const years = Object.keys(postsByYear)
 ---
 
 <BaseLayout>
-  <div class="home">
+  <div class="post-feed">
     {years.map((year) => (
-      <section class="year-group">
-        <h3 class="post-year-heading">{year}</h3>
-        <table class="post-list">
-          <tbody>
-            {postsByYear[year].map((post) => (
-              <tr>
-                <td>
-                  <span>{formatDate(post.date)}</span>
-                </td>
-                <td>
-                  <a href={`/${post.slug}`}>{post.title}</a>
-                  {post.intro && (
-                    <span class="post-intro">
-                      <br />
-                      {post.intro}
-                    </span>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <section class="year-section">
+        <div class="year-marker">{year}</div>
+        <div class="post-item-group">
+          {postsByYear[year].map((post) => (
+            <a class="post-item" href={`/${post.slug}`}>
+              <h2 class="post-item-title">{post.title}</h2>
+              <div class="post-item-meta">
+                <time datetime={post.date.toISOString()}>{formatDate(post.date)}</time>
+                <span class="bullet">•</span>
+                <span>{post.readingTime}</span>
+              </div>
+              {post.intro && <p class="post-item-intro">{post.intro}</p>}
+            </a>
+          ))}
+        </div>
       </section>
     ))}
   </div>

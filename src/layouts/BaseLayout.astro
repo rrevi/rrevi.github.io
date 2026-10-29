@@ -1,5 +1,6 @@
 ---
 // src/layouts/BaseLayout.astro
+import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import '../styles/global.css';
@@ -33,12 +34,18 @@ const isProd = import.meta.env.PROD;
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="manifest" href="/site.webmanifest" />
 
-  <!-- Pre-render theme check to prevent FOUC -->
+  <ClientRouter />
+
+  <!-- Pre-render theme check to prevent FOUC across SPA transitions -->
   <script is:inline>
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme) {
-      document.documentElement.setAttribute('data-theme', savedTheme);
+    function applyTheme() {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme) {
+        document.documentElement.setAttribute('data-theme', savedTheme);
+      }
     }
+    applyTheme();
+    document.addEventListener('astro:after-swap', applyTheme);
   </script>
 
   <!-- Cloudflare Web Analytics (Production only) -->

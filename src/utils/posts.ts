@@ -36,6 +36,11 @@ export function formatPost(entry: CollectionEntry<'blog'>): FormattedPost {
   };
 }
 
-export function formatDate(date: Date): string {
-  return date.toISOString().split('T')[0];
+export function formatDate(date: Date, style: 'short' | 'full' = 'short'): string {
+  return date.toLocaleDateString('en-US', {
+    month: style === 'full' ? 'long' : 'short',
+    day: 'numeric',
+    year: 'numeric',
+    timeZone: 'UTC',
+  });
 }
