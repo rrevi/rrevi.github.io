@@ -5,7 +5,7 @@ set -e
 if command -v vale >/dev/null 2>&1; then
   echo "==> Running Vale prose linter..."
   vale sync
-  vale README.md _posts/
+  vale README.md src/content/blog/ src/content/experience/
 else
   echo "Vale is not installed. Install it with 'brew install vale' or via mise to run prose linting."
   exit 1
