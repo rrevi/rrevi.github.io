@@ -11,20 +11,24 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
 
 <header class="site-header">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="/">
-      <span class="site-title-dot" aria-hidden="true"></span>
+    <a class="site-title" rel="author" href="/" title={siteTitle}>
       {siteTitle}
     </a>
     <nav class="site-nav" aria-label="Main Navigation">
       <a class="nav-item" href="/about">About</a>
-      <a class="nav-item" rel="me" href="https://github.com/rrevi" title="rrevi" aria-label="GitHub profile">
+      <a class="nav-item icon-nav" rel="me" href="https://github.com/rrevi" title="rrevi on GitHub" aria-label="GitHub profile">
         <svg class="svg-icon">
           <use xlink:href="/assets/minima-social-icons.svg#github"></use>
         </svg>
       </a>
-      <a class="nav-item" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="rafaelrevi" aria-label="LinkedIn profile">
+      <a class="nav-item icon-nav" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="rafaelrevi on LinkedIn" aria-label="LinkedIn profile">
         <svg class="svg-icon">
           <use xlink:href="/assets/minima-social-icons.svg#linkedin"></use>
+        </svg>
+      </a>
+      <a class="nav-item icon-nav" href="/rss.xml" title="Subscribe via RSS" aria-label="RSS Feed">
+        <svg class="svg-icon">
+          <use xlink:href="/assets/minima-social-icons.svg#rss"></use>
         </svg>
       </a>
       <ThemeToggle />

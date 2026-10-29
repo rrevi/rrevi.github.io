@@ -2,7 +2,6 @@
 // src/layouts/BaseLayout.astro
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
 import '../styles/global.css';
 
 interface Props {
@@ -24,7 +23,7 @@ const isProd = import.meta.env.PROD;
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={Astro.url.href} />
@@ -60,7 +59,6 @@ const isProd = import.meta.env.PROD;
       <slot />
     </div>
   </main>
-  <Footer />
 
   <!-- Code copy button script -->
   <script>
