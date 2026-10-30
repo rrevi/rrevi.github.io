@@ -22,7 +22,7 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 - **No Bloated Hero Banners**: Keep personal writing and chronological posts front and center.
 - **Terminology Invariants ('Posts' and 'Experience')**: Always use 'posts' instead of 'entries' across buttons, waypoints, and feeds (e.g., 'All Posts'). Never use 'dossier'; refer strictly to 'experience'.
 - **No Page Footer**: The site has no footer; all essential navigation (About, Email, GitHub, LinkedIn, RSS, Theme Toggle) lives in the sticky header nav cluster.
-- **Header Icon Navigation**: Every nav pod is an accessible icon button with explicit tooltips (`title`) and `aria-label` attributes. Email links to `mailto:primers.flowing-0q@icloud.com`.
+- **Header Icon Navigation & Mobile Cockpit Drawer**: On desktop (≥640px), all nav pods (About, Email, GitHub, LinkedIn, RSS, Theme Toggle) display in the sticky header nav cluster with explicit tooltips (`title`) and `aria-label` attributes. On mobile (<640px), the title and theme toggle are preserved alongside a stadium hamburger button that opens a mobile cockpit drawer displaying all navigation items with large touch targets and descriptive labels to prevent header title truncation. Email links to `mailto:primers.flowing-0q@icloud.com`.
 - **Permalink Parity**: Maintain 1:1 post permalink parity (`/:slug`) with historical Jekyll URLs.
 
 ## 4. Content Architecture & About Page

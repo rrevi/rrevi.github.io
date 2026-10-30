@@ -15,34 +15,183 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
       {siteTitle}
     </a>
     <nav class="site-nav" aria-label="Main Navigation">
-      <a class="nav-item icon-nav" href="/about" title="About Rafael Revi" aria-label="About Rafael Revi">
+      <!-- Desktop-Only Nav Pods (hidden on mobile) -->
+      <a class="nav-item icon-nav nav-desktop-only" href="/about" title="About Rafael Revi" aria-label="About Rafael Revi">
         <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
           <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
           <circle cx="12" cy="7" r="4"></circle>
         </svg>
       </a>
-      <a class="nav-item icon-nav" href="mailto:primers.flowing-0q@icloud.com" title="Email (primers.flowing-0q@icloud.com)" aria-label="Email Rafael Revi at primers.flowing-0q@icloud.com">
+      <a class="nav-item icon-nav nav-desktop-only" href="mailto:primers.flowing-0q@icloud.com" title="Email (primers.flowing-0q@icloud.com)" aria-label="Email Rafael Revi at primers.flowing-0q@icloud.com">
         <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="17" height="17" aria-hidden="true">
           <rect width="20" height="16" x="2" y="4" rx="2"></rect>
           <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
         </svg>
       </a>
-      <a class="nav-item icon-nav" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)" aria-label="GitHub profile: rrevi">
+      <a class="nav-item icon-nav nav-desktop-only" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)" aria-label="GitHub profile: rrevi">
         <svg class="svg-icon">
           <use href="/assets/minima-social-icons.svg#github"></use>
         </svg>
       </a>
-      <a class="nav-item icon-nav" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="LinkedIn (rafaelrevi)" aria-label="LinkedIn profile: rafaelrevi">
+      <a class="nav-item icon-nav nav-desktop-only" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="LinkedIn (rafaelrevi)" aria-label="LinkedIn profile: rafaelrevi">
         <svg class="svg-icon">
           <use href="/assets/minima-social-icons.svg#linkedin"></use>
         </svg>
       </a>
-      <a class="nav-item icon-nav" href="/rss.xml" title="Subscribe via RSS Feed" aria-label="Subscribe via RSS Feed">
+      <a class="nav-item icon-nav nav-desktop-only" href="/rss.xml" title="Subscribe via RSS Feed" aria-label="Subscribe via RSS Feed">
         <svg class="svg-icon">
           <use href="/assets/minima-social-icons.svg#rss"></use>
         </svg>
       </a>
+
+      <!-- Always visible Theme Toggle -->
       <ThemeToggle />
+
+      <!-- Mobile Cockpit Hamburger Button (visible on mobile only) -->
+      <button
+        id="menu-toggle"
+        class="nav-item icon-nav menu-toggle-btn"
+        type="button"
+        aria-label="Toggle navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-drawer"
+        title="Toggle navigation menu"
+      >
+        <span class="menu-icon-bars" aria-hidden="true">
+          <span class="bar bar-top"></span>
+          <span class="bar bar-bottom"></span>
+        </span>
+      </button>
     </nav>
   </div>
+
+  <!-- Mobile Cockpit Drawer (Slide-down menu on mobile) -->
+  <div id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation" hidden>
+    <div class="wrapper">
+      <nav class="mobile-drawer-nav">
+        <a class="drawer-about-card" href="/about">
+          <div class="drawer-about-icon">
+            <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
+              <circle cx="12" cy="7" r="4"></circle>
+            </svg>
+          </div>
+          <div class="drawer-about-details">
+            <span class="drawer-about-title">About Rafael Revi</span>
+            <span class="drawer-about-subtext">Principal Applications Engineer &amp; Platform Lead</span>
+          </div>
+          <svg class="drawer-about-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </a>
+
+        <div class="drawer-grid">
+          <a class="drawer-grid-item" href="mailto:primers.flowing-0q@icloud.com" title="Email Rafael Revi">
+            <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true">
+              <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+              <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+            </svg>
+            <span>Email</span>
+          </a>
+
+          <a class="drawer-grid-item" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+              <use href="/assets/minima-social-icons.svg#github"></use>
+            </svg>
+            <span>GitHub</span>
+          </a>
+
+          <a class="drawer-grid-item" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="LinkedIn (rafaelrevi)">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+              <use href="/assets/minima-social-icons.svg#linkedin"></use>
+            </svg>
+            <span>LinkedIn</span>
+          </a>
+
+          <a class="drawer-grid-item" href="/rss.xml" title="RSS Feed">
+            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+              <use href="/assets/minima-social-icons.svg#rss"></use>
+            </svg>
+            <span>RSS Feed</span>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </div>
 </header>
+
+<script>
+  function setupMobileMenu() {
+    const toggleBtn = document.getElementById('menu-toggle');
+    const drawer = document.getElementById('mobile-drawer');
+    const header = document.querySelector('.site-header');
+
+    if (!toggleBtn || !drawer || !header) return;
+
+    function openMenu() {
+      drawer.removeAttribute('hidden');
+      // Force repaint before adding active class for transition
+      void drawer.offsetWidth;
+      drawer.classList.add('is-open');
+      toggleBtn.classList.add('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'true');
+      toggleBtn.setAttribute('title', 'Close navigation menu');
+      toggleBtn.setAttribute('aria-label', 'Close navigation menu');
+    }
+
+    function closeMenu() {
+      drawer.classList.remove('is-open');
+      toggleBtn.classList.remove('is-active');
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      toggleBtn.setAttribute('title', 'Toggle navigation menu');
+      toggleBtn.setAttribute('aria-label', 'Toggle navigation menu');
+      setTimeout(() => {
+        if (!drawer.classList.contains('is-open')) {
+          drawer.setAttribute('hidden', '');
+        }
+      }, 200);
+    }
+
+    toggleBtn.onclick = (e) => {
+      e.stopPropagation();
+      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
+      if (isOpen) {
+        closeMenu();
+      } else {
+        openMenu();
+      }
+    };
+
+    // Close when clicking any nav link in drawer
+    drawer.querySelectorAll('a').forEach((link) => {
+      link.onclick = () => {
+        closeMenu();
+      };
+    });
+
+    // Close on outside click
+    document.addEventListener('click', (e) => {
+      if (!header.contains(e.target as Node)) {
+        closeMenu();
+      }
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
+        closeMenu();
+        toggleBtn.focus();
+      }
+    });
+  }
+
+  setupMobileMenu();
+  document.addEventListener('astro:after-swap', setupMobileMenu);
+  document.addEventListener('astro:before-swap', () => {
+    const drawer = document.getElementById('mobile-drawer');
+    if (drawer) {
+      drawer.classList.remove('is-open');
+      drawer.setAttribute('hidden', '');
+    }
+  });
+</script>
