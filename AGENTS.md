@@ -43,3 +43,7 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 - **Shiki Dual Themes**: Uses `kanagawa-wave` (dark) and `kanagawa-lotus` (light) with `wrap: false` for natural horizontal code alignment.
 - **Cockpit Header**: Every code block is wrapped in `.code-block-wrapper` with a language badge and an SVG copy button that transitions to a green checkmark on copy.
 - **Unstyled Token Fallback**: Plain text spans, shell prompts, and operators must explicitly declare `color: var(--shiki-dark, var(--text-color)) !important` to ensure legibility in dark mode.
+
+## 7. Version Control & Review Invariants
+- **No Automatic Git Commits**: Never run `git commit` automatically after completing code changes.
+- **Explicit Review Gate**: Always leave changes in the working directory for user review. Summarize what changed, verify with builds/tests, and explicitly ask the user if they would like to commit the changes.
