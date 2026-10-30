@@ -33,12 +33,12 @@ const { post, prevPost, nextPost } = Astro.props;
   <article class="post">
     <!-- Waypoint Back Bar -->
     <div class="post-back-bar">
-      <a class="back-link" href="/" title="Back to All Articles" aria-label="Back to All Articles">
+      <a class="back-link" href="/" title="Back to All Posts" aria-label="Back to All Posts">
         <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
           <line x1="19" y1="12" x2="5" y2="12"></line>
           <polyline points="12 19 5 12 12 5"></polyline>
         </svg>
-        <span>All Entries</span>
+        <span>All Posts</span>
       </a>
     </div>
 
@@ -58,7 +58,7 @@ const { post, prevPost, nextPost } = Astro.props;
       <slot />
     </div>
 
-    <!-- Article Dossier Signoff -->
+    <!-- Article Author Signoff -->
     <footer class="article-footer">
       <div class="article-author-card">
         <div class="author-avatar">
@@ -69,7 +69,7 @@ const { post, prevPost, nextPost } = Astro.props;
         </div>
         <div class="author-details">
           <span class="author-name">Rafael Revi</span>
-          <span class="author-subtext">Principal Applications Engineer &amp; Platform Lead &bull; <a href="/about" class="author-link">View dossier &rarr;</a></span>
+          <span class="author-subtext">Principal Applications Engineer &amp; Platform Lead &bull; <a href="/about" class="author-link">View experience &rarr;</a></span>
         </div>
       </div>
     </footer>

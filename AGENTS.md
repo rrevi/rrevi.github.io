@@ -19,7 +19,8 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 
 ## 3. Editorial & Navigation Invariants
 - **No Tag Clouds or Category Pills**: Never add tag or category filter pills to the blog feed.
-- **No Bloated Hero Banners**: Keep personal writing and chronological entries front and center.
+- **No Bloated Hero Banners**: Keep personal writing and chronological posts front and center.
+- **Terminology Invariants ('Posts' and 'Experience')**: Always use 'posts' instead of 'entries' across buttons, waypoints, and feeds (e.g., 'All Posts'). Never use 'dossier'; refer strictly to 'experience'.
 - **No Page Footer**: The site has no footer; all essential navigation (About, Email, GitHub, LinkedIn, RSS, Theme Toggle) lives in the sticky header nav cluster.
 - **Header Icon Navigation**: Every nav pod is an accessible icon button with explicit tooltips (`title`) and `aria-label` attributes. Email links to `mailto:primers.flowing-0q@icloud.com`.
 - **Permalink Parity**: Maintain 1:1 post permalink parity (`/:slug`) with historical Jekyll URLs.

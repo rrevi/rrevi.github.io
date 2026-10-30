@@ -68,7 +68,7 @@ Your markdown content here...
 ```
 
 ### 2. New Career Year (About Page)
-To record a new year in the Experience Dossier, add a file in `src/content/experience/{YEAR}.md`:
+To record a new year in Experience, add a file in `src/content/experience/{YEAR}.md`:
 ```markdown
 ---
 year: 2026
