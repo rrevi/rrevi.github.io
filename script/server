@@ -1,4 +1,6 @@
 #!/bin/sh
 
-export JEKYLL_ENV=development
-bundle exec jekyll serve --livereload
+set -e
+
+echo "Starting Astro dev server..."
+npm run dev

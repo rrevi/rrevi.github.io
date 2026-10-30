@@ -1,0 +1,56 @@
+---
+// src/pages/index.astro
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { formatPost, formatDate } from '../utils/posts';
+
+const rawPosts = await getCollection('blog', ({ data }) => {
+  return data.published !== false;
+});
+
+const posts = rawPosts
+  .map(formatPost)
+  .sort((a, b) => b.date.getTime() - a.date.getTime());
+
+// Group posts by year
+const postsByYear: Record<number, typeof posts> = {};
+for (const post of posts) {
+  if (!postsByYear[post.year]) {
+    postsByYear[post.year] = [];
+  }
+  postsByYear[post.year].push(post);
+}
+
+const years = Object.keys(postsByYear)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout>
+  <div class="post-feed">
+    {years.map((year) => (
+      <section class="year-section">
+        <div class="year-marker">
+          <span class="year-pill">{year}</span>
+        </div>
+        <div class="post-stream">
+          {postsByYear[year].map((post) => (
+            <a class="post-row" href={`/${post.slug}`}>
+              <div class="post-row-date">
+                <span class="post-date-text">{formatDate(post.date)}</span>
+                <span class="post-reading-time mobile-only">&bull; {post.readingTime}</span>
+              </div>
+              <div class="post-row-main">
+                <div class="post-row-header">
+                  <h2 class="post-row-title">{post.title}</h2>
+                  <span class="post-reading-time desktop-only">{post.readingTime}</span>
+                </div>
+                {post.intro && <p class="post-row-intro">{post.intro}</p>}
+              </div>
+            </a>
+          ))}
+        </div>
+      </section>
+    ))}
+  </div>
+</BaseLayout>

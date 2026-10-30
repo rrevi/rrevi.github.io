@@ -1,0 +1,184 @@
+---
+// src/pages/about.astro
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+const allEntries = await getCollection('experience');
+// Sort by year descending (newest first)
+const sortedEntries = allEntries.sort((a, b) => b.data.year - a.data.year);
+
+// Render markdown content for each year
+const renderedEntries = await Promise.all(
+  sortedEntries.map(async (entry) => {
+    const { Content } = await render(entry);
+    return {
+      entry,
+      Content,
+    };
+  })
+);
+
+// Group by role and period (career era)
+interface EraGroup {
+  id: string;
+  role: string;
+  period: string;
+  isArchive: boolean;
+  entries: typeof renderedEntries;
+}
+
+const eraGroups: EraGroup[] = [];
+for (const item of renderedEntries) {
+  const { role, period } = item.entry.data;
+  let group = eraGroups.find((g) => g.role === role && g.period === period);
+  if (!group) {
+    const isArchive = period.includes('2008') || period.includes('2014');
+    const id = isArchive
+      ? 'era-foundation'
+      : period.includes('Present')
+        ? 'era-lead'
+        : period.includes('2015')
+          ? 'era-senior'
+          : `era-${period.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+    group = { id, role, period, isArchive, entries: [] };
+    eraGroups.push(group);
+  }
+  group.entries.push(item);
+}
+---
+
+<BaseLayout title="About" description="Rafael Revi - Principal Applications Engineer & Platform Lead. Career telemetry, architectural milestones, and experience chronology.">
+  <div class="about-container">
+    <!-- Waypoint Back Bar -->
+    <div class="post-back-bar">
+      <a class="back-link" href="/" title="Back to All Posts" aria-label="Back to All Posts">
+        <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        <span>All Posts</span>
+      </a>
+    </div>
+
+    <!-- Header Section -->
+    <header class="article-header">
+      <h1 class="article-title">About</h1>
+      <p class="about-lead">
+        Hi, I am Rafael Revi. Below is a chronology of events, experiences, and professional work I've completed over the course of my career.
+      </p>
+    </header>
+
+    <!-- Split Grid: Sticky Executive Experience (Tablet/Desktop) + Feed -->
+    <div class="about-grid">
+      <!-- Left Column: Sticky Executive Telemetry Cluster -->
+      <aside class="about-sidebar">
+        <div class="executive-card">
+          <div class="executive-card-header">
+            <span class="card-status-dot"></span>
+            <span class="card-status-text">CURRENT FOCUS</span>
+          </div>
+
+          <h2 class="executive-name">Rafael Revi</h2>
+          <div class="executive-role">Principal Applications Engineer &amp; Platform Lead</div>
+          <div class="executive-tenure">2021 &ndash; Present &bull; 17+ Years in Software Development</div>
+
+          <div class="telemetry-spec-list">
+            <div class="telemetry-spec">
+              <span class="spec-label">ARCHITECTURE</span>
+              <span class="spec-value">Web Components, Virtual DOM, Microservices, CI/CD</span>
+            </div>
+            <div class="telemetry-spec">
+              <span class="spec-label">CORE STACK</span>
+              <span class="spec-value">Preact, TypeScript, Helidon (Java), OCI DevOps, Docker</span>
+            </div>
+            <div class="telemetry-spec">
+              <span class="spec-label">ACADEMIC DEGREES</span>
+              <span class="spec-value">
+                <strong>M.S. Computer Science</strong> (Merrimack College)<br />
+                <strong>M.S. Information Tech</strong> (Bentley University)
+              </span>
+            </div>
+            <div class="telemetry-spec">
+              <span class="spec-label">CERTIFICATIONS</span>
+              <span class="spec-value">
+                OCI AI Foundations Associate<br />
+                OCI Foundations Associate
+              </span>
+            </div>
+          </div>
+
+          <!-- Quick Jump Scrubber -->
+          <nav class="era-scrubber" aria-label="Career Era Chapters">
+            <span class="scrubber-label">TIMELINE CHAPTERS</span>
+            <div class="scrubber-list">
+              {eraGroups.map((group) => (
+                <a href={`#${group.id}`} class="scrubber-card">
+                  <div class="scrubber-card-header">
+                    <span class="scrubber-dot"></span>
+                    <span class="scrubber-period">{group.period}</span>
+                  </div>
+                  <div class="scrubber-title">{group.role}</div>
+                </a>
+              ))}
+            </div>
+          </nav>
+        </div>
+      </aside>
+
+      <!-- Right Column: Chronological Experience Feed -->
+      <main class="about-main-feed post-content">
+        {eraGroups.map((group) => (
+          group.isArchive ? (
+            <section class="career-era-section archive-section" id={group.id}>
+              <details class="archive-drawer">
+                <summary class="archive-summary">
+                  <div class="archive-summary-info">
+                    <span class="archive-badge">FOUNDATIONAL ARCHIVE</span>
+                    <h2 class="archive-title">{group.role}</h2>
+                    <span class="archive-count">&bull; {group.entries.length} Years of Early Career Work</span>
+                  </div>
+                  <div class="archive-toggle-indicator">
+                    <span class="archive-toggle-label">Tap to view</span>
+                    <svg class="archive-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                      <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                  </div>
+                </summary>
+
+                <div class="archive-content">
+                  <div class="era-years">
+                    {group.entries.map(({ entry, Content }) => (
+                      <div class="experience-year-block">
+                        <div class="year-marker">
+                          <span class="year-pill">{entry.data.year}</span>
+                        </div>
+                        <Content />
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              </details>
+            </section>
+          ) : (
+            <section class="career-era-section" id={group.id}>
+              <div class="era-header">
+                <h2 class="era-title">{group.role}</h2>
+              </div>
+
+              <div class="era-years">
+                {group.entries.map(({ entry, Content }) => (
+                  <div class="experience-year-block">
+                    <div class="year-marker">
+                      <span class="year-pill">{entry.data.year}</span>
+                    </div>
+                    <Content />
+                  </div>
+                ))}
+              </div>
+            </section>
+          )
+        ))}
+      </main>
+    </div>
+  </div>
+</BaseLayout>

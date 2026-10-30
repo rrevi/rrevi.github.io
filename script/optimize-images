@@ -3,7 +3,7 @@
 set -e
 
 DIR="$(cd "$(dirname "$0")/.." && pwd)"
-IMG_DIR="$DIR/assets/images"
+IMG_DIR="$DIR/public/assets/images"
 
 if [ ! -d "$IMG_DIR" ]; then
   echo "Error: Directory $IMG_DIR does not exist."
@@ -15,7 +15,7 @@ if ! command -v pngquant >/dev/null 2>&1 && ! command -v optipng >/dev/null 2>&1
   exit 0
 fi
 
-echo "==> Optimizing PNG images in assets/images/..."
+echo "==> Optimizing PNG images in public/assets/images/..."
 
 total_before=0
 total_after=0
@@ -49,4 +49,4 @@ total_kb_after=$((total_after / 1024))
 total_saved_kb=$((total_kb_before - total_kb_after))
 total_saved_pct=$(( (total_before - total_after) * 100 / (total_before > 0 ? total_before : 1) ))
 
-echo "==> Optimization complete: saved ${total_saved_kb} KB (${total_saved_pct}% reduction in assets/images/)."
+echo "==> Optimization complete: saved ${total_saved_kb} KB (${total_saved_pct}% reduction in public/assets/images/)."
