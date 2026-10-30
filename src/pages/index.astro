@@ -33,16 +33,20 @@ const years = Object.keys(postsByYear)
         <div class="year-marker">
           <span class="year-pill">{year}</span>
         </div>
-        <div class="post-item-group">
+        <div class="post-stream">
           {postsByYear[year].map((post) => (
-            <a class="post-item" href={`/${post.slug}`}>
-              <div class="stadium-pill">
-                <span>{formatDate(post.date)}</span>
-                <span class="pill-dot"></span>
-                <span>{post.readingTime}</span>
+            <a class="post-row" href={`/${post.slug}`}>
+              <div class="post-row-date">
+                <span class="post-date-text">{formatDate(post.date)}</span>
+                <span class="post-reading-time mobile-only">&bull; {post.readingTime}</span>
               </div>
-              <h2 class="post-item-title">{post.title}</h2>
-              {post.intro && <p class="post-item-intro">{post.intro}</p>}
+              <div class="post-row-main">
+                <div class="post-row-header">
+                  <h2 class="post-row-title">{post.title}</h2>
+                  <span class="post-reading-time desktop-only">{post.readingTime}</span>
+                </div>
+                {post.intro && <p class="post-row-intro">{post.intro}</p>}
+              </div>
             </a>
           ))}
         </div>

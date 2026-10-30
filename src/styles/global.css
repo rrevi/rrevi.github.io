@@ -155,12 +155,12 @@ body {
 
 main.page-content {
   flex: 1 0 auto;
-  padding: 1.75rem 0 calc(3rem + env(safe-area-inset-bottom)) 0;
+  padding: 1.25rem 0 calc(2rem + env(safe-area-inset-bottom)) 0;
 }
 
 @media (min-width: 640px) {
   main.page-content {
-    padding: 2.75rem 0 4.5rem 0;
+    padding: 1.75rem 0 3rem 0;
   }
 }
 
@@ -259,20 +259,20 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 58px;
+  min-height: 50px;
   gap: 0.5rem;
 }
 
 @media (min-width: 640px) {
   .site-header .wrapper {
-    min-height: 64px;
+    min-height: 54px;
     gap: 1rem;
   }
 }
 
 .site-title {
   color: var(--heading-color) !important;
-  font-size: 0.95rem;
+  font-size: 0.9375rem;
   font-weight: 600;
   letter-spacing: -0.02em;
   text-decoration: none !important;
@@ -287,20 +287,20 @@ img {
 
 @media (min-width: 480px) {
   .site-title {
-    font-size: 1rem;
+    font-size: 0.96875rem;
   }
 }
 
 @media (min-width: 640px) {
   .site-title {
-    font-size: 1.125rem;
+    font-size: 1.0625rem;
   }
 }
 
 /* Rivian Telemetry Reading Progress Bar */
 .scroll-progress-bar {
   position: fixed;
-  top: 58px;
+  top: 50px;
   left: 0;
   height: 2.5px;
   width: 0%;
@@ -311,7 +311,7 @@ img {
 
 @media (min-width: 640px) {
   .scroll-progress-bar {
-    top: 64px;
+    top: 54px;
   }
 }
 
@@ -705,21 +705,21 @@ button.menu-toggle-btn:active {
 }
 
 /* ==========================================================================
-   Homepage: Clean Year Separation & Mobile Touch Cards
+   Homepage: Compact Rivian Telemetry Stream & Year Intervals
    ========================================================================== */
 .post-feed {
   display: flex;
   flex-direction: column;
 }
 
-/* Generous, Unambiguous Year Section Spacing */
+/* Compact, Precise Year Section Intervals */
 .year-section {
-  margin-bottom: 4.5rem;
+  margin-bottom: 2rem;
 }
 
 @media (min-width: 640px) {
   .year-section {
-    margin-bottom: 5.5rem;
+    margin-bottom: 2.35rem;
   }
 }
 
@@ -729,15 +729,15 @@ button.menu-toggle-btn:active {
 
 /* Telemetry Waypoint Divider */
 .year-marker {
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   margin-top: 0;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.65rem;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.75rem;
 }
 
 .year-marker::after {
@@ -751,89 +751,155 @@ button.menu-toggle-btn:active {
   background-color: var(--pill-bg);
   color: var(--compass-accent);
   border: 1.5px solid var(--pill-border);
-  padding: 3px 12px;
+  padding: 2px 10px;
   border-radius: 9999px;
   display: inline-block;
+  font-family: "Geist Mono", monospace;
+  font-size: 0.71875rem;
+  font-weight: 700;
 }
 
-.post-item-group {
+/* Compact Rivian Telemetry Stream Container */
+.post-stream {
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-}
-
-@media (min-width: 640px) {
-  .post-item-group {
-    gap: 0.95rem;
-  }
-}
-
-/* Mobile-Touch Tactile Gear Card */
-.post-item {
-  display: block;
-  text-decoration: none !important;
   background-color: var(--surface);
   border: 1.5px solid var(--border-color);
   border-radius: 12px;
-  padding: 1.15rem 1.25rem;
-  transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  overflow: hidden;
 }
 
-@media (min-width: 640px) {
-  .post-item {
-    border-radius: 14px;
-    padding: 1.35rem 1.55rem;
-  }
+.post-row {
+  display: flex;
+  flex-direction: column;
+  padding: 0.65rem 0.95rem;
+  border-bottom: 1px solid var(--border-subtle);
+  text-decoration: none !important;
+  transition: background-color 0.15s ease;
 }
 
-/* Touch active state for instant tactile press on mobile */
-.post-item:active {
-  transform: scale(0.985);
+.post-row:last-child {
+  border-bottom: none;
+}
+
+.post-row:hover {
   background-color: var(--surface-hover);
 }
 
-.post-item:hover {
-  border-color: var(--compass-accent);
-  transform: translateY(-1.5px);
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+.post-row:active {
+  background-color: var(--pill-bg);
+  transform: scale(0.995);
 }
 
-[data-theme="dark"] .post-item:hover {
-  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.35);
+@media (min-width: 640px) {
+  .post-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 1.15rem;
+    padding: 0.75rem 1.15rem;
+  }
 }
 
-.post-item-title {
-  font-size: 1.1rem;
+.post-row-date {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-bottom: 0.2rem;
+}
+
+@media (min-width: 640px) {
+  .post-row-date {
+    width: 100px;
+    margin-bottom: 0;
+    padding-top: 2px;
+  }
+}
+
+.post-date-text {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.post-row-main {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.post-row-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.75rem;
+}
+
+.post-row-title {
+  font-size: 0.9375rem;
   font-weight: 600;
   color: var(--heading-color);
-  margin: 0 0 0.45rem 0;
+  margin: 0;
   line-height: 1.35;
   transition: color 0.15s ease;
 }
 
 @media (min-width: 640px) {
-  .post-item-title {
-    font-size: 1.2rem;
+  .post-row-title {
+    font-size: 0.984375rem;
   }
 }
 
-.post-item:hover .post-item-title {
-  color: var(--link-hover);
+.post-row:hover .post-row-title {
+  color: var(--compass-accent);
 }
 
-/* Stadium Metadata Pill */
+.post-reading-time {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.6875rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.post-row-intro {
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--text-muted);
+  margin: 0.2rem 0 0 0;
+}
+
+.mobile-only {
+  display: inline-block;
+}
+
+.desktop-only {
+  display: none;
+}
+
+@media (min-width: 640px) {
+  .mobile-only {
+    display: none !important;
+  }
+  .desktop-only {
+    display: inline-block !important;
+  }
+}
+
+/* Stadium Metadata Pill (Preserved for Article Header & Badges) */
 .stadium-pill {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.45rem;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
   color: var(--pill-text);
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   font-weight: 500;
-  padding: 3px 11px;
+  padding: 2px 10px;
   border-radius: 9999px;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.45rem;
 }
 
 .stadium-pill .pill-dot {
@@ -844,31 +910,23 @@ button.menu-toggle-btn:active {
   display: inline-block;
 }
 
-.post-item-intro {
-  font-size: 0.9375rem;
-  line-height: 1.55;
-  color: var(--text-color);
-  margin: 0;
-  opacity: 0.88;
-}
-
 /* ==========================================================================
    Article Pages
    ========================================================================== */
 .post-back-bar {
-  margin-bottom: 1.75rem;
+  margin-bottom: 1.15rem;
 }
 
 .back-link {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   font-weight: 600;
   letter-spacing: 0.03em;
   color: var(--text-muted);
   text-decoration: none !important;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 9999px;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
@@ -883,105 +941,105 @@ button.menu-toggle-btn:active {
 }
 
 .back-arrow {
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
 }
 
 .article-header {
-  margin-bottom: 2.25rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 1.35rem;
+  padding-bottom: 1rem;
   border-bottom: 1.5px solid var(--border-color);
 }
 
 @media (min-width: 640px) {
   .article-header {
-    margin-bottom: 2.75rem;
-    padding-bottom: 1.75rem;
+    margin-bottom: 1.65rem;
+    padding-bottom: 1.15rem;
   }
 }
 
 .article-title {
-  font-size: 1.75rem;
+  font-size: 1.45rem;
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.25;
-  margin: 0.35rem 0 0.85rem 0;
+  margin: 0.25rem 0 0.45rem 0;
   color: var(--heading-color);
 }
 
 @media (min-width: 640px) {
   .article-title {
-    font-size: 2.25rem;
+    font-size: 1.85rem;
   }
 }
 
 .article-lead {
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.5;
   color: var(--text-muted);
-  margin-top: 0.75rem;
+  margin-top: 0.45rem;
   margin-bottom: 0;
   font-weight: 400;
 }
 
 .post-content {
-  font-size: 1.0625rem;
-  line-height: 1.72;
+  font-size: 0.96875rem;
+  line-height: 1.65;
 }
 
 .post-content h2 {
-  font-size: 1.35rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-top: 2.5rem;
-  margin-bottom: 0.85rem;
-  padding-bottom: 0.35rem;
+  margin-top: 1.65rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0.25rem;
   border-bottom: 1.5px solid var(--border-color);
 }
 
 @media (min-width: 640px) {
   .post-content h2 {
-    font-size: 1.45rem;
-    margin-top: 2.75rem;
+    font-size: 1.35rem;
+    margin-top: 1.85rem;
   }
 }
 
 .post-content h3 {
-  font-size: 1.15rem;
+  font-size: 1.08rem;
   font-weight: 600;
-  margin-top: 1.85rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.35rem;
 }
 
 .post-content h4 {
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 600;
-  margin-top: 1.35rem;
-  margin-bottom: 0.4rem;
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
 }
 
 /* Article Author Experience Signoff Card */
 .article-footer {
-  margin-top: 3.5rem;
-  padding-top: 2rem;
+  margin-top: 2rem;
+  padding-top: 1.25rem;
   border-top: 1.5px solid var(--border-color);
 }
 
 .article-author-card {
   display: flex;
   align-items: center;
-  gap: 0.95rem;
-  padding: 1rem 1.25rem;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
   background-color: var(--surface);
   border: 1.5px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 10px;
 }
 
 .author-avatar {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 34px;
+  height: 34px;
   border-radius: 9999px;
   background-color: var(--pill-bg);
   border: 1.5px solid var(--pill-border);
@@ -995,15 +1053,15 @@ button.menu-toggle-btn:active {
 }
 
 .author-name {
-  font-size: 0.9375rem;
+  font-size: 0.90625rem;
   font-weight: 600;
   color: var(--heading-color);
 }
 
 .author-subtext {
-  font-size: 0.8125rem;
+  font-size: 0.78125rem;
   color: var(--text-muted);
-  margin-top: 0.15rem;
+  margin-top: 0.1rem;
 }
 
 .author-link {
@@ -1024,43 +1082,43 @@ button.menu-toggle-btn:active {
 }
 
 .about-lead {
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 0.95rem;
+  line-height: 1.55;
   color: var(--text-muted);
-  margin-top: 0.65rem;
-  margin-bottom: 2rem;
+  margin-top: 0.45rem;
+  margin-bottom: 1.35rem;
 }
 
 @media (min-width: 640px) {
   .about-lead {
-    font-size: 1.15rem;
+    font-size: 1.05rem;
   }
 }
 
 .about-grid {
   display: flex;
   flex-direction: column;
-  gap: 2.25rem;
+  gap: 1.5rem;
 }
 
 @media (min-width: 768px) {
   .about-grid {
     display: grid;
-    grid-template-columns: 260px 1fr;
-    gap: 2rem;
+    grid-template-columns: 250px 1fr;
+    gap: 1.75rem;
     align-items: flex-start;
   }
 
   .about-sidebar {
     position: sticky;
-    top: calc(76px + env(safe-area-inset-top));
+    top: calc(66px + env(safe-area-inset-top));
   }
 }
 
 @media (min-width: 1024px) {
   .about-grid {
-    grid-template-columns: 290px 1fr;
-    gap: 2.75rem;
+    grid-template-columns: 275px 1fr;
+    gap: 2.25rem;
   }
 }
 
@@ -1068,14 +1126,14 @@ button.menu-toggle-btn:active {
 .executive-card {
   background-color: var(--surface);
   border: 1.5px solid var(--border-color);
-  border-radius: 14px;
-  padding: 1.25rem 1.35rem;
+  border-radius: 12px;
+  padding: 1rem 1.15rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
 }
 
 @media (min-width: 640px) {
   .executive-card {
-    padding: 1.35rem 1.45rem;
+    padding: 1.15rem 1.25rem;
   }
 }
 
@@ -1086,22 +1144,22 @@ button.menu-toggle-btn:active {
 .executive-card-header {
   display: flex;
   align-items: center;
-  gap: 7px;
-  margin-bottom: 0.85rem;
+  gap: 6px;
+  margin-bottom: 0.65rem;
 }
 
 .card-status-dot {
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--compass-accent);
-  box-shadow: 0 0 8px var(--compass-accent);
+  box-shadow: 0 0 6px var(--compass-accent);
   display: inline-block;
 }
 
 .card-status-text {
   font-family: "Geist Mono", monospace;
-  font-size: 0.6875rem;
+  font-size: 0.65625rem;
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
@@ -1109,45 +1167,45 @@ button.menu-toggle-btn:active {
 }
 
 .executive-name {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 700;
   letter-spacing: -0.02em;
   color: var(--heading-color);
-  margin: 0 0 0.25rem 0;
+  margin: 0 0 0.15rem 0;
 }
 
 .executive-role {
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   font-weight: 600;
   color: var(--text-color);
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .executive-tenure {
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   color: var(--text-muted);
-  margin-top: 0.25rem;
-  margin-bottom: 1.25rem;
-  padding-bottom: 1rem;
+  margin-top: 0.2rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0.75rem;
   border-bottom: 1px solid var(--border-color);
 }
 
 .telemetry-spec-list {
   display: flex;
   flex-direction: column;
-  gap: 0.95rem;
-  margin-bottom: 1.35rem;
+  gap: 0.65rem;
+  margin-bottom: 1rem;
 }
 
 .telemetry-spec {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.15rem;
 }
 
 .spec-label {
   font-family: "Geist Mono", monospace;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1155,40 +1213,40 @@ button.menu-toggle-btn:active {
 }
 
 .spec-value {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   color: var(--text-color);
-  line-height: 1.45;
+  line-height: 1.4;
 }
 
 /* Era Scrubber (Quick Jump Rail) */
 .era-scrubber {
-  padding-top: 1.15rem;
+  padding-top: 0.85rem;
   border-top: 1px solid var(--border-color);
 }
 
 .scrubber-label {
   display: block;
   font-family: "Geist Mono", monospace;
-  font-size: 0.6875rem;
+  font-size: 0.625rem;
   font-weight: 700;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--text-muted);
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.45rem;
 }
 
 .scrubber-list {
   display: flex;
   flex-direction: column;
-  gap: 0.55rem;
+  gap: 0.4rem;
 }
 
 .scrubber-card {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
-  padding: 0.65rem 0.85rem;
-  border-radius: 10px;
+  gap: 0.15rem;
+  padding: 0.45rem 0.65rem;
+  border-radius: 8px;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
   text-decoration: none !important;
@@ -1205,7 +1263,7 @@ button.menu-toggle-btn:active {
 .scrubber-card-header {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
 }
 
 .scrubber-dot {
@@ -1218,35 +1276,35 @@ button.menu-toggle-btn:active {
 
 .scrubber-period {
   font-family: "Geist Mono", monospace;
-  font-size: 0.6875rem;
+  font-size: 0.65625rem;
   font-weight: 600;
   color: var(--compass-accent);
 }
 
 .scrubber-title {
-  font-size: 0.8125rem;
+  font-size: 0.75rem;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.3;
   color: var(--heading-color);
 }
 
 /* Era Chapter Milestone Headers */
 .career-era-section {
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
 }
 
 .about-main-feed h2.era-title {
-  font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
+  font-size: clamp(1rem, 1.6vw, 1.125rem);
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: 1.25;
   color: var(--heading-color);
   margin-top: 0;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0.65rem;
   padding-bottom: 0;
   border-bottom: none;
   position: relative;
-  padding-left: 1.15rem;
+  padding-left: 1rem;
 }
 
 .about-main-feed h2.era-title::before {
@@ -1254,8 +1312,8 @@ button.menu-toggle-btn:active {
   position: absolute;
   left: 0;
   top: 0.32em;
-  width: 7px;
-  height: 7px;
+  width: 6px;
+  height: 6px;
   border-radius: 50%;
   background-color: var(--compass-accent);
   flex-shrink: 0;
@@ -1263,25 +1321,26 @@ button.menu-toggle-btn:active {
 
 /* Year Waypoint Spacing */
 .experience-year-block {
-  margin-bottom: 2rem;
+  margin-bottom: 1.25rem;
 }
 
 .experience-year-block .year-marker {
-  margin-bottom: 1rem;
+  margin-bottom: 0.65rem;
 }
 
 /* Tactile Experience List */
 .about-main-feed ul {
   list-style: none;
   padding-left: 0;
-  margin-bottom: 1.85rem;
+  margin-bottom: 1.15rem;
 }
 
 .about-main-feed ul li {
   position: relative;
-  padding-left: 1.35rem;
-  margin-bottom: 0.75rem;
-  line-height: 1.65;
+  padding-left: 1.2rem;
+  margin-bottom: 0.45rem;
+  line-height: 1.55;
+  font-size: 0.9375rem;
   color: var(--text-color);
 }
 
@@ -1290,8 +1349,8 @@ button.menu-toggle-btn:active {
   position: absolute;
   left: 0.15rem;
   top: 0.62em;
-  width: 5px;
-  height: 5px;
+  width: 4.5px;
+  height: 4.5px;
   border-radius: 50%;
   background-color: var(--text-muted);
   opacity: 0.6;
@@ -1306,27 +1365,27 @@ button.menu-toggle-btn:active {
 }
 
 .about-main-feed ul ul {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
+  margin-top: 0.35rem;
+  margin-bottom: 0.35rem;
   padding-left: 0.25rem;
 }
 
 .about-main-feed ul ul li::before {
-  width: 3.5px;
-  height: 3.5px;
+  width: 3px;
+  height: 3px;
   border-radius: 1px;
 }
 
 /* Collapsible Archive Drawer */
 .archive-section {
-  margin-top: 2.75rem;
-  margin-bottom: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 1.25rem;
 }
 
 details.archive-drawer {
   background-color: var(--surface);
   border: 1.5px solid var(--border-color);
-  border-radius: 14px;
+  border-radius: 12px;
   overflow: hidden;
   transition: border-color 0.15s ease, box-shadow 0.15s ease;
 }
@@ -1339,8 +1398,8 @@ summary.archive-summary {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
-  padding: 1.15rem 1.35rem;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
   cursor: pointer;
   list-style: none;
   user-select: none;
@@ -1358,21 +1417,22 @@ summary.archive-summary:active {
 
 .archive-summary-info {
   display: flex;
-  flex-direction: column;
-  gap: 0.25rem;
+  align-items: baseline;
+  gap: 0.5rem;
+  flex-wrap: wrap;
 }
 
 .archive-badge {
   font-family: "Geist Mono", monospace;
-  font-size: 0.65625rem;
+  font-size: 0.625rem;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
   color: var(--compass-accent);
 }
 
 .archive-title {
-  font-size: 0.9375rem !important;
+  font-size: 0.875rem !important;
   font-weight: 600 !important;
   letter-spacing: -0.015em !important;
   color: var(--heading-color) !important;
@@ -1386,16 +1446,16 @@ summary.archive-summary:active {
 }
 
 .archive-count {
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   color: var(--text-muted);
 }
 
 .archive-toggle-indicator {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 5px;
   flex-shrink: 0;
-  font-size: 0.75rem;
+  font-size: 0.71875rem;
   font-weight: 600;
   color: var(--compass-accent);
 }
@@ -1413,13 +1473,13 @@ details.archive-drawer[open] .archive-chevron {
 }
 
 .archive-content {
-  padding: 1.25rem 1.35rem;
+  padding: 0.85rem 1rem;
   background-color: var(--bg-color);
 }
 
 @media (min-width: 640px) {
   .archive-content {
-    padding: 1.5rem 1.75rem;
+    padding: 1.15rem 1.35rem;
   }
 }
 
@@ -1432,9 +1492,9 @@ details.archive-drawer[open] .archive-chevron {
    ========================================================================== */
 .code-block-wrapper {
   position: relative;
-  margin: 2rem 0;
+  margin: 1.25rem 0;
   border: 1.5px solid var(--border-color);
-  border-radius: 12px;
+  border-radius: 10px;
   background-color: var(--code-bg);
   overflow: hidden;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.03);
@@ -1453,7 +1513,7 @@ details.archive-drawer[open] .archive-chevron {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 8px 14px;
+  padding: 6px 12px;
   background-color: var(--surface);
   border-bottom: 1.5px solid var(--border-color);
   user-select: none;
@@ -1462,9 +1522,9 @@ details.archive-drawer[open] .archive-chevron {
 .code-lang-pill {
   display: inline-flex;
   align-items: center;
-  gap: 7px;
+  gap: 6px;
   font-family: "Geist Mono", monospace;
-  font-size: 0.71875rem;
+  font-size: 0.6875rem;
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1490,8 +1550,8 @@ details.archive-drawer[open] .archive-chevron {
 }
 
 .code-lang-dot {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
   border-radius: 50%;
   background-color: var(--compass-accent);
   display: inline-block;
@@ -1500,9 +1560,9 @@ details.archive-drawer[open] .archive-chevron {
 .copy-code-button {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  padding: 3px 10px;
-  font-size: 0.71875rem;
+  gap: 5px;
+  padding: 2px 8px;
+  font-size: 0.6875rem;
   font-weight: 500;
   font-family: "Geist Sans", sans-serif;
   color: var(--text-muted);
@@ -1538,20 +1598,20 @@ pre.astro-code {
   border: none !important;
   border-radius: 0 !important;
   margin: 0 !important;
-  padding: 1.15rem 1.35rem !important;
+  padding: 0.85rem 1.15rem !important;
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
   font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
-  font-size: 0.875rem;
-  line-height: 1.65;
+  font-size: 0.8125rem;
+  line-height: 1.58;
   tab-size: 2;
 }
 
 /* Fallback if wrapper not injected */
 body:not(:has(.code-block-wrapper)) pre.astro-code {
   border: 1.5px solid var(--border-color) !important;
-  border-radius: 12px !important;
-  margin: 1.85rem 0 !important;
+  border-radius: 10px !important;
+  margin: 1.25rem 0 !important;
 }
 
 html[data-theme="dark"] .astro-code,
@@ -1572,9 +1632,9 @@ html[data-theme="dark"] .astro-code span {
   background-color: var(--code-inline-bg) !important;
   color: var(--code-inline-color) !important;
   border: 1px solid var(--border-color) !important;
-  border-radius: 6px;
-  padding: 2px 7px;
-  font-size: 0.875em;
+  border-radius: 5px;
+  padding: 1px 6px;
+  font-size: 0.84375em;
   font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   word-break: break-word;
 }
@@ -1596,9 +1656,9 @@ pre.astro-code code {
 .post-navigation {
   display: flex;
   flex-direction: column;
-  gap: 0.85rem;
-  margin-top: 3rem;
-  padding-top: 1.75rem;
+  gap: 0.65rem;
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
   border-top: 1.5px solid var(--border-color);
 }
 
@@ -1606,9 +1666,9 @@ pre.astro-code code {
   .post-navigation {
     flex-direction: row;
     justify-content: space-between;
-    gap: 1.25rem;
-    margin-top: 3.5rem;
-    padding-top: 2rem;
+    gap: 0.85rem;
+    margin-top: 2rem;
+    padding-top: 1.35rem;
   }
 }
 
@@ -1619,8 +1679,8 @@ pre.astro-code code {
   text-decoration: none !important;
   background-color: var(--surface);
   border: 1.5px solid var(--border-color);
-  border-radius: 12px;
-  padding: 1.15rem 1.35rem;
+  border-radius: 10px;
+  padding: 0.75rem 1rem;
   width: 100%;
   transition: border-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
@@ -1652,13 +1712,13 @@ pre.astro-code code {
 .post-navigation .nav-label {
   display: inline-flex;
   align-items: center;
-  gap: 6px;
-  font-size: 0.725rem;
+  gap: 5px;
+  font-size: 0.65625rem;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   font-weight: 700;
   color: var(--compass-accent);
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
 }
 
 .post-navigation .next-post .nav-label {
@@ -1679,9 +1739,9 @@ pre.astro-code code {
 }
 
 .post-navigation .nav-title {
-  font-size: 0.975rem;
+  font-size: 0.875rem;
   font-weight: 600;
-  line-height: 1.35;
+  line-height: 1.3;
   color: var(--heading-color);
 }
 
