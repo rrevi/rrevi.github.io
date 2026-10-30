@@ -106,19 +106,18 @@ for (const item of renderedEntries) {
           </div>
 
           <!-- Quick Jump Scrubber -->
-          <nav class="era-scrubber" aria-label="Career Era Jump">
+          <nav class="era-scrubber" aria-label="Career Era Chapters">
             <span class="scrubber-label">TIMELINE CHAPTERS</span>
-            <div class="scrubber-pills">
-              <a href="#era-lead" class="scrubber-pill">
-                <span class="scrubber-dot"></span>
-                <span>2021 &ndash; Present</span>
-              </a>
-              <a href="#era-senior" class="scrubber-pill">
-                <span>2015 &ndash; 2020</span>
-              </a>
-              <a href="#era-foundation" class="scrubber-pill">
-                <span>2008 &ndash; 2014 Archive</span>
-              </a>
+            <div class="scrubber-list">
+              {eraGroups.map((group) => (
+                <a href={`#${group.id}`} class="scrubber-card">
+                  <div class="scrubber-card-header">
+                    <span class="scrubber-dot"></span>
+                    <span class="scrubber-period">{group.period}</span>
+                  </div>
+                  <div class="scrubber-title">{group.role}</div>
+                </a>
+              ))}
             </div>
           </nav>
         </div>
@@ -133,7 +132,7 @@ for (const item of renderedEntries) {
                 <summary class="archive-summary">
                   <div class="archive-summary-info">
                     <span class="archive-badge">FOUNDATIONAL ARCHIVE</span>
-                    <h2 class="archive-title">{group.role} ({group.period})</h2>
+                    <h2 class="archive-title">{group.role}</h2>
                     <span class="archive-count">&bull; {group.entries.length} Years of Early Career Work</span>
                   </div>
                   <div class="archive-toggle-indicator">
@@ -161,7 +160,7 @@ for (const item of renderedEntries) {
           ) : (
             <section class="career-era-section" id={group.id}>
               <div class="era-header">
-                <h2>{group.role} <span class="era-period">({group.period})</span></h2>
+                <h2 class="era-title">{group.role}</h2>
               </div>
 
               <div class="era-years">

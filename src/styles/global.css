@@ -182,7 +182,7 @@ main.page-content {
 
 @media (min-width: 768px) {
   .wrapper:has(.about-grid) {
-    max-width: 980px;
+    max-width: 1040px;
   }
 }
 
@@ -817,8 +817,8 @@ button.theme-toggle-btn .moon-icon {
 @media (min-width: 768px) {
   .about-grid {
     display: grid;
-    grid-template-columns: 290px 1fr;
-    gap: 2.5rem;
+    grid-template-columns: 260px 1fr;
+    gap: 2rem;
     align-items: flex-start;
   }
 
@@ -830,8 +830,8 @@ button.theme-toggle-btn .moon-icon {
 
 @media (min-width: 1024px) {
   .about-grid {
-    grid-template-columns: 310px 1fr;
-    gap: 3rem;
+    grid-template-columns: 290px 1fr;
+    gap: 2.75rem;
   }
 }
 
@@ -948,42 +948,35 @@ button.theme-toggle-btn .moon-icon {
   margin-bottom: 0.65rem;
 }
 
-.scrubber-pills {
+.scrubber-list {
   display: flex;
   flex-direction: column;
-  gap: 0.4rem;
+  gap: 0.55rem;
 }
 
-@media (max-width: 767px) {
-  .scrubber-pills {
-    flex-direction: row;
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding-bottom: 4px;
-  }
-}
-
-.scrubber-pill {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  padding: 6px 12px;
-  border-radius: 9999px;
-  font-size: 0.75rem;
-  font-weight: 600;
-  color: var(--text-color);
+.scrubber-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding: 0.65rem 0.85rem;
+  border-radius: 10px;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
   text-decoration: none !important;
   transition: all 0.15s ease;
-  white-space: nowrap;
 }
 
-.scrubber-pill:hover,
-.scrubber-pill:active {
+.scrubber-card:hover,
+.scrubber-card:active {
   border-color: var(--compass-accent);
-  color: var(--compass-accent);
-  background-color: var(--surface);
+  background-color: var(--surface-hover);
+  transform: translateY(-1px);
+}
+
+.scrubber-card-header {
+  display: flex;
+  align-items: center;
+  gap: 6px;
 }
 
 .scrubber-dot {
@@ -991,47 +984,52 @@ button.theme-toggle-btn .moon-icon {
   height: 5px;
   border-radius: 50%;
   background-color: var(--compass-accent);
-  display: inline-block;
+  flex-shrink: 0;
+}
+
+.scrubber-period {
+  font-family: "Geist Mono", monospace;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--compass-accent);
+}
+
+.scrubber-title {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: var(--heading-color);
 }
 
 /* Era Chapter Milestone Headers */
 .career-era-section {
-  margin-bottom: 3.5rem;
+  margin-bottom: 2.25rem;
 }
 
-.about-main-feed h2 {
-  font-size: 1.25rem;
+.about-main-feed h2.era-title {
+  font-size: clamp(1.0625rem, 1.8vw, 1.1875rem);
   font-weight: 700;
-  letter-spacing: -0.015em;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
   color: var(--heading-color);
   margin-top: 0;
-  margin-bottom: 1.35rem;
-  padding-bottom: 0.65rem;
-  border-bottom: 2px solid var(--border-color);
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
+  margin-bottom: 0.85rem;
+  padding-bottom: 0;
+  border-bottom: none;
+  position: relative;
+  padding-left: 1.15rem;
 }
 
-@media (min-width: 640px) {
-  .about-main-feed h2 {
-    font-size: 1.35rem;
-  }
-}
-
-.about-main-feed h2::before {
+.about-main-feed h2.era-title::before {
   content: "";
-  width: 8px;
-  height: 8px;
+  position: absolute;
+  left: 0;
+  top: 0.32em;
+  width: 7px;
+  height: 7px;
   border-radius: 50%;
   background-color: var(--compass-accent);
   flex-shrink: 0;
-}
-
-.era-period {
-  font-size: 0.85em;
-  font-weight: 500;
-  color: var(--text-muted);
 }
 
 /* Year Waypoint Spacing */
@@ -1145,8 +1143,9 @@ summary.archive-summary:active {
 }
 
 .archive-title {
-  font-size: 1.05rem !important;
+  font-size: 0.9375rem !important;
   font-weight: 600 !important;
+  letter-spacing: -0.015em !important;
   color: var(--heading-color) !important;
   margin: 0 !important;
   border-bottom: none !important;
