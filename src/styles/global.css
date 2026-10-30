@@ -1339,9 +1339,7 @@ html[data-theme="dark"] .astro-code span {
   }
 }
 
-p code,
-li code,
-td code {
+:not(pre) > code {
   background-color: var(--code-inline-bg) !important;
   color: var(--code-inline-color) !important;
   border: 1px solid var(--border-color) !important;
@@ -1350,6 +1348,17 @@ td code {
   font-size: 0.875em;
   font-family: "Geist Mono", "Menlo", "Inconsolata", "Consolas", monospace;
   word-break: break-word;
+}
+
+pre.astro-code code {
+  background-color: transparent !important;
+  color: inherit !important;
+  border: none !important;
+  border-radius: 0 !important;
+  padding: 0 !important;
+  font-size: inherit !important;
+  word-break: normal !important;
+  white-space: pre !important;
 }
 
 /* ==========================================================================

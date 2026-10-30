@@ -43,34 +43,33 @@ Some notes:
 - If you look at the `oha` tool command difference between the two screenshots above, you will see that on the Ruby on Rails command I am using HTTP method `POST`, where as on the Java + Helidon app I am using the HTTP `GET` method. Anyone wise enough might wonder well on the Ruby on Rails app you are `writing` to the DB whereas on the Java + Helidon app you are `reading`. I assure you, this is not the case. The reason for the difference in HTTP method use is just an implementation detail of the Ruby on Rails app. There is no SQL writing in either command. Just a simple read from the DB.
 - If you read the bullet just above, you might also wonder, did the SQLite on Helidon app even have data in the SQLite database, I assure this was the case, since I executed the following `oha` command first to populate it:
 
-  ```
-  $ oha -c 10 -z 10s -m PUT http://localhost:8080/library/benchmark/book
-  ```
+```shell
+$ oha -c 10 -z 10s -m PUT http://localhost:8080/library/benchmark/book
+```
 
-  and here are the row counts for their respective databases:
+and here are the row counts for their respective databases:
 
-  ```
-  $ sqlite3 /tmp/library.db
-  SQLite version 3.50.2 2025-06-28 14:00:48
-  Enter ".help" for usage hints.
-  sqlite> select count(*) from library
-    ...> ;
-  98986
-  sqlite> .exit
-  $
-  ```
+```shell
+$ sqlite3 /tmp/library.db
+SQLite version 3.50.2 2025-06-28 14:00:48
+Enter ".help" for usage hints.
+sqlite> select count(*) from library;
+98986
+sqlite> .exit
+$
+```
 
-  ```
-  $ sqlite3 ~/Github/railsconf-2024/storage/production.sqlite3
-  SQLite version 3.50.2 2025-06-28 14:00:48
-  Enter ".help" for usage hints.
-  sqlite> select count(*) from posts;
-  80703
-  sqlite> .exit
-  $
-  ```
+```shell
+$ sqlite3 ~/Github/railsconf-2024/storage/production.sqlite3
+SQLite version 3.50.2 2025-06-28 14:00:48
+Enter ".help" for usage hints.
+sqlite> select count(*) from posts;
+80703
+sqlite> .exit
+$
+```
 
-  ... but in reality, the row count is irrelevant since both apps (endpoints in use for benchmarking) use a limit of `100` in their SQL select statements.
+... but in reality, the row count is irrelevant since both apps (endpoints in use for benchmarking) use a limit of `100` in their SQL select statements.
 
 Notes aside, there is a lot to unpack here (but I won't cover it all here).
 
