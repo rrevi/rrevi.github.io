@@ -16,7 +16,6 @@ const {
 
 const siteTitle = "Rants on Software Development";
 const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
-const isProd = import.meta.env.PROD;
 ---
 
 <!DOCTYPE html>
@@ -46,11 +45,6 @@ const isProd = import.meta.env.PROD;
     applyTheme();
     document.addEventListener('astro:after-swap', applyTheme);
   </script>
-
-  <!-- Cloudflare Web Analytics (Production only) -->
-  {isProd && (
-    <script defer src="https://static.cloudflareinsights.com/beacon.min.js" data-cf-beacon='{"token": "1cfcb60a95bc4b198a888e65e7a36ba5"}'></script>
-  )}
 </head>
 <body>
   <Header siteTitle={siteTitle} />

@@ -84,7 +84,7 @@ const { post, prevPost, nextPost } = Astro.props;
                 <line x1="19" y1="12" x2="5" y2="12"></line>
                 <polyline points="12 19 5 12 12 5"></polyline>
               </svg>
-              <span>PREVIOUS ENTRY</span>
+              <span>PREVIOUS POST</span>
             </span>
             <span class="nav-title">{prevPost.title}</span>
           </a>
@@ -92,7 +92,7 @@ const { post, prevPost, nextPost } = Astro.props;
         {nextPost && (
           <a class="next-post" href={`/${nextPost.slug}`} title={nextPost.title}>
             <span class="nav-label">
-              <span>NEXT ENTRY</span>
+              <span>NEXT POST</span>
               <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
                 <polyline points="12 5 19 12 12 19"></polyline>
@@ -106,11 +106,20 @@ const { post, prevPost, nextPost } = Astro.props;
   </article>
 
   <script>
+    let scrollCleanup: (() => void) | null = null;
+
     function setupScrollControls() {
+      if (scrollCleanup) {
+        scrollCleanup();
+        scrollCleanup = null;
+      }
+
       const bar = document.getElementById('scroll-progress');
       const thumbPill = document.getElementById('mobile-thumb-pill');
       const thumbPct = document.getElementById('thumb-progress-pct');
       const topBtn = document.getElementById('thumb-back-to-top');
+
+      if (!bar && !thumbPill) return;
 
       if (topBtn) {
         topBtn.onclick = () => {
@@ -141,9 +150,19 @@ const { post, prevPost, nextPost } = Astro.props;
 
       window.addEventListener('scroll', update, { passive: true });
       update();
+
+      scrollCleanup = () => {
+        window.removeEventListener('scroll', update);
+      };
     }
 
     setupScrollControls();
     document.addEventListener('astro:after-swap', setupScrollControls);
+    document.addEventListener('astro:before-swap', () => {
+      if (scrollCleanup) {
+        scrollCleanup();
+        scrollCleanup = null;
+      }
+    });
   </script>
 </BaseLayout>

@@ -37,7 +37,9 @@ for (const item of renderedEntries) {
       ? 'era-foundation'
       : period.includes('Present')
         ? 'era-lead'
-        : 'era-senior';
+        : period.includes('2015')
+          ? 'era-senior'
+          : `era-${period.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
     group = { id, role, period, isArchive, entries: [] };
     eraGroups.push(group);
   }
