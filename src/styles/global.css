@@ -1118,8 +1118,10 @@ button.menu-toggle-btn:active {
   }
 
   .about-sidebar {
+    --sidebar-top: calc(var(--site-header-row-height) + env(safe-area-inset-top) + 0.75rem);
+    --sidebar-bottom: calc(env(safe-area-inset-bottom) + 0.75rem);
     position: sticky;
-    top: calc(66px + env(safe-area-inset-top));
+    top: var(--sidebar-top);
   }
 }
 
@@ -1137,6 +1139,14 @@ button.menu-toggle-btn:active {
   border-radius: 12px;
   padding: 1rem 1.1rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.03);
+}
+
+@media (min-width: 768px) {
+  .about-sidebar .executive-card {
+    max-height: calc(100vh - var(--sidebar-top) - var(--sidebar-bottom));
+    max-height: calc(100dvh - var(--sidebar-top) - var(--sidebar-bottom));
+    overflow-y: auto;
+  }
 }
 
 [data-theme="dark"] .executive-card {
