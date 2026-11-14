@@ -56,6 +56,7 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
         aria-expanded="false"
         aria-controls="mobile-drawer"
         title="Toggle navigation menu"
+        hidden
       >
         <span class="menu-icon-bars" aria-hidden="true">
           <span class="bar bar-top"></span>
@@ -66,9 +67,9 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
   </div>
 
   <!-- Mobile Cockpit Drawer (Slide-down menu on mobile) -->
-  <div id="mobile-drawer" class="mobile-drawer" aria-label="Mobile Navigation" hidden>
+  <div id="mobile-drawer" class="mobile-drawer">
     <div class="wrapper">
-      <nav class="mobile-drawer-nav">
+      <nav class="mobile-drawer-nav" aria-label="Mobile Navigation">
         <a class="drawer-about-card" href="/about">
           <div class="drawer-about-icon">
             <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
@@ -129,62 +130,39 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
       menuAbortController = null;
     }
 
-    const toggleBtn = document.getElementById('menu-toggle') as HTMLButtonElement | null;
-    const drawer = document.getElementById('mobile-drawer') as HTMLElement | null;
-    const header = document.querySelector('.site-header') as HTMLElement | null;
+    const btn = document.querySelector<HTMLButtonElement>('#menu-toggle');
+    const panel = document.getElementById('mobile-drawer');
+    const host = document.querySelector('.site-header');
 
-    if (!toggleBtn || !drawer || !header) return;
-
-    const btn = toggleBtn;
-    const panel = drawer;
-    const host = header;
+    if (!btn || !panel || !host) return;
     const controller = new AbortController();
     menuAbortController = controller;
     const { signal } = controller;
 
     const isMenuOpen = () => btn.getAttribute('aria-expanded') === 'true';
 
-    function openMenu() {
-      panel.removeAttribute('hidden');
-      // Force repaint before adding active class for transition
-      void panel.offsetWidth;
-      panel.classList.add('is-open');
-      btn.classList.add('is-active');
-      btn.setAttribute('aria-expanded', 'true');
-      btn.setAttribute('title', 'Close navigation menu');
-      btn.setAttribute('aria-label', 'Close navigation menu');
-    }
-
-    function closeMenu() {
-      if (!isMenuOpen() && panel.hasAttribute('hidden')) return;
-      panel.classList.remove('is-open');
-      btn.classList.remove('is-active');
-      btn.setAttribute('aria-expanded', 'false');
-      btn.setAttribute('title', 'Toggle navigation menu');
-      btn.setAttribute('aria-label', 'Toggle navigation menu');
-      setTimeout(() => {
-        if (!panel.classList.contains('is-open')) {
-          panel.setAttribute('hidden', '');
-        }
-      }, 200);
-    }
+    const setMenuOpen = (open: boolean) => {
+      if (!open && panel.contains(document.activeElement)) {
+        btn.focus({ preventScroll: true });
+      }
+      panel.inert = !open;
+      panel.classList.toggle('is-open', open);
+      btn.classList.toggle('is-active', open);
+      btn.setAttribute('aria-expanded', String(open));
+      const label = open ? 'Close navigation menu' : 'Open navigation menu';
+      btn.setAttribute('title', label);
+      btn.setAttribute('aria-label', label);
+    };
 
     btn.addEventListener(
       'click',
-      (e) => {
-        e.stopPropagation();
-        if (isMenuOpen()) {
-          closeMenu();
-        } else {
-          openMenu();
-        }
-      },
+      () => setMenuOpen(!isMenuOpen()),
       { signal }
     );
 
     // Close when clicking any nav link in drawer
     panel.querySelectorAll('a').forEach((link) => {
-      link.addEventListener('click', closeMenu, { signal });
+      link.addEventListener('click', () => setMenuOpen(false), { signal });
     });
 
     // Close on outside click when open
@@ -192,7 +170,7 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
       'click',
       (e) => {
         if (isMenuOpen() && !host.contains(e.target as Node)) {
-          closeMenu();
+          setMenuOpen(false);
         }
       },
       { signal }
@@ -203,25 +181,23 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
       'keydown',
       (e) => {
         if (e.key === 'Escape' && isMenuOpen()) {
-          closeMenu();
-          btn.focus();
+          btn.focus({ preventScroll: true });
+          setMenuOpen(false);
         }
       },
       { signal }
     );
+
+    document.addEventListener('astro:before-swap', () => {
+      panel.hidden = true;
+      controller.abort();
+    }, { once: true, signal });
+
+    setMenuOpen(false);
+    host.classList.add('menu-enhanced');
+    btn.hidden = false;
   }
 
   setupMobileMenu();
   document.addEventListener('astro:after-swap', setupMobileMenu);
-  document.addEventListener('astro:before-swap', () => {
-    if (menuAbortController) {
-      menuAbortController.abort();
-      menuAbortController = null;
-    }
-    const drawer = document.getElementById('mobile-drawer');
-    if (drawer) {
-      drawer.classList.remove('is-open');
-      drawer.setAttribute('hidden', '');
-    }
-  });
 </script>

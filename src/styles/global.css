@@ -173,7 +173,15 @@ main.page-content {
   padding-left: 16px;
 }
 
+:root {
+  --site-header-row-height: 50px;
+}
+
 @media (min-width: 640px) {
+  :root {
+    --site-header-row-height: 54px;
+  }
+
   .wrapper {
     padding-right: 24px;
     padding-left: 24px;
@@ -255,17 +263,16 @@ img {
   padding-top: env(safe-area-inset-top);
 }
 
-.site-header .wrapper {
+.site-header > .wrapper {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 50px;
+  min-height: var(--site-header-row-height);
   gap: 0.5rem;
 }
 
 @media (min-width: 640px) {
-  .site-header .wrapper {
-    min-height: 54px;
+  .site-header > .wrapper {
     gap: 1rem;
   }
 }
@@ -278,9 +285,9 @@ img {
   text-decoration: none !important;
   display: inline-flex;
   align-items: center;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  min-height: 40px;
+  line-height: 1.2;
+  overflow-wrap: anywhere;
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -300,19 +307,13 @@ img {
 /* Rivian Telemetry Reading Progress Bar */
 .scroll-progress-bar {
   position: fixed;
-  top: 50px;
+  top: calc(var(--site-header-row-height) + env(safe-area-inset-top));
   left: 0;
   height: 2.5px;
   width: 0%;
   background-color: var(--compass-accent);
   z-index: 101;
   transition: width 0.05s ease-out;
-}
-
-@media (min-width: 640px) {
-  .scroll-progress-bar {
-    top: 54px;
-  }
 }
 
 /* Stadium Navigation Cluster */
@@ -496,19 +497,25 @@ button.menu-toggle-btn {
   border-radius: 9999px;
   cursor: pointer;
   padding: 6px 7px;
-  min-height: 36px;
-  min-width: 36px;
   color: var(--text-color);
   align-items: center;
   justify-content: center;
   transition: all 0.15s ease;
 }
 
-@media (min-width: 480px) {
-  button.menu-toggle-btn {
-    padding: 6px 8px;
-    min-height: 38px;
-    min-width: 38px;
+.site-nav .menu-toggle-btn[hidden] {
+  display: none;
+}
+
+@media (width < 640px) {
+  .site-nav .nav-item.menu-toggle-btn,
+  .site-nav .nav-item.theme-toggle-btn {
+    min-height: 40px;
+    min-width: 40px;
+  }
+
+  .site-header:not(.menu-enhanced) {
+    position: static;
   }
 }
 
@@ -558,6 +565,10 @@ button.menu-toggle-btn:active {
 
 /* Mobile Cockpit Drawer Panel */
 .mobile-drawer {
+  padding: 0.85rem 0 1.15rem 0;
+}
+
+.menu-enhanced .mobile-drawer {
   position: absolute;
   top: 100%;
   left: 0;
@@ -567,12 +578,12 @@ button.menu-toggle-btn:active {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   border-bottom: 1.5px solid var(--border-color);
-  padding: 0.85rem 0 1.15rem 0;
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.12);
   opacity: 0;
+  visibility: hidden;
   transform: translateY(-6px);
   pointer-events: none;
-  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1), transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), visibility 0s linear 0.2s;
   z-index: 99;
 }
 
@@ -590,10 +601,12 @@ button.menu-toggle-btn:active {
   display: none !important;
 }
 
-.mobile-drawer.is-open {
+.menu-enhanced .mobile-drawer.is-open {
   opacity: 1;
+  visibility: visible;
   transform: translateY(0);
   pointer-events: auto;
+  transition-delay: 0s;
 }
 
 @media (min-width: 640px) {
@@ -847,17 +860,12 @@ button.menu-toggle-btn:active {
   color: var(--heading-color);
   margin: 0;
   line-height: 1.35;
-  transition: color 0.15s ease;
 }
 
 @media (min-width: 640px) {
   .post-row-title {
     font-size: 0.984375rem;
   }
-}
-
-.post-row:hover .post-row-title {
-  color: var(--compass-accent);
 }
 
 .post-reading-time {
@@ -932,6 +940,7 @@ button.menu-toggle-btn:active {
   color: var(--text-muted);
   text-decoration: none !important;
   padding: 3px 10px;
+  min-height: 40px;
   border-radius: 9999px;
   background-color: var(--pill-bg);
   border: 1px solid var(--pill-border);
@@ -1296,6 +1305,7 @@ button.menu-toggle-btn:active {
 /* Era Chapter Milestone Headers */
 .career-era-section {
   margin-bottom: 1.5rem;
+  scroll-margin-top: calc(var(--site-header-row-height) + env(safe-area-inset-top) + 0.75rem);
 }
 
 .about-main-feed h2.era-title {
@@ -1567,6 +1577,7 @@ details.archive-drawer[open] .archive-chevron {
   align-items: center;
   gap: 5px;
   padding: 2px 8px;
+  min-height: 40px;
   font-size: 0.6875rem;
   font-weight: 500;
   font-family: "Geist Sans", sans-serif;
