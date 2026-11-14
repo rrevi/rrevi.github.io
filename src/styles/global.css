@@ -576,9 +576,14 @@ button.menu-toggle-btn:active {
   z-index: 99;
 }
 
-[data-theme="dark"] .mobile-drawer,
-:root:not([data-theme="light"]) .mobile-drawer {
+[data-theme="dark"] .mobile-drawer {
   box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .mobile-drawer {
+    box-shadow: 0 16px 36px rgba(0, 0, 0, 0.45);
+  }
 }
 
 .mobile-drawer[hidden] {

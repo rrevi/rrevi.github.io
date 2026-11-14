@@ -33,7 +33,7 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 - **No Redundant Date Periods in Headings**: Era section headings (`<h2>`) must strictly display the role title without redundant parenthesized date ranges (e.g., `Principal Applications Engineer & Platform Lead`, not `... (2021 – Present)`), since chronology is already anchored by individual year pills.
 - **No Section Divider Lines**: Section headings must not use `border-bottom` divider lines, keeping the chronology stream continuous and reducing visual line breaks.
 - **Vertical Timeline Chapters**: The Timeline Chapters navigation in the Current Focus sidebar must display both the role title and the date period, and must remain vertically stacked across all screen sizes (never horizontally scrolling).
-- **Title Wrapping Constraint**: Use fluid scaling (`clamp(1.0625rem, 1.8vw, 1.1875rem)`) with tight tracking (`-0.025em`) to ensure role titles fit on a single line on tablet and desktop.
+- **Title Wrapping Constraint**: Use fluid scaling (`clamp(1rem, 1.6vw, 1.125rem)`) with tight tracking (`-0.025em`) to ensure role titles fit on a single line on tablet and desktop.
 
 ## 5. Mobile-First & Touch-Native Ergonomics
 - **Touch Targets**: Minimum 38–40px touch areas for all interactive links and buttons.

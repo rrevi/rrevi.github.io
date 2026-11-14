@@ -15,7 +15,7 @@ Live at: [https://rrevi.github.io](https://rrevi.github.io)
   - Client-side View Transitions (`<ClientRouter />`)
 - **Typography**: Self-hosted Geist Sans & Geist Mono
 - **Syntax Highlighting**: Shiki dual-theme (`kanagawa-wave` & `kanagawa-lotus`) with interactive terminal cockpit wrappers and one-click copy buttons
-- **Feeds & SEO**: `@astrojs/rss`, `@astrojs/sitemap`, OpenGraph metadata, and Cloudflare Analytics
+- **Feeds & SEO**: `@astrojs/rss`, `@astrojs/sitemap`, and canonical link metadata
 
 ---
 

@@ -126,7 +126,7 @@ for (const item of renderedEntries) {
       </aside>
 
       <!-- Right Column: Chronological Experience Feed -->
-      <main class="about-main-feed post-content">
+      <div class="about-main-feed post-content">
         {eraGroups.map((group) => (
           group.isArchive ? (
             <section class="career-era-section archive-section" id={group.id}>
@@ -178,7 +178,52 @@ for (const item of renderedEntries) {
             </section>
           )
         ))}
-      </main>
+      </div>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  let aboutAbortController: AbortController | null = null;
+
+  function expandArchiveIfTargeted() {
+    if (window.location.hash !== '#era-foundation') return;
+    const drawer = document.querySelector('#era-foundation details.archive-drawer') as HTMLDetailsElement | null;
+    if (drawer) drawer.open = true;
+  }
+
+  function setupArchiveJump() {
+    if (aboutAbortController) {
+      aboutAbortController.abort();
+      aboutAbortController = null;
+    }
+
+    const controller = new AbortController();
+    aboutAbortController = controller;
+    const { signal } = controller;
+
+    expandArchiveIfTargeted();
+
+    document.querySelectorAll('a[href="#era-foundation"]').forEach((link) => {
+      link.addEventListener(
+        'click',
+        () => {
+          const drawer = document.querySelector('#era-foundation details.archive-drawer') as HTMLDetailsElement | null;
+          if (drawer) drawer.open = true;
+        },
+        { signal }
+      );
+    });
+
+    window.addEventListener('hashchange', expandArchiveIfTargeted, { signal });
+  }
+
+  setupArchiveJump();
+  document.addEventListener('astro:after-swap', setupArchiveJump);
+  document.addEventListener('astro:before-swap', () => {
+    if (aboutAbortController) {
+      aboutAbortController.abort();
+      aboutAbortController = null;
+    }
+  });
+</script>

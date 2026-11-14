@@ -111,7 +111,13 @@ const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 
         const langBadge = document.createElement('div');
         langBadge.className = 'code-lang-pill';
-        langBadge.innerHTML = `<span class="code-lang-dot"></span><span class="code-lang-name">${displayLang}</span>`;
+        const langDot = document.createElement('span');
+        langDot.className = 'code-lang-dot';
+        const langName = document.createElement('span');
+        langName.className = 'code-lang-name';
+        langName.textContent = displayLang;
+        langBadge.appendChild(langDot);
+        langBadge.appendChild(langName);
 
         const swipeHint = document.createElement('span');
         swipeHint.className = 'code-swipe-hint';
@@ -135,7 +141,7 @@ const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
 
         copyBtn.addEventListener('click', async () => {
           const codeEl = block.querySelector('code');
-          const code = codeEl ? codeEl.innerText : block.innerText;
+          const code = codeEl ? codeEl.innerText : (block as HTMLElement).innerText;
           try {
             await navigator.clipboard.writeText(code);
             copyBtn.classList.add('copied');

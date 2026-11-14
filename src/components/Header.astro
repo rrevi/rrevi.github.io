@@ -29,17 +29,17 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
         </svg>
       </a>
       <a class="nav-item icon-nav nav-desktop-only" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)" aria-label="GitHub profile: rrevi">
-        <svg class="svg-icon">
+        <svg class="svg-icon" viewBox="0 0 16 16" aria-hidden="true">
           <use href="/assets/minima-social-icons.svg#github"></use>
         </svg>
       </a>
       <a class="nav-item icon-nav nav-desktop-only" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="LinkedIn (rafaelrevi)" aria-label="LinkedIn profile: rafaelrevi">
-        <svg class="svg-icon">
+        <svg class="svg-icon" viewBox="0 0 16 16" aria-hidden="true">
           <use href="/assets/minima-social-icons.svg#linkedin"></use>
         </svg>
       </a>
       <a class="nav-item icon-nav nav-desktop-only" href="/rss.xml" title="Subscribe via RSS Feed" aria-label="Subscribe via RSS Feed">
-        <svg class="svg-icon">
+        <svg class="svg-icon" viewBox="0 0 16 16" aria-hidden="true">
           <use href="/assets/minima-social-icons.svg#rss"></use>
         </svg>
       </a>
@@ -95,21 +95,21 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
           </a>
 
           <a class="drawer-grid-item" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+            <svg class="svg-icon" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
               <use href="/assets/minima-social-icons.svg#github"></use>
             </svg>
             <span>GitHub</span>
           </a>
 
           <a class="drawer-grid-item" rel="me" href="https://www.linkedin.com/in/rafaelrevi" title="LinkedIn (rafaelrevi)">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+            <svg class="svg-icon" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
               <use href="/assets/minima-social-icons.svg#linkedin"></use>
             </svg>
             <span>LinkedIn</span>
           </a>
 
           <a class="drawer-grid-item" href="/rss.xml" title="RSS Feed">
-            <svg class="svg-icon" viewBox="0 0 24 24" width="16" height="16">
+            <svg class="svg-icon" viewBox="0 0 16 16" width="15" height="15" aria-hidden="true">
               <use href="/assets/minima-social-icons.svg#rss"></use>
             </svg>
             <span>RSS Feed</span>
@@ -121,73 +121,103 @@ const { siteTitle = "Rants on Software Development" } = Astro.props;
 </header>
 
 <script>
+  let menuAbortController: AbortController | null = null;
+
   function setupMobileMenu() {
-    const toggleBtn = document.getElementById('menu-toggle');
-    const drawer = document.getElementById('mobile-drawer');
-    const header = document.querySelector('.site-header');
+    if (menuAbortController) {
+      menuAbortController.abort();
+      menuAbortController = null;
+    }
+
+    const toggleBtn = document.getElementById('menu-toggle') as HTMLButtonElement | null;
+    const drawer = document.getElementById('mobile-drawer') as HTMLElement | null;
+    const header = document.querySelector('.site-header') as HTMLElement | null;
 
     if (!toggleBtn || !drawer || !header) return;
 
+    const btn = toggleBtn;
+    const panel = drawer;
+    const host = header;
+    const controller = new AbortController();
+    menuAbortController = controller;
+    const { signal } = controller;
+
+    const isMenuOpen = () => btn.getAttribute('aria-expanded') === 'true';
+
     function openMenu() {
-      drawer.removeAttribute('hidden');
+      panel.removeAttribute('hidden');
       // Force repaint before adding active class for transition
-      void drawer.offsetWidth;
-      drawer.classList.add('is-open');
-      toggleBtn.classList.add('is-active');
-      toggleBtn.setAttribute('aria-expanded', 'true');
-      toggleBtn.setAttribute('title', 'Close navigation menu');
-      toggleBtn.setAttribute('aria-label', 'Close navigation menu');
+      void panel.offsetWidth;
+      panel.classList.add('is-open');
+      btn.classList.add('is-active');
+      btn.setAttribute('aria-expanded', 'true');
+      btn.setAttribute('title', 'Close navigation menu');
+      btn.setAttribute('aria-label', 'Close navigation menu');
     }
 
     function closeMenu() {
-      drawer.classList.remove('is-open');
-      toggleBtn.classList.remove('is-active');
-      toggleBtn.setAttribute('aria-expanded', 'false');
-      toggleBtn.setAttribute('title', 'Toggle navigation menu');
-      toggleBtn.setAttribute('aria-label', 'Toggle navigation menu');
+      if (!isMenuOpen() && panel.hasAttribute('hidden')) return;
+      panel.classList.remove('is-open');
+      btn.classList.remove('is-active');
+      btn.setAttribute('aria-expanded', 'false');
+      btn.setAttribute('title', 'Toggle navigation menu');
+      btn.setAttribute('aria-label', 'Toggle navigation menu');
       setTimeout(() => {
-        if (!drawer.classList.contains('is-open')) {
-          drawer.setAttribute('hidden', '');
+        if (!panel.classList.contains('is-open')) {
+          panel.setAttribute('hidden', '');
         }
       }, 200);
     }
 
-    toggleBtn.onclick = (e) => {
-      e.stopPropagation();
-      const isOpen = toggleBtn.getAttribute('aria-expanded') === 'true';
-      if (isOpen) {
-        closeMenu();
-      } else {
-        openMenu();
-      }
-    };
+    btn.addEventListener(
+      'click',
+      (e) => {
+        e.stopPropagation();
+        if (isMenuOpen()) {
+          closeMenu();
+        } else {
+          openMenu();
+        }
+      },
+      { signal }
+    );
 
     // Close when clicking any nav link in drawer
-    drawer.querySelectorAll('a').forEach((link) => {
-      link.onclick = () => {
-        closeMenu();
-      };
+    panel.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', closeMenu, { signal });
     });
 
-    // Close on outside click
-    document.addEventListener('click', (e) => {
-      if (!header.contains(e.target as Node)) {
-        closeMenu();
-      }
-    });
+    // Close on outside click when open
+    document.addEventListener(
+      'click',
+      (e) => {
+        if (isMenuOpen() && !host.contains(e.target as Node)) {
+          closeMenu();
+        }
+      },
+      { signal }
+    );
 
     // Close on Escape key
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && toggleBtn.getAttribute('aria-expanded') === 'true') {
-        closeMenu();
-        toggleBtn.focus();
-      }
-    });
+    document.addEventListener(
+      'keydown',
+      (e) => {
+        if (e.key === 'Escape' && isMenuOpen()) {
+          closeMenu();
+          btn.focus();
+        }
+      },
+      { signal }
+    );
   }
 
   setupMobileMenu();
   document.addEventListener('astro:after-swap', setupMobileMenu);
   document.addEventListener('astro:before-swap', () => {
+    if (menuAbortController) {
+      menuAbortController.abort();
+      menuAbortController = null;
+    }
     const drawer = document.getElementById('mobile-drawer');
     if (drawer) {
       drawer.classList.remove('is-open');
