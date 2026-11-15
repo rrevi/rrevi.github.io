@@ -210,7 +210,6 @@ export function rehypeHeadingAnchors() {
             className: ['heading-anchor'],
             href: `#${id}`,
             ariaLabel: `Link to section ${id}`,
-            tabIndex: '-1',
           },
           [
             el(

@@ -45,20 +45,26 @@ function wrapLines(text: string, maxChars: number, maxLines: number): string[] {
 export async function renderOgImage({ title, subtitle, eyebrow }: OgCardOptions): Promise<Uint8Array> {
   const titleLines = wrapLines(title, 28, 3);
   const subtitleLines = subtitle ? wrapLines(subtitle, 56, 2) : [];
+  const titleLineHeight = 66;
+  const subtitleLineHeight = 36;
+  const dividerY = 506;
+  const subtitleOffset = titleLines.length * titleLineHeight + 18;
 
-  const titleStartY = subtitleLines.length > 0 ? 255 : 290;
+  const titleStartY = subtitleLines.length > 0
+    ? Math.min(255, dividerY - 26 - subtitleOffset - (subtitleLines.length - 1) * subtitleLineHeight)
+    : 290;
   const titleSvg = titleLines
     .map(
       (line, index) =>
-        `<text x="88" y="${titleStartY + index * 66}" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="54" font-weight="700" fill="#ffffff" letter-spacing="-1">${escapeXml(line)}</text>`,
+        `<text x="88" y="${titleStartY + index * titleLineHeight}" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="54" font-weight="700" fill="#ffffff" letter-spacing="-1">${escapeXml(line)}</text>`,
     )
     .join('\n  ');
 
-  const subtitleStartY = titleStartY + titleLines.length * 66 + 18;
+  const subtitleStartY = titleStartY + subtitleOffset;
   const subtitleSvg = subtitleLines
     .map(
       (line, index) =>
-        `<text x="88" y="${subtitleStartY + index * 36}" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="400" fill="#94a1ad">${escapeXml(line)}</text>`,
+        `<text x="88" y="${subtitleStartY + index * subtitleLineHeight}" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="26" font-weight="400" fill="#94a1ad">${escapeXml(line)}</text>`,
     )
     .join('\n  ');
 
@@ -72,7 +78,7 @@ export async function renderOgImage({ title, subtitle, eyebrow }: OgCardOptions)
   <text x="134" y="121" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="18" font-weight="700" fill="#f5b335" letter-spacing="1.5">${escapeXml(eyebrow.toUpperCase())}</text>
   ${titleSvg}
   ${subtitleSvg}
-  <line x1="88" y1="506" x2="1112" y2="506" stroke="#272f38" stroke-width="2"/>
+  <line x1="88" y1="${dividerY}" x2="1112" y2="${dividerY}" stroke="#272f38" stroke-width="2"/>
   <text x="88" y="548" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="600" fill="#edf1f5">Rants on Software Development</text>
   <text x="1112" y="548" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="600" fill="#f5b335">rrevi.github.io</text>
 </svg>`;

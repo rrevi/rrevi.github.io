@@ -237,6 +237,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
   .post-toc-summary {
     display: flex;
     align-items: center;
+    min-height: 40px;
     gap: 0.5rem;
     cursor: pointer;
     list-style: none;
@@ -287,12 +288,11 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
     gap: 0.3rem;
   }
 
-  .post-toc-item {
-    padding-left: calc(var(--toc-indent, 0) * 0.95rem);
-  }
-
   .post-toc-link {
-    display: inline-block;
+    display: flex;
+    align-items: center;
+    min-height: 40px;
+    padding-inline-start: calc(var(--toc-indent, 0) * 0.95rem);
     font-size: 0.875rem;
     line-height: 1.4;
     color: var(--text-color);
@@ -300,7 +300,15 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
 
   .post-toc-link:hover,
   .post-toc-link:focus-visible {
-    color: var(--compass-accent);
+    color: var(--text-color);
+    text-decoration: underline;
+  }
+
+  .post-toc-summary:focus-visible,
+  .post-toc-link:focus-visible,
+  :global(.post-content .heading-anchor:focus-visible) {
+    outline: 2px solid currentColor;
+    outline-offset: 2px;
   }
 
   :global(.post-content h2),
@@ -312,10 +320,12 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
   :global(.post-content .heading-anchor) {
     display: inline-flex;
     align-items: center;
+    justify-content: center;
+    min-width: 40px;
+    min-height: 40px;
     margin-left: 0.4rem;
     vertical-align: middle;
     color: var(--text-muted);
-    opacity: 0.35;
     transition: opacity 0.15s ease, color 0.15s ease;
   }
 
@@ -330,6 +340,5 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
   :global(.post-content h4:hover .heading-anchor),
   :global(.post-content .heading-anchor:focus-visible) {
     opacity: 1;
-    color: var(--compass-accent);
   }
 </style>
