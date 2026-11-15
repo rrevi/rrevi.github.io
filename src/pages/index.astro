@@ -1,16 +1,9 @@
 ---
 // src/pages/index.astro
-import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { formatPost, formatDate } from '../utils/posts';
+import { formatDate, getPublishedPosts } from '../utils/posts';
 
-const rawPosts = await getCollection('blog', ({ data }) => {
-  return data.published !== false;
-});
-
-const posts = rawPosts
-  .map(formatPost)
-  .sort((a, b) => b.date.getTime() - a.date.getTime());
+const posts = await getPublishedPosts();
 
 // Group posts by year
 const postsByYear: Record<number, typeof posts> = {};
@@ -42,7 +35,7 @@ const years = Object.keys(postsByYear)
               </div>
               <div class="post-row-main">
                 <div class="post-row-header">
-                  <h2 class="post-row-title">{post.title}</h2>
+                  <h2 class="post-row-title" transition:name={`post-title-${post.slug}`}>{post.title}</h2>
                   <span class="post-reading-time desktop-only">{post.readingTime}</span>
                 </div>
                 {post.intro && <p class="post-row-intro">{post.intro}</p>}

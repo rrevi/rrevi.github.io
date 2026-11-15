@@ -2,6 +2,9 @@
 
 set -e
 
+echo "Running Astro template & TypeScript checks..."
+npm run check
+
 script/build
 
 if test -e "./dist/index.html"; then

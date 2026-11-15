@@ -1,16 +1,9 @@
 import rss from '@astrojs/rss';
-import { getCollection } from 'astro:content';
-import { formatPost } from '../utils/posts';
 import type { APIContext } from 'astro';
+import { getPublishedPosts } from '../utils/posts';
 
 export async function GET(context: APIContext) {
-  const rawPosts = await getCollection('blog', ({ data }) => {
-    return data.published !== false;
-  });
-
-  const posts = rawPosts
-    .map(formatPost)
-    .sort((a, b) => b.date.getTime() - a.date.getTime());
+  const posts = await getPublishedPosts();
 
   return rss({
     title: 'Rants on Software Development',

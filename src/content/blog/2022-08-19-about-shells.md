@@ -32,7 +32,7 @@ This is as a basic as you can get, as a result, no screenshot to share.
 - [Zsh shell][4]
 - [Oh-my-zsh][5]
 
-![terminal_zsh_omz](/assets/images/terminal-zsh-omz.png "Default Terminal app + Zsh shell + Oh-My-Zsh")
+![terminal_zsh_omz](../../assets/images/terminal-zsh-omz.png "Default Terminal app + Zsh shell + Oh-My-Zsh")
 
 #### 2020-2022
 
@@ -40,7 +40,7 @@ This is as a basic as you can get, as a result, no screenshot to share.
 - Zsh shell
 - Oh-my-zsh
 
-![iterm_zsh_omz](/assets/images/iterm-zsh-omz.png "iTerm terminal app + Zsh shell + Oh-My-Zsh")
+![iterm_zsh_omz](../../assets/images/iterm-zsh-omz.png "iTerm terminal app + Zsh shell + Oh-My-Zsh")
 
 #### Current
 
@@ -48,7 +48,7 @@ This is as a basic as you can get, as a result, no screenshot to share.
 - [Fish shell][7]
 - [Tide][8]
 
-![iterm_fish_tide](/assets/images/iterm-fish-tide.png "iTerm terminal app + Fish shell + Tide")
+![iterm_fish_tide](../../assets/images/iterm-fish-tide.png "iTerm terminal app + Fish shell + Tide")
 
 #### Future
 

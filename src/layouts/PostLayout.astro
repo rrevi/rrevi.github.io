@@ -1,29 +1,40 @@
 ---
 // src/layouts/PostLayout.astro
+import type { MarkdownHeading } from 'astro';
 import BaseLayout from './BaseLayout.astro';
+import ArrowLeftIcon from '../assets/icons/arrow-left.svg';
+import ArrowRightIcon from '../assets/icons/arrow-right.svg';
+import ArrowUpIcon from '../assets/icons/arrow-up.svg';
+import UserIcon from '../assets/icons/user.svg';
 import { formatDate } from '../utils/posts';
 import type { FormattedPost } from '../utils/posts';
 
 interface Props {
   post: FormattedPost;
+  headings?: MarkdownHeading[];
   prevPost?: FormattedPost;
   nextPost?: FormattedPost;
 }
 
-const { post, prevPost, nextPost } = Astro.props;
+const { post, headings = [], prevPost, nextPost } = Astro.props;
+const tocHeadings = headings.filter((h) => h.depth >= 2 && h.depth <= 4);
+const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.depth)) : 2;
 ---
 
-<BaseLayout title={post.title} description={post.intro || post.title}>
+<BaseLayout
+  title={post.title}
+  description={post.intro || post.title}
+  type="article"
+  publishedTime={post.date}
+  ogImage={`/og/${post.slug}.png`}
+>
   <!-- Rivian Telemetry Reading Progress Bar -->
   <div id="scroll-progress" class="scroll-progress-bar"></div>
 
   <!-- Mobile Floating Thumb-Zone Action Pill -->
   <aside id="mobile-thumb-pill" class="mobile-thumb-pill" aria-label="Reading Controls">
     <button id="thumb-back-to-top" class="thumb-pill-btn" type="button" aria-label="Scroll to top of article">
-      <svg class="thumb-arrow-icon" viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="12" y1="19" x2="12" y2="5"></line>
-        <polyline points="5 12 12 5 19 12"></polyline>
-      </svg>
+      <ArrowUpIcon class="thumb-arrow-icon" width={13} height={13} aria-hidden="true" />
       <span>TOP</span>
     </button>
     <div class="thumb-pill-divider"></div>
@@ -34,10 +45,7 @@ const { post, prevPost, nextPost } = Astro.props;
     <!-- Waypoint Back Bar -->
     <div class="post-back-bar">
       <a class="back-link" href="/" title="Back to All Posts" aria-label="Back to All Posts">
-        <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
+        <ArrowLeftIcon class="svg-icon stroke-icon back-arrow" width={15} height={15} aria-hidden="true" />
         <span>All Posts</span>
       </a>
     </div>
@@ -50,9 +58,27 @@ const { post, prevPost, nextPost } = Astro.props;
           <span>{post.readingTime}</span>
         </div>
       </div>
-      <h1 class="article-title">{post.title}</h1>
+      <h1 class="article-title" transition:name={`post-title-${post.slug}`}>{post.title}</h1>
       {post.intro && <p class="article-lead">{post.intro}</p>}
     </header>
+
+    {tocHeadings.length >= 3 && (
+      <details class="post-toc">
+        <summary class="post-toc-summary">
+          <span class="post-toc-dot" aria-hidden="true"></span>
+          <span class="post-toc-label">ON THIS PAGE ({tocHeadings.length})</span>
+        </summary>
+        <nav class="post-toc-nav" aria-label="Table of Contents">
+          <ol class="post-toc-list">
+            {tocHeadings.map((heading) => (
+              <li class="post-toc-item" style={`--toc-indent: ${Math.max(0, heading.depth - baseDepth)}`}>
+                <a class="post-toc-link" href={`#${heading.slug}`}>{heading.text}</a>
+              </li>
+            ))}
+          </ol>
+        </nav>
+      </details>
+    )}
 
     <div class="post-content">
       <slot />
@@ -62,10 +88,7 @@ const { post, prevPost, nextPost } = Astro.props;
     <footer class="article-footer">
       <div class="article-author-card">
         <div class="author-avatar">
-          <svg class="svg-icon stroke-icon" viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-            <circle cx="12" cy="7" r="4"></circle>
-          </svg>
+          <UserIcon class="svg-icon stroke-icon" width={18} height={18} aria-hidden="true" />
         </div>
         <div class="author-details">
           <span class="author-name">Rafael Revi</span>
@@ -80,10 +103,7 @@ const { post, prevPost, nextPost } = Astro.props;
         {prevPost && (
           <a class="prev-post" href={`/${prevPost.slug}`} title={prevPost.title}>
             <span class="nav-label">
-              <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="19" y1="12" x2="5" y2="12"></line>
-                <polyline points="12 19 5 12 12 5"></polyline>
-              </svg>
+              <ArrowLeftIcon class="svg-icon stroke-icon nav-arrow" width={14} height={14} aria-hidden="true" />
               <span>PREVIOUS POST</span>
             </span>
             <span class="nav-title">{prevPost.title}</span>
@@ -93,10 +113,7 @@ const { post, prevPost, nextPost } = Astro.props;
           <a class="next-post" href={`/${nextPost.slug}`} title={nextPost.title}>
             <span class="nav-label">
               <span>NEXT POST</span>
-              <svg class="nav-arrow" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
+              <ArrowRightIcon class="svg-icon stroke-icon nav-arrow" width={14} height={14} aria-hidden="true" />
             </span>
             <span class="nav-title">{nextPost.title}</span>
           </a>
@@ -107,6 +124,7 @@ const { post, prevPost, nextPost } = Astro.props;
 
   <script>
     let scrollCleanup: (() => void) | null = null;
+    const copyResetTimers = new WeakMap<HTMLElement, number>();
 
     function setupScrollControls() {
       if (scrollCleanup) {
@@ -156,7 +174,46 @@ const { post, prevPost, nextPost } = Astro.props;
       };
     }
 
+    async function handleCopyClick(event: MouseEvent) {
+      const target = event.target as HTMLElement | null;
+      const copyBtn = target?.closest<HTMLButtonElement>('.copy-code-button');
+      if (!copyBtn) return;
+
+      const wrapper = copyBtn.closest('.code-block-wrapper');
+      const block = wrapper?.querySelector<HTMLElement>('pre.astro-code');
+      if (!block) return;
+
+      const codeEl = block.querySelector('code');
+      const code = codeEl ? codeEl.innerText : block.innerText;
+
+      try {
+        await navigator.clipboard.writeText(code);
+        copyBtn.classList.add('copied');
+        const copyIcon = copyBtn.querySelector<HTMLElement>('.copy-icon');
+        const checkIcon = copyBtn.querySelector<HTMLElement>('.check-icon');
+        const copyText = copyBtn.querySelector<HTMLElement>('.copy-text');
+        if (copyIcon) copyIcon.style.display = 'none';
+        if (checkIcon) checkIcon.style.display = 'inline-block';
+        if (copyText) copyText.innerText = 'Copied!';
+
+        const existingTimer = copyResetTimers.get(copyBtn);
+        if (existingTimer) window.clearTimeout(existingTimer);
+
+        const timer = window.setTimeout(() => {
+          copyBtn.classList.remove('copied');
+          if (copyIcon) copyIcon.style.display = 'inline-block';
+          if (checkIcon) checkIcon.style.display = 'none';
+          if (copyText) copyText.innerText = 'Copy';
+          copyResetTimers.delete(copyBtn);
+        }, 2000);
+        copyResetTimers.set(copyBtn, timer);
+      } catch (err) {
+        console.error('Failed to copy code: ', err);
+      }
+    }
+
     setupScrollControls();
+    document.addEventListener('click', handleCopyClick);
     document.addEventListener('astro:after-swap', setupScrollControls);
     document.addEventListener('astro:before-swap', () => {
       if (scrollCleanup) {
@@ -166,3 +223,113 @@ const { post, prevPost, nextPost } = Astro.props;
     });
   </script>
 </BaseLayout>
+
+<style>
+  .post-toc {
+    max-width: 680px;
+    margin-bottom: 1.5rem;
+    padding: 0.6rem 0.9rem;
+    background-color: var(--surface);
+    border: 1.5px solid var(--border-color);
+    border-radius: 10px;
+  }
+
+  .post-toc-summary {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: "Geist Mono", monospace;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    user-select: none;
+  }
+
+  .post-toc-summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .post-toc-summary::after {
+    content: '+';
+    margin-left: auto;
+    font-size: 0.95rem;
+    line-height: 1;
+    color: var(--compass-accent);
+  }
+
+  .post-toc[open] .post-toc-summary::after {
+    content: '−';
+  }
+
+  .post-toc-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background-color: var(--compass-accent);
+    flex-shrink: 0;
+  }
+
+  .post-toc-nav {
+    margin-top: 0.65rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .post-toc-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .post-toc-item {
+    padding-left: calc(var(--toc-indent, 0) * 0.95rem);
+  }
+
+  .post-toc-link {
+    display: inline-block;
+    font-size: 0.875rem;
+    line-height: 1.4;
+    color: var(--text-color);
+  }
+
+  .post-toc-link:hover,
+  .post-toc-link:focus-visible {
+    color: var(--compass-accent);
+  }
+
+  :global(.post-content h2),
+  :global(.post-content h3),
+  :global(.post-content h4) {
+    scroll-margin-top: calc(var(--site-header-row-height) + env(safe-area-inset-top) + 1rem);
+  }
+
+  :global(.post-content .heading-anchor) {
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0.4rem;
+    vertical-align: middle;
+    color: var(--text-muted);
+    opacity: 0.35;
+    transition: opacity 0.15s ease, color 0.15s ease;
+  }
+
+  @media (hover: hover) {
+    :global(.post-content .heading-anchor) {
+      opacity: 0;
+    }
+  }
+
+  :global(.post-content h2:hover .heading-anchor),
+  :global(.post-content h3:hover .heading-anchor),
+  :global(.post-content h4:hover .heading-anchor),
+  :global(.post-content .heading-anchor:focus-visible) {
+    opacity: 1;
+    color: var(--compass-accent);
+  }
+</style>

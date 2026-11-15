@@ -13,7 +13,7 @@ Out of the excitement for the performance improvements of Ruby on Rails + SQLite
 
 But before we continue, here are specs of the computer system we are running on:
 
-![fastfetch_screenshot](/assets/images/julia-fastfetch.png "Computer System information using fastfetch")
+![fastfetch_screenshot](../../assets/images/julia-fastfetch.png "Computer System information using fastfetch")
 
 ...with that out of the way...
 
@@ -21,13 +21,13 @@ But before we continue, here are specs of the computer system we are running on:
 
 Here are the requests/second benchmark results of the Ruby on Rails app (having gone through steps 1 through 3 of the [workshop][5]):
 
-![ruby_on_rails_benchmark_screenshot](/assets/images/ruby-on-rails-http-benchmark-performance.png "SQLite on Rails Benchmark Performance")
+![ruby_on_rails_benchmark_screenshot](../../assets/images/ruby-on-rails-http-benchmark-performance.png "SQLite on Rails Benchmark Performance")
 
 ### SQLite on Helidon
 
 and here are the requests/second benchmark results of the about equivalent [SQLite on Helidon (SE edition) app][6]:
 
-![java_on_helidon_benchmark_screenshot](/assets/images/java-on-helidon-http-benchmark-performance.png "SQLite on Helidon Benchmark Performance")
+![java_on_helidon_benchmark_screenshot](../../assets/images/java-on-helidon-http-benchmark-performance.png "SQLite on Helidon Benchmark Performance")
 
 ...here is a table format of the results:
 

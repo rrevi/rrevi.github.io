@@ -1,3 +1,4 @@
+import { getCollection } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
 export interface FormattedPost {
@@ -34,6 +35,14 @@ export function formatPost(entry: CollectionEntry<'blog'>): FormattedPost {
     published: entry.data.published ?? true,
     readingTime,
   };
+}
+
+/** Returns all published blog posts sorted newest first. */
+export async function getPublishedPosts(): Promise<FormattedPost[]> {
+  const rawPosts = await getCollection('blog', ({ data }) => data.published !== false);
+  return rawPosts
+    .map(formatPost)
+    .sort((a, b) => b.date.getTime() - a.date.getTime());
 }
 
 export function formatDate(date: Date, style: 'short' | 'full' = 'short'): string {

@@ -2,6 +2,7 @@
 // src/pages/about.astro
 import { getCollection, render } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import ArrowLeftIcon from '../assets/icons/arrow-left.svg';
 
 const allEntries = await getCollection('experience');
 // Sort by year descending (newest first)
@@ -52,10 +53,7 @@ for (const item of renderedEntries) {
     <!-- Waypoint Back Bar -->
     <div class="post-back-bar">
       <a class="back-link" href="/" title="Back to All Posts" aria-label="Back to All Posts">
-        <svg class="svg-icon stroke-icon back-arrow" viewBox="0 0 24 24" width="15" height="15" aria-hidden="true">
-          <line x1="19" y1="12" x2="5" y2="12"></line>
-          <polyline points="12 19 5 12 12 5"></polyline>
-        </svg>
+        <ArrowLeftIcon class="svg-icon stroke-icon back-arrow" width={15} height={15} aria-hidden="true" />
         <span>All Posts</span>
       </a>
     </div>

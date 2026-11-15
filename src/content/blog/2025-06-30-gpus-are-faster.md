@@ -9,15 +9,15 @@ Using the [Julia programming language][0], specifically while working through th
 
 But before we continue, here are specs of the computer system we are running on:
 
-![fastfetch_screenshot](/assets/images/julia-fastfetch.png "Computer System information using fastfetch")
+![fastfetch_screenshot](../../assets/images/julia-fastfetch.png "Computer System information using fastfetch")
 
 Here are the sequential and parallel results on the CPU:
 
-![julia_cpu_screenshot](/assets/images/julia-cpu.png "Julia CPU Performance")
+![julia_cpu_screenshot](../../assets/images/julia-cpu.png "Julia CPU Performance")
 
 and here is the same computation being run on the GPU (using [OpenCL][2]):
 
-![julia_gpu_screenshot](/assets/images/julia-gpu.png "Julia GPU Performance")
+![julia_gpu_screenshot](../../assets/images/julia-gpu.png "Julia GPU Performance")
 
 ...here is a table format of the results:
 
