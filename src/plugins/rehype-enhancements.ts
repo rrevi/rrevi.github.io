@@ -1,3 +1,5 @@
+import { accessibleCodeStyle } from './code-contrast';
+
 interface HastNode {
   type: string;
   tagName?: string;
@@ -104,7 +106,7 @@ function createCodeBlockHeader(displayLang: string): HastElement {
       el('span', { className: ['code-lang-dot'] }),
       el('span', { className: ['code-lang-name'] }, [text(displayLang)]),
     ]),
-    el('span', { className: ['code-swipe-hint'] }, [text('SWIPE →')]),
+    el('span', { className: ['code-swipe-hint'], ariaHidden: 'true' }, [text('Swipe →')]),
     el(
       'button',
       {
@@ -169,6 +171,13 @@ export function rehypeCodeBlocks() {
           (node.properties['data-language'] as string)) ||
         '';
       const displayLang = formatLanguageName(rawLang);
+      node.properties.tabIndex = 0;
+      node.properties.ariaLabel = `${displayLang} code`;
+      walkAndTransform(node, (token) => {
+        if (token.tagName === 'span' && typeof token.properties.style === 'string') {
+          token.properties.style = accessibleCodeStyle(token.properties.style);
+        }
+      });
 
       return el('div', { className: ['code-block-wrapper'] }, [
         createCodeBlockHeader(displayLang),
@@ -184,7 +193,10 @@ export function rehypeTables() {
     walkAndTransform(tree, (node, parent) => {
       if (node.tagName !== 'table') return;
       if (parent && hasClass(parent, 'table-wrapper')) return;
-      return el('div', { className: ['table-wrapper'] }, [node]);
+      return el('div', { className: ['table-wrapper'], tabIndex: 0, role: 'region', ariaLabel: 'Scrollable table' }, [
+        el('div', { className: ['table-swipe-hint'], ariaHidden: 'true' }, [text('Swipe to explore table →')]),
+        node,
+      ]);
     });
   };
 }

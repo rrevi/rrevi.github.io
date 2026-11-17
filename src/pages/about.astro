@@ -48,7 +48,7 @@ for (const item of renderedEntries) {
 }
 ---
 
-<BaseLayout title="About" description="Rafael Revi - Principal Applications Engineer & Platform Lead. Career telemetry, architectural milestones, and experience chronology.">
+<BaseLayout title="About" description="Rafael Revi - Principal Applications Engineer & Platform Lead. Professional work and career experience." wide>
   <div class="about-container">
     <!-- Waypoint Back Bar -->
     <div class="post-back-bar">
@@ -73,41 +73,16 @@ for (const item of renderedEntries) {
         <div class="executive-card">
           <div class="executive-card-header">
             <span class="card-status-dot"></span>
-            <span class="card-status-text">CURRENT FOCUS</span>
+            <span class="card-status-text">Current focus</span>
           </div>
 
           <h2 class="executive-name">Rafael Revi</h2>
           <div class="executive-role">Principal Applications Engineer &amp; Platform Lead</div>
           <div class="executive-tenure">2021 &ndash; Present &bull; 17+ Years in Software Development</div>
 
-          <div class="telemetry-spec-list">
-            <div class="telemetry-spec">
-              <span class="spec-label">ARCHITECTURE</span>
-              <span class="spec-value">Web Components, Virtual DOM, Microservices, CI/CD</span>
-            </div>
-            <div class="telemetry-spec">
-              <span class="spec-label">CORE STACK</span>
-              <span class="spec-value">Preact, TypeScript, Helidon (Java), OCI DevOps, Docker</span>
-            </div>
-            <div class="telemetry-spec">
-              <span class="spec-label">ACADEMIC DEGREES</span>
-              <span class="spec-value">
-                <strong>M.S. Computer Science</strong> (Merrimack College)<br />
-                <strong>M.S. Information Tech</strong> (Bentley University)
-              </span>
-            </div>
-            <div class="telemetry-spec">
-              <span class="spec-label">CERTIFICATIONS</span>
-              <span class="spec-value">
-                OCI AI Foundations Associate<br />
-                OCI Foundations Associate
-              </span>
-            </div>
-          </div>
-
           <!-- Quick Jump Scrubber -->
           <nav class="era-scrubber" aria-label="Career Era Chapters">
-            <span class="scrubber-label">TIMELINE CHAPTERS</span>
+            <span class="scrubber-label">Timeline chapters</span>
             <div class="scrubber-list">
               {eraGroups.map((group) => (
                 <a href={`#${group.id}`} class="scrubber-card">
@@ -120,6 +95,34 @@ for (const item of renderedEntries) {
               ))}
             </div>
           </nav>
+
+          <details class="focus-details">
+            <summary>Toolkit &amp; credentials</summary>
+            <div class="telemetry-spec-list">
+              <div class="telemetry-spec">
+                <span class="spec-label">Architecture</span>
+                <span class="spec-value">Web Components, Virtual DOM, Microservices, CI/CD</span>
+              </div>
+              <div class="telemetry-spec">
+                <span class="spec-label">Core stack</span>
+                <span class="spec-value">Preact, TypeScript, Helidon (Java), OCI DevOps, Docker</span>
+              </div>
+              <div class="telemetry-spec">
+                <span class="spec-label">Academic degrees</span>
+                <span class="spec-value">
+                  <strong>M.S. Computer Science</strong> (Merrimack College)<br />
+                  <strong>M.S. Information Tech</strong> (Bentley University)
+                </span>
+              </div>
+              <div class="telemetry-spec">
+                <span class="spec-label">Certifications</span>
+                <span class="spec-value">
+                  OCI AI Foundations Associate<br />
+                  OCI Foundations Associate
+                </span>
+              </div>
+            </div>
+          </details>
         </div>
       </aside>
 
@@ -131,12 +134,12 @@ for (const item of renderedEntries) {
               <details class="archive-drawer">
                 <summary class="archive-summary">
                   <div class="archive-summary-info">
-                    <span class="archive-badge">FOUNDATIONAL ARCHIVE</span>
+                    <span class="archive-badge">Foundational experience</span>
                     <h2 class="archive-title">{group.role}</h2>
-                    <span class="archive-count">&bull; {group.entries.length} Years of Early Career Work</span>
+                    <span class="archive-count">{group.entries.length} years of early career work</span>
                   </div>
                   <div class="archive-toggle-indicator">
-                    <span class="archive-toggle-label">Tap to view</span>
+                    <span class="archive-toggle-label">View</span>
                     <svg class="archive-chevron" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                       <polyline points="6 9 12 15 18 9"></polyline>
                     </svg>
@@ -214,6 +217,29 @@ for (const item of renderedEntries) {
     });
 
     window.addEventListener('hashchange', expandArchiveIfTargeted, { signal });
+
+    const sections = Array.from(document.querySelectorAll<HTMLElement>('.career-era-section'));
+    const chapters = Array.from(document.querySelectorAll<HTMLAnchorElement>('.scrubber-card'));
+    let frame = 0;
+    function updateChapter() {
+      frame = 0;
+      const threshold = (document.querySelector('.site-header')?.getBoundingClientRect().bottom ?? 0) + 80;
+      let current = sections[0]?.id;
+      for (const section of sections) {
+        if (section.getBoundingClientRect().top <= threshold) current = section.id;
+      }
+      for (const chapter of chapters) {
+        if (chapter.hash === `#${current}`) chapter.setAttribute('aria-current', 'location');
+        else chapter.removeAttribute('aria-current');
+      }
+    }
+    function queueChapterUpdate() {
+      if (!frame) frame = requestAnimationFrame(updateChapter);
+    }
+    window.addEventListener('scroll', queueChapterUpdate, { passive: true, signal });
+    window.addEventListener('resize', queueChapterUpdate, { signal });
+    signal.addEventListener('abort', () => cancelAnimationFrame(frame), { once: true });
+    updateChapter();
   }
 
   setupArchiveJump();

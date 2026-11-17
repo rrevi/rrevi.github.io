@@ -10,6 +10,7 @@ interface Props {
   type?: 'website' | 'article';
   publishedTime?: Date;
   ogImage?: string;
+  wide?: boolean;
 }
 
 const siteTitle = 'Rants on Software Development';
@@ -20,6 +21,7 @@ const {
   type = 'website',
   publishedTime,
   ogImage = '/og/default.png',
+  wide = false,
 } = Astro.props;
 
 const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
@@ -61,8 +63,9 @@ const rssUrl = new URL('/rss.xml', baseUrl).href;
   <!-- Pre-render theme check to prevent FOUC across SPA transitions -->
   <script is:inline>
     function applyTheme() {
-      const savedTheme = localStorage.getItem('theme');
-      if (savedTheme) {
+      let savedTheme;
+      try { savedTheme = localStorage.getItem('theme'); } catch {}
+      if (savedTheme === 'light' || savedTheme === 'dark') {
         document.documentElement.setAttribute('data-theme', savedTheme);
       }
     }
@@ -71,9 +74,10 @@ const rssUrl = new URL('/rss.xml', baseUrl).href;
   </script>
 </head>
 <body>
+  <a class="skip-link" href="#main-content">Skip to content</a>
   <Header siteTitle={siteTitle} />
-  <main class="page-content" aria-label="Content">
-    <div class="wrapper">
+  <main id="main-content" class="page-content" aria-label="Content" tabindex="-1">
+    <div class:list={['wrapper', { 'wrapper-wide': wide }]}>
       <slot />
     </div>
   </main>

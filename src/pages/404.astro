@@ -3,20 +3,18 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<BaseLayout title="404: Route Not Found">
+<BaseLayout title="404: Page not found">
   <div class="page-not-found">
     <div class="stadium-pill alert-pill">
-      <span>TELEMETRY ALERT</span>
-      <span class="pill-dot"></span>
       <span>404</span>
     </div>
-    <h1 class="not-found-title">Route Not Found</h1>
+    <h1 class="not-found-title">Page not found</h1>
     <p class="not-found-lead">
-      The requested coordinates might have been moved, renamed, or charted on an alternate trail.
+      This page may have moved, or the link may be out of date.
     </p>
     <p>
-      <a href="/" class="nav-item return-pill">
-        &larr; Return to Route Base
+      <a href="/" class="back-link">
+        &larr; All Posts
       </a>
     </p>
   </div>
@@ -33,8 +31,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .not-found-title {
-    font-size: 3.5rem;
-    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 600;
     margin: 0 0 0.5rem 0;
     color: var(--compass-accent);
     letter-spacing: -0.03em;
@@ -48,24 +46,4 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.6;
   }
 
-  .return-pill {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 10px 22px;
-    background-color: var(--pill-bg);
-    border: 1.5px solid var(--compass-accent);
-    color: var(--compass-accent);
-    text-decoration: none;
-    border-radius: 9999px;
-    font-weight: 600;
-    font-size: 0.9375rem;
-    transition: all 0.15s ease;
-  }
-
-  .return-pill:hover,
-  .return-pill:active {
-    background-color: var(--surface);
-    transform: translateY(-1px);
-  }
 </style>

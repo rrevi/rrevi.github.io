@@ -35,7 +35,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
   <aside id="mobile-thumb-pill" class="mobile-thumb-pill" aria-label="Reading Controls">
     <button id="thumb-back-to-top" class="thumb-pill-btn" type="button" aria-label="Scroll to top of article">
       <ArrowUpIcon class="thumb-arrow-icon" width={13} height={13} aria-hidden="true" />
-      <span>TOP</span>
+      <span>Top</span>
     </button>
     <div class="thumb-pill-divider"></div>
     <div id="thumb-progress-pct" class="thumb-pill-pct">0%</div>
@@ -66,7 +66,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
       <details class="post-toc">
         <summary class="post-toc-summary">
           <span class="post-toc-dot" aria-hidden="true"></span>
-          <span class="post-toc-label">ON THIS PAGE ({tocHeadings.length})</span>
+          <span class="post-toc-label">On this page ({tocHeadings.length})</span>
         </summary>
         <nav class="post-toc-nav" aria-label="Table of Contents">
           <ol class="post-toc-list">
@@ -104,7 +104,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
           <a class="prev-post" href={`/${prevPost.slug}`} title={prevPost.title}>
             <span class="nav-label">
               <ArrowLeftIcon class="svg-icon stroke-icon nav-arrow" width={14} height={14} aria-hidden="true" />
-              <span>PREVIOUS POST</span>
+              <span>Previous post</span>
             </span>
             <span class="nav-title">{prevPost.title}</span>
           </a>
@@ -112,7 +112,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
         {nextPost && (
           <a class="next-post" href={`/${nextPost.slug}`} title={nextPost.title}>
             <span class="nav-label">
-              <span>NEXT POST</span>
+              <span>Next post</span>
               <ArrowRightIcon class="svg-icon stroke-icon nav-arrow" width={14} height={14} aria-hidden="true" />
             </span>
             <span class="nav-title">{nextPost.title}</span>
@@ -141,7 +141,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
 
       if (topBtn) {
         topBtn.onclick = () => {
-          window.scrollTo({ top: 0, behavior: 'smooth' });
+          window.scrollTo({ top: 0, behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth' });
         };
       }
 
@@ -158,19 +158,19 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
 
         if (thumbPill && thumbPct) {
           thumbPct.textContent = `${pctClamped}%`;
-          if (scrollTop > 260 && pctClamped < 98) {
-            thumbPill.classList.add('visible');
-          } else {
-            thumbPill.classList.remove('visible');
-          }
+          const visible = scrollTop > 260;
+          thumbPill.classList.toggle('visible', visible);
+          thumbPill.inert = !visible;
         }
       }
 
       window.addEventListener('scroll', update, { passive: true });
+      window.addEventListener('resize', update);
       update();
 
       scrollCleanup = () => {
         window.removeEventListener('scroll', update);
+        window.removeEventListener('resize', update);
       };
     }
 
@@ -189,6 +189,9 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
       try {
         await navigator.clipboard.writeText(code);
         copyBtn.classList.add('copied');
+        const originalLabel = copyBtn.dataset.copyLabel ?? copyBtn.getAttribute('aria-label');
+        if (originalLabel) copyBtn.dataset.copyLabel = originalLabel;
+        copyBtn.setAttribute('aria-label', 'Code copied to clipboard');
         const copyIcon = copyBtn.querySelector<HTMLElement>('.copy-icon');
         const checkIcon = copyBtn.querySelector<HTMLElement>('.check-icon');
         const copyText = copyBtn.querySelector<HTMLElement>('.copy-text');
@@ -204,6 +207,7 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
           if (copyIcon) copyIcon.style.display = 'inline-block';
           if (checkIcon) checkIcon.style.display = 'none';
           if (copyText) copyText.innerText = 'Copy';
+          if (originalLabel) copyBtn.setAttribute('aria-label', originalLabel);
           copyResetTimers.delete(copyBtn);
         }, 2000);
         copyResetTimers.set(copyBtn, timer);
@@ -223,122 +227,3 @@ const baseDepth = tocHeadings.length > 0 ? Math.min(...tocHeadings.map((h) => h.
     });
   </script>
 </BaseLayout>
-
-<style>
-  .post-toc {
-    max-width: 680px;
-    margin-bottom: 1.5rem;
-    padding: 0.6rem 0.9rem;
-    background-color: var(--surface);
-    border: 1.5px solid var(--border-color);
-    border-radius: 10px;
-  }
-
-  .post-toc-summary {
-    display: flex;
-    align-items: center;
-    min-height: 40px;
-    gap: 0.5rem;
-    cursor: pointer;
-    list-style: none;
-    font-family: "Geist Mono", monospace;
-    font-size: 0.6875rem;
-    font-weight: 700;
-    letter-spacing: 0.08em;
-    color: var(--text-muted);
-    user-select: none;
-  }
-
-  .post-toc-summary::-webkit-details-marker {
-    display: none;
-  }
-
-  .post-toc-summary::after {
-    content: '+';
-    margin-left: auto;
-    font-size: 0.95rem;
-    line-height: 1;
-    color: var(--compass-accent);
-  }
-
-  .post-toc[open] .post-toc-summary::after {
-    content: '−';
-  }
-
-  .post-toc-dot {
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: var(--compass-accent);
-    flex-shrink: 0;
-  }
-
-  .post-toc-nav {
-    margin-top: 0.65rem;
-    padding-top: 0.6rem;
-    border-top: 1px solid var(--border-color);
-  }
-
-  .post-toc-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 0.3rem;
-  }
-
-  .post-toc-link {
-    display: flex;
-    align-items: center;
-    min-height: 40px;
-    padding-inline-start: calc(var(--toc-indent, 0) * 0.95rem);
-    font-size: 0.875rem;
-    line-height: 1.4;
-    color: var(--text-color);
-  }
-
-  .post-toc-link:hover,
-  .post-toc-link:focus-visible {
-    color: var(--text-color);
-    text-decoration: underline;
-  }
-
-  .post-toc-summary:focus-visible,
-  .post-toc-link:focus-visible,
-  :global(.post-content .heading-anchor:focus-visible) {
-    outline: 2px solid currentColor;
-    outline-offset: 2px;
-  }
-
-  :global(.post-content h2),
-  :global(.post-content h3),
-  :global(.post-content h4) {
-    scroll-margin-top: calc(var(--site-header-row-height) + env(safe-area-inset-top) + 1rem);
-  }
-
-  :global(.post-content .heading-anchor) {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    min-height: 40px;
-    margin-left: 0.4rem;
-    vertical-align: middle;
-    color: var(--text-muted);
-    transition: opacity 0.15s ease, color 0.15s ease;
-  }
-
-  @media (hover: hover) {
-    :global(.post-content .heading-anchor) {
-      opacity: 0;
-    }
-  }
-
-  :global(.post-content h2:hover .heading-anchor),
-  :global(.post-content h3:hover .heading-anchor),
-  :global(.post-content h4:hover .heading-anchor),
-  :global(.post-content .heading-anchor:focus-visible) {
-    opacity: 1;
-  }
-</style>

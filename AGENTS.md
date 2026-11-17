@@ -11,10 +11,12 @@ The scripts in `script/` follow GitHub's *Scripts to Rule Them All* pattern:
 
 ## 2. Rivian OS Design Language System (Gen 2 / R2 Platform)
 The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
-- **Night (Dark)**: Expedition Slate (`--bg-color: #121519`, `--surface: #191d22`, `--compass-accent: #f5b335`).
-- **Day (Light)**: Glacier Sand (`--bg-color: #f5f2eb`, `--surface: #ffffff`, `--compass-accent: #c9770e`).
+- **Night (Dark)**: Warm olive charcoal (`--bg-color: #11130f`, `--surface: #1b1e18`, `--compass-accent: #ffac00`), following the dotfiles Quickshell palette.
+- **Day (Light)**: Warm ivory (`--bg-color: #f2f1e9`, `--surface: #fafaf2`, `--compass-accent: #8b5105`) with green charcoal text. Text accents are darkened from the source palette for accessible contrast.
 - **Geometry**: Stadium pill geometry (`border-radius: 9999px`) for metadata markers, navigation controls, and waypoints.
-- **Outlines**: Cel-shaded 1.5px outlines (`var(--border-color)`) across cards, headers, tables, and code blocks.
+- **Surfaces & Outlines**: Solid rounded panels (24px), nested cards (10–16px), and quiet inset surfaces. Group passive content through spacing and alignment. Reserve 1px outlines for controls, code, and tables; use elevation for floating navigation and drawers.
+- **Accent & Hierarchy**: Amber identifies selected controls, reading progress, and primary actions. Keep passive metadata neutral and use sentence case for interface labels.
+- **Shared Tokens**: Define palette, geometry, spacing, elevation, and motion in `src/styles/global.css`. Day/Night values use `light-dark()` with the document's `color-scheme`; avoid duplicated theme blocks and component-specific palette literals.
 - **Contrast**: Maintain strict WCAG AA compliance (contrast ratio ≥ 4.5:1 for normal text) in both Day and Night themes.
 
 ## 3. Editorial & Navigation Invariants
@@ -40,6 +42,8 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 - **Tactile Feedback**: Active press animations (`:active { transform: scale(0.985); }`) on post cards, navigation items, and stadium pills.
 - **Safe Areas**: Use `viewport-fit=cover` and `env(safe-area-inset-*)` padding for edge-to-edge mobile screens.
 - **Reading Comfort**: Constrain article prose container to max `680px` (optimal 65–75 character measure).
+- **Layout Widths**: Use a separate wider About canvas (up to 1120px of content); stack its sidebar at tablet widths to preserve readable role titles. Post-feed titles use 18–20px text with generous row padding.
+- **Reduced Motion & Focus**: Respect `prefers-reduced-motion`, preserve visible keyboard focus, and keep hidden controls out of the focus order. All primary navigation controls have 44px touch areas.
 - **Mobile Floating Thumb Pill**: Post pages feature a bottom-anchored thumb-zone pill showing live reading percentage and one-tap return to top.
 - **Code & Table Swipe Affordance**: Long code blocks and benchmark tables scroll horizontally without breaking mobile page margins, accompanied by swipe cues on narrow viewports.
 
@@ -47,6 +51,7 @@ The site uses the **Rivian OS** aesthetic ("Digital Adventure Gear"):
 - **Shiki Dual Themes**: Uses `kanagawa-wave` (dark) and `kanagawa-lotus` (light) with `wrap: false` for natural horizontal code alignment.
 - **Cockpit Header**: Every code block is wrapped in `.code-block-wrapper` with a language badge and an SVG copy button that transitions to a green checkmark on copy.
 - **Unstyled Token Fallback**: Plain text spans, shell prompts, and operators must explicitly declare `color: var(--shiki-dark, var(--text-color)) !important` to ensure legibility in dark mode.
+- **Syntax Contrast**: `src/plugins/code-contrast.ts` corrects low-contrast Kanagawa inks at build time while preserving their hues. Its code background colors must stay synchronized with `--code-bg` in `global.css`.
 
 ## 7. Version Control & Review Invariants
 - **No Automatic Git Commits**: Never run `git commit` automatically after completing code changes.

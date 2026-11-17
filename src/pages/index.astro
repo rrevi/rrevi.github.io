@@ -2,6 +2,7 @@
 // src/pages/index.astro
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { formatDate, getPublishedPosts } from '../utils/posts';
+import ArrowRightIcon from '../assets/icons/arrow-right.svg';
 
 const posts = await getPublishedPosts();
 
@@ -21,10 +22,15 @@ const years = Object.keys(postsByYear)
 
 <BaseLayout>
   <div class="post-feed">
+    <header class="feed-header">
+      <h1>Posts</h1>
+      <p>{posts.length} posts <span aria-hidden="true">·</span> Newest first</p>
+    </header>
     {years.map((year) => (
-      <section class="year-section">
+      <section class="year-section" aria-labelledby={`year-${year}`}>
         <div class="year-marker">
-          <span class="year-pill">{year}</span>
+          <h2 class="year-pill" id={`year-${year}`}>{year}</h2>
+          <span class="year-count">{postsByYear[year].length} {postsByYear[year].length === 1 ? 'post' : 'posts'}</span>
         </div>
         <div class="post-stream">
           {postsByYear[year].map((post) => (
@@ -35,11 +41,12 @@ const years = Object.keys(postsByYear)
               </div>
               <div class="post-row-main">
                 <div class="post-row-header">
-                  <h2 class="post-row-title" transition:name={`post-title-${post.slug}`}>{post.title}</h2>
+                  <h3 class="post-row-title" transition:name={`post-title-${post.slug}`}>{post.title}</h3>
                   <span class="post-reading-time desktop-only">{post.readingTime}</span>
                 </div>
                 {post.intro && <p class="post-row-intro">{post.intro}</p>}
               </div>
+              <ArrowRightIcon class="post-row-arrow" width={18} height={18} aria-hidden="true" />
             </a>
           ))}
         </div>

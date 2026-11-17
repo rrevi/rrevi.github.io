@@ -10,11 +10,13 @@ Live at: [https://rrevi.github.io](https://rrevi.github.io)
 
 - **Framework**: [Astro 5](https://astro.build/) (Static Site Generation / Content Layer API)
 - **Design System**: Rivian OS (Gen 2 & R2 Platform) aesthetic ("Digital Adventure Gear")
-  - Stadium pill geometry, high-precision 1.5px cel-shaded outlines
-  - Dual Palette: Expedition Slate (`#121519`) & Glacier Sand (`#f5f2eb`) with Compass Yellow (`#f5b335`) accents
+  - Solid rounded panels, inset surfaces, stadium controls, and restrained amber selection states
+  - Dual palette from the dotfiles Quickshell: warm olive charcoal (`#11130f`) and warm ivory (`#f2f1e9`)
+  - Semantic CSS tokens for surfaces, spacing, geometry, elevation, and reduced-motion-aware interactions
   - Client-side View Transitions (`<ClientRouter />`)
 - **Typography**: Self-hosted Geist Sans & Geist Mono
 - **Syntax Highlighting**: Shiki dual-theme (`kanagawa-wave` & `kanagawa-lotus`) with interactive terminal cockpit wrappers and one-click copy buttons
+- **Images**: Sharp for Astro image processing and generated Open Graph PNG cards
 - **Feeds & SEO**: `@astrojs/rss`, `@astrojs/sitemap`, and canonical link metadata
 
 ---
@@ -50,6 +52,8 @@ All scripts adhere to GitHub's *Scripts to Rule Them All* pattern:
 | `script/server` | Starts the Astro development server (`astro dev`) at `http://localhost:4321` |
 | `script/build` | Builds production static assets into `dist/` |
 | `script/cibuild` | CI validation script; builds and verifies `dist/index.html` presence |
+
+After changing Markdown rehype plugins, run `npm run astro -- sync --force` before building to refresh cached content rendering.
 
 ---
 

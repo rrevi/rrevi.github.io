@@ -10,9 +10,14 @@ import MoonIcon from '../assets/icons/moon.svg';
 </button>
 
 <script>
+  let themeAbortController: AbortController | null = null;
+
   function setupThemeToggle() {
+    themeAbortController?.abort();
     const toggle = document.getElementById('theme-toggle');
     if (!toggle) return;
+    themeAbortController = new AbortController();
+    const { signal } = themeAbortController;
 
     function getEffectiveTheme(): string {
       const explicit = document.documentElement.getAttribute('data-theme');
@@ -35,11 +40,16 @@ import MoonIcon from '../assets/icons/moon.svg';
       const nextTheme = current === 'dark' ? 'light' : 'dark';
 
       document.documentElement.setAttribute('data-theme', nextTheme);
-      localStorage.setItem('theme', nextTheme);
+      try { localStorage.setItem('theme', nextTheme); } catch {}
       updateTooltip(nextTheme);
-    });
+    }, { signal });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', () => {
+      updateTooltip(getEffectiveTheme());
+    }, { signal });
   }
 
   setupThemeToggle();
   document.addEventListener('astro:after-swap', setupThemeToggle);
+  document.addEventListener('astro:before-swap', () => themeAbortController?.abort());
 </script>
