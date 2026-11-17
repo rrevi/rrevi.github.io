@@ -20,3 +20,6 @@ _vale_styles/Readability
 .Trashes
 ehthumbs.db
 Thumbs.db
+
+# astro build
+_site
