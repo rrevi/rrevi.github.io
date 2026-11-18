@@ -1,4 +1,5 @@
 import sharp from 'sharp';
+import { SITE_NAME } from './site';
 
 interface OgCardOptions {
   title: string;
@@ -69,6 +70,8 @@ export async function renderOgImage({ title, subtitle, eyebrow }: OgCardOptions)
     .join('\n  ');
 
   const pillWidth = Math.min(1024, Math.max(280, Math.round(eyebrow.length * 12.5) + 74));
+  const byline = title === SITE_NAME ? '' :
+    `<text x="88" y="548" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="600" fill="#f4f4ec">${escapeXml(SITE_NAME)}</text>`;
 
   const svg = `<svg width="1200" height="630" viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
   <rect width="1200" height="630" fill="#11130f"/>
@@ -79,7 +82,7 @@ export async function renderOgImage({ title, subtitle, eyebrow }: OgCardOptions)
   ${titleSvg}
   ${subtitleSvg}
   <line x1="88" y1="${dividerY}" x2="1112" y2="${dividerY}" stroke="#34382f" stroke-width="2"/>
-  <text x="88" y="548" font-family="-apple-system, BlinkMacSystemFont, Helvetica Neue, Arial, sans-serif" font-size="22" font-weight="600" fill="#f4f4ec">Rants on Software Development</text>
+  ${byline}
   <text x="1112" y="548" text-anchor="end" font-family="ui-monospace, SFMono-Regular, Menlo, monospace" font-size="20" font-weight="600" fill="#ffac00">rrevi.github.io</text>
 </svg>`;
 

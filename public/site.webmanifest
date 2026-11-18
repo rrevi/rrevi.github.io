@@ -1,8 +1,8 @@
 {
-    "name": "Rants on Software Development",
-    "short_name": "Rants of Software Development",
+    "name": "Rafael Revi",
+    "short_name": "RR",
     "start_url": ".",
-    "description": "Rants on Software Development by Rafael Revi.",
+    "description": "Notes on software development, systems, and runtimes.",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",

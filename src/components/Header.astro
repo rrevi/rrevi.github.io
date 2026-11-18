@@ -1,6 +1,7 @@
 ---
 // src/components/Header.astro
 import ThemeToggle from './ThemeToggle.astro';
+import HomeIcon from '../assets/icons/home.svg';
 import UserIcon from '../assets/icons/user.svg';
 import MailIcon from '../assets/icons/mail.svg';
 import GithubIcon from '../assets/icons/github.svg';
@@ -8,26 +9,22 @@ import LinkedinIcon from '../assets/icons/linkedin.svg';
 import RssIcon from '../assets/icons/rss.svg';
 import ChevronRightIcon from '../assets/icons/chevron-right.svg';
 
-interface Props {
-  siteTitle?: string;
-}
-
-const { siteTitle = "Rants on Software Development" } = Astro.props;
-const isAbout = Astro.url.pathname.replace(/\/$/, '') === '/about';
+const path = Astro.url.pathname.replace(/\/$/, '');
+const isHome = path === '';
+const isAbout = path === '/about';
 ---
 
 <header class="site-header">
   <div class="wrapper">
-    <a class="site-title" rel="author" href="/" title={siteTitle}>
-      <span class="site-author">Rafael Revi</span>
-      <span class="site-title-text">{siteTitle}</span>
+    <a class="nav-item" href="/" title="Home" aria-label="Home" aria-current={isHome ? 'page' : undefined}>
+      <HomeIcon class="svg-icon stroke-icon" aria-hidden="true" />
     </a>
     <nav class="site-nav" aria-label="Main Navigation">
       <!-- Desktop-Only Nav Pods (hidden on mobile) -->
-      <a class="nav-item icon-nav nav-desktop-only" href="/about" title="About Rafael Revi" aria-label="About Rafael Revi" aria-current={isAbout ? 'page' : undefined}>
+      <a class="nav-item icon-nav nav-desktop-only" href="/about" title="About" aria-label="About" aria-current={isAbout ? 'page' : undefined}>
         <UserIcon class="svg-icon stroke-icon" width={17} height={17} aria-hidden="true" />
       </a>
-      <a class="nav-item icon-nav nav-desktop-only" href="mailto:primers.flowing-0q@icloud.com" title="Email (primers.flowing-0q@icloud.com)" aria-label="Email Rafael Revi at primers.flowing-0q@icloud.com">
+      <a class="nav-item icon-nav nav-desktop-only" href="mailto:primers.flowing-0q@icloud.com" title="Email" aria-label="Email">
         <MailIcon class="svg-icon stroke-icon" width={17} height={17} aria-hidden="true" />
       </a>
       <a class="nav-item icon-nav nav-desktop-only" rel="me" href="https://github.com/rrevi" title="GitHub (rrevi)" aria-label="GitHub profile: rrevi">
@@ -70,15 +67,12 @@ const isAbout = Astro.url.pathname.replace(/\/$/, '') === '/about';
           <div class="drawer-about-icon">
             <UserIcon class="svg-icon stroke-icon" width={18} height={18} aria-hidden="true" />
           </div>
-          <div class="drawer-about-details">
-            <span class="drawer-about-title">About Rafael Revi</span>
-            <span class="drawer-about-subtext">Principal Applications Engineer &amp; Platform Lead</span>
-          </div>
+          <span class="drawer-about-title">About</span>
           <ChevronRightIcon class="drawer-about-chevron" width={16} height={16} aria-hidden="true" />
         </a>
 
         <div class="drawer-grid">
-          <a class="drawer-grid-item" href="mailto:primers.flowing-0q@icloud.com" title="Email Rafael Revi">
+          <a class="drawer-grid-item" href="mailto:primers.flowing-0q@icloud.com" title="Email">
             <MailIcon class="svg-icon stroke-icon" width={16} height={16} aria-hidden="true" />
             <span>Email</span>
           </a>

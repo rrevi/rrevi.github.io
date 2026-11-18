@@ -2,6 +2,7 @@
 // src/layouts/BaseLayout.astro
 import { ClientRouter } from 'astro:transitions';
 import Header from '../components/Header.astro';
+import { SITE_DESCRIPTION, SITE_NAME } from '../lib/site';
 import '../styles/global.css';
 
 interface Props {
@@ -13,18 +14,16 @@ interface Props {
   wide?: boolean;
 }
 
-const siteTitle = 'Rants on Software Development';
-
 const {
-  title = siteTitle,
-  description = 'Personal website and rants on software development.',
+  title = SITE_NAME,
+  description = SITE_DESCRIPTION,
   type = 'website',
   publishedTime,
   ogImage = '/og/default.png',
   wide = false,
 } = Astro.props;
 
-const pageTitle = title === siteTitle ? siteTitle : `${title} | ${siteTitle}`;
+const pageTitle = title === SITE_NAME ? SITE_NAME : `${title} | ${SITE_NAME}`;
 const baseUrl = Astro.site || Astro.url;
 const ogImageUrl = new URL(ogImage, baseUrl).href;
 const rssUrl = new URL('/rss.xml', baseUrl).href;
@@ -38,10 +37,10 @@ const rssUrl = new URL('/rss.xml', baseUrl).href;
   <title>{pageTitle}</title>
   <meta name="description" content={description} />
   <link rel="canonical" href={Astro.url.href} />
-  <link rel="alternate" type="application/rss+xml" title={siteTitle} href={rssUrl} />
+  <link rel="alternate" type="application/rss+xml" title={SITE_NAME} href={rssUrl} />
 
   <!-- Open Graph & Social Discovery -->
-  <meta property="og:site_name" content={siteTitle} />
+  <meta property="og:site_name" content={SITE_NAME} />
   <meta property="og:type" content={type} />
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
@@ -75,7 +74,7 @@ const rssUrl = new URL('/rss.xml', baseUrl).href;
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
-  <Header siteTitle={siteTitle} />
+  <Header />
   <main id="main-content" class="page-content" aria-label="Content" tabindex="-1">
     <div class:list={['wrapper', { 'wrapper-wide': wide }]}>
       <slot />
