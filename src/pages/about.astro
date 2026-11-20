@@ -64,19 +64,19 @@ for (const item of renderedEntries) {
       <h1 class="article-title">About</h1>
     </header>
 
-    <!-- Split Grid: Sticky Executive Experience (Tablet/Desktop) + Feed -->
     <div class="about-grid">
-      <!-- Left Column: Sticky Executive Telemetry Cluster -->
       <aside class="about-sidebar">
         <div class="executive-card">
-          <div class="executive-card-header">
-            <span class="card-status-dot"></span>
-            <span class="card-status-text">Current focus</span>
-          </div>
+          <div class="executive-profile">
+            <div class="executive-card-header">
+              <span class="card-status-dot"></span>
+              <span class="card-status-text">Current focus</span>
+            </div>
 
-          <h2 class="executive-name">{SITE_NAME}</h2>
-          <div class="executive-role">Principal Applications Engineer &amp; Platform Lead</div>
-          <div class="executive-tenure">2021 &ndash; Present &bull; 17+ Years in Software Development</div>
+            <h2 class="executive-name">{SITE_NAME}</h2>
+            <div class="executive-role">Principal Applications Engineer &amp; Platform Lead</div>
+            <div class="executive-tenure">2021 &ndash; Present &bull; 17+ Years in Software Development</div>
+          </div>
 
           <!-- Quick Jump Scrubber -->
           <nav class="era-scrubber" aria-label="Career Era Chapters">
@@ -124,7 +124,6 @@ for (const item of renderedEntries) {
         </div>
       </aside>
 
-      <!-- Right Column: Chronological Experience Feed -->
       <div class="about-main-feed post-content">
         {eraGroups.map((group) => (
           group.isArchive ? (

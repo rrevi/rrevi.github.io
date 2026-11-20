@@ -324,8 +324,16 @@ button.theme-toggle-btn .moon-icon { display: inline-block; }
 .thumb-pill-pct { font: 500 0.8125rem/1 var(--font-mono); min-width: 4ch; text-align: right; }
 
 /* Experience uses the wider canvas; the timeline remains a vertical stream. */
-.about-grid { display: grid; gap: var(--space-10); align-items: start; }
-.executive-card { padding: var(--space-6); background: var(--surface); border-radius: var(--radius-panel); }
+.about-grid { display: grid; grid-template-columns: minmax(0, 1fr); gap: var(--space-10); align-items: start; }
+.executive-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  align-items: start;
+  gap: var(--space-5);
+  padding: var(--space-6);
+  background: var(--surface);
+  border-radius: var(--radius-panel);
+}
 .executive-card-header { display: flex; align-items: center; gap: var(--space-2); margin-bottom: var(--space-5); }
 .card-status-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--compass-accent); }
 .card-status-text { color: var(--text-muted); font-size: 0.75rem; }
@@ -333,8 +341,6 @@ button.theme-toggle-btn .moon-icon { display: inline-block; }
 .executive-role { font-size: 0.9375rem; font-weight: 500; line-height: 1.5; }
 .executive-tenure { font-size: 0.75rem; line-height: 1.6; color: var(--text-muted); margin-top: var(--space-2); }
 .telemetry-spec-list { display: grid; gap: var(--space-5); margin-block: var(--space-6) var(--space-8); }
-.era-scrubber { margin-top: var(--space-6); }
-.focus-details { margin-top: var(--space-5); }
 .focus-details > summary { display: flex; align-items: center; justify-content: space-between; min-height: 44px; cursor: pointer; list-style: none; font-size: 0.8125rem; color: var(--text-muted); }
 .focus-details > summary::-webkit-details-marker { display: none; }
 .focus-details > summary::after { content: '+'; font-size: 1.125rem; }
@@ -342,6 +348,7 @@ button.theme-toggle-btn .moon-icon { display: inline-block; }
 .focus-details .telemetry-spec-list { margin-block: var(--space-3) 0; }
 .telemetry-spec { display: flex; flex-direction: column; gap: var(--space-1); }
 .spec-label, .scrubber-label { color: var(--text-muted); font-size: 0.75rem; font-weight: 500; }
+.scrubber-label { display: block; }
 .spec-value { font-size: 0.8125rem; line-height: 1.65; }
 .spec-value strong { font-weight: 500; }
 .scrubber-list { display: flex; flex-direction: column; gap: var(--space-2); margin-top: var(--space-3); }
@@ -437,23 +444,18 @@ tr:last-child td { border-bottom: 0; }
   .mobile-only { display: none; }
 }
 @media (min-width: 768px) {
-  .about-grid { grid-template-columns: 240px minmax(0, 1fr); gap: var(--space-8); }
-  .about-sidebar { position: sticky; top: var(--header-offset); }
-  .about-sidebar .executive-card { max-height: calc(100dvh - var(--header-offset) - var(--space-6)); overflow-y: auto; }
-  .executive-card { padding: var(--space-5); }
   .mobile-thumb-pill { display: none; }
 }
 @media (min-width: 1024px) {
   .about-grid { grid-template-columns: 288px minmax(0, 1fr); gap: var(--space-12); }
-  .executive-card { padding: var(--space-6); }
 }
-/* At tablet widths, stack the sidebar so the longest era heading has room. */
-@media (768px <= width < 1024px) {
-  .about-grid { grid-template-columns: minmax(0, 1fr); }
-  .about-sidebar { position: static; }
-  .about-sidebar .executive-card { max-height: none; overflow: visible; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--space-8); }
-  .executive-card-header, .executive-name, .executive-role, .executive-tenure, .focus-details { grid-column: 1; }
-  .era-scrubber { grid-column: 2; grid-row: 1 / span 5; }
+/* Short windows use page scrolling so the entire card stays reachable. */
+@media (min-width: 1024px) and (min-height: 720px) {
+  .about-sidebar { position: sticky; top: var(--header-offset); }
+  .executive-card {
+    max-height: calc(100dvh - var(--header-offset) - var(--space-6));
+    overflow-y: auto;
+  }
 }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
